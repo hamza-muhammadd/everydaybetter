@@ -51,8 +51,14 @@ td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
 <div id="ed" class="hide">
 <div class="top"><div><h1>Edit your page</h1><p class="mute">Change anything, then press Save changes.</p></div><a class="mute" href="index.html" target="_blank">View page</a></div>
 <div class="tabs" id="tabs"></div>
-<div id="p_text"><input id="q" type="search" placeholder="Search any text on your page…" aria-label="Search"><div id="textbox"></div></div>
-<div id="p_links" class="hide"><p class="mute">Every button and menu link. Use a full link like https://… or a page spot like #buy.</p><div class="card" id="linkbox"></div></div>
+<div id="p_buy"><div class="card"><h2 style="margin:0 0 4px;font-size:18px">Your Gumroad product link</h2>
+<p class="mute">Paste the link of your product here. The "Start My 7-Day Reset" button in the pricing section will open it.</p>
+<label for="g_url">Gumroad link</label><input id="g_url" type="url" placeholder="https://yourname.gumroad.com/l/your-product">
+<label class="chk" style="margin-top:14px;border:0"><input type="checkbox" id="g_all">Send every buy button straight to Gumroad (menu, hero, product and final buttons too)</label>
+<div class="row"><button class="g" id="g_test" type="button">Test this link</button></div>
+<p class="mute" id="g_hint"></p></div></div>
+<div id="p_text" class="hide"><input id="q" type="search" placeholder="Search any text on your page…" aria-label="Search"><div id="textbox"></div></div>
+<div id="p_links" class="hide"><p class="mute">Menu and button links (the Gumroad link has its own tab). Use a full link like https://… or a page spot like #buy.</p><div class="card" id="linkbox"></div></div>
 <div id="p_secs" class="hide"><p class="mute">Turn parts of the page on or off.</p><div class="card" id="secbox"></div></div>
 <div id="p_soc" class="hide"><p class="mute">Add your channels. They appear as icons in the footer.</p><div class="card"><div id="socbox"></div><div class="row"><button class="g" id="addsoc" type="button">+ Add channel</button></div></div></div>
 <div id="p_subs" class="hide"><div class="card"><div class="row" style="margin:0"><button class="g" id="refsub" type="button">Refresh</button><button class="g" id="csv" type="button">Download CSV</button></div><p class="mute" id="subcount"></p><div id="subbox" style="overflow-x:auto"></div></div></div>
@@ -62,13 +68,13 @@ td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
 <div class="bar"><div><button id="save" type="button">Save changes</button><span id="msg"></span></div></div>
 </div>
 </div>
-<script src="cms.js?v=3"></script>
+<script src="cms.js?v=4"></script>
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)},token=null,C,saved={},def={title:'',accent:'#1f3d33'},subs=[];
 var esc=function(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')};
 try{token=sessionStorage.getItem('be_t')}catch(e){}
-var TABS=[['p_text','Page text'],['p_links','Buttons & links'],['p_secs','Show / hide'],['p_soc','Social channels'],['p_subs','Subscribers'],['p_set','Settings']];
+var TABS=[['p_buy','Gumroad link'],['p_text','Page text'],['p_links','Buttons & links'],['p_secs','Show / hide'],['p_soc','Social channels'],['p_subs','Subscribers'],['p_set','Settings']];
 $('tabs').innerHTML=TABS.map(function(t,i){return '<button type="button" data-p="'+t[0]+'"'+(i?'':' class="on"')+'>'+t[1]+'</button>'}).join('');
 $('tabs').onclick=function(e){var p=e.target.dataset.p;if(!p)return;
  TABS.forEach(function(t){$(t[0]).classList.toggle('hide',t[0]!==p)});
@@ -105,12 +111,12 @@ function render(){
  Object.keys(g).sort(function(a,b){return a-b}).forEach(function(s){
   out+='<details'+(first?' open':'')+'><summary>'+esc(s>=0?CMS.BLOCKS[s][0]:'Other')+' ('+g[s].length+')</summary><div>'+g[s].join('')+'</div></details>';first=false});
  $('textbox').innerHTML=out;
- $('linkbox').innerHTML=C.links.map(function(l){return field(l.k,(CMS.BLOCKS[l.sec]?CMS.BLOCKS[l.sec][0]:'')+' · '+l.label.slice(0,40),l.def,false)}).join('');
+ $('linkbox').innerHTML=C.links.filter(function(l){return !l.el.matches('.price .btn')}).map(function(l){return field(l.k,(CMS.BLOCKS[l.sec]?CMS.BLOCKS[l.sec][0]:'')+' · '+l.label.slice(0,40),l.def,false)}).join('');
  var hide=[];try{hide=JSON.parse(saved.hide||'[]')}catch(e){}
  $('secbox').innerHTML=CMS.BLOCKS.map(function(b,i){return '<label class="chk"><input type="checkbox" data-h="'+i+'"'+(hide.indexOf(i)<0?' checked':'')+'>'+b[0]+'</label>'}).join('');
  var so=[];try{so=JSON.parse(saved.socials||'[]')}catch(e){}
  $('socbox').innerHTML='';so.forEach(addRow);
- $('s_title').value=saved.title||def.title;$('s_acc').value=saved.accent||def.accent}
+ $('g_url').value=saved.gumroad||'';$('g_all').checked=saved.gumroad_all==='1';ghint();$('s_title').value=saved.title||def.title;$('s_acc').value=saved.accent||def.accent}
 
 $('q').oninput=function(){var q=this.value.toLowerCase();
  [].forEach.call(document.querySelectorAll('.f'),function(f){f.style.display=f.dataset.s.indexOf(q)<0?'none':''});
@@ -119,6 +125,9 @@ $('q').oninput=function(){var q=this.value.toLowerCase();
 function addRow(s){var r=document.createElement('div');r.className='row';
  r.innerHTML='<select>'+CMS.PLATFORMS.map(function(p){return '<option value="'+p[0]+'"'+(s&&s.p===p[0]?' selected':'')+'>'+p[1]+'</option>'}).join('')+'</select><input placeholder="https://…" value="'+esc(s&&s.url)+'"><button class="g" type="button" aria-label="Remove">✕</button>';
  r.lastChild.onclick=function(){r.remove()};$('socbox').appendChild(r)}
+function ghint(){var v=$('g_url').value.trim();$('g_hint').textContent=v?'Link will be used after you press Save changes.':'No link yet: the pricing button does nothing until you add one.'}
+$('g_url').oninput=ghint;
+$('g_test').onclick=function(){var v=$('g_url').value.trim();if(v)window.open(CMS.safeUrl(v),'_blank')};
 $('addsoc').onclick=function(){addRow()};
 $('accreset').onclick=function(){$('s_acc').value=def.accent};
 
@@ -139,9 +148,9 @@ $('save').onclick=function(){var rows=[];
   if(v!==el.dataset.d||saved[k])rows.push({key:k,value:v===el.dataset.d?'':v})});
  var hide=[];[].forEach.call(document.querySelectorAll('[data-h]'),function(c){if(!c.checked)hide.push(+c.dataset.h)});
  var so=[].map.call($('socbox').children,function(r){return{p:r.firstChild.value,url:r.children[1].value.trim()}}).filter(function(s){return s.url});
- var t=$('s_title').value.trim(),a=$('s_acc').value;
+ var t=$('s_title').value.trim(),a=$('s_acc').value,gu=$('g_url').value.trim();if(gu)gu=CMS.safeUrl(gu);
  rows.push({key:'hide',value:hide.length?JSON.stringify(hide):''},{key:'socials',value:so.length?JSON.stringify(so):''},
-  {key:'title',value:t===def.title?'':t},{key:'accent',value:a===def.accent?'':a});
+  {key:'title',value:t===def.title?'':t},{key:'accent',value:a===def.accent?'':a},{key:'gumroad',value:gu},{key:'gumroad_all',value:$('g_all').checked?'1':''});
  var m=$('msg');m.className='';m.textContent='Saving…';
  function fail(t){m.className='err';m.textContent=t}
  fetch(CMS.url+'/rest/v1/site_content?on_conflict=key',{method:'POST',headers:Object.assign(CMS.headers(token),{Prefer:'resolution=merge-duplicates,return=representation'}),body:JSON.stringify(rows)})

@@ -62,6 +62,11 @@ window.CMS = {
       if (/^https?:/i.test(v)) { l.el.setAttribute('target', '_blank'); l.el.setAttribute('rel', 'noopener'); }
     });
     c.phs.forEach(function (x) { if (map[x.k]) { cnt++; x.el.setAttribute('placeholder', map[x.k]); } });
+    if (map.gumroad) {
+      var gu = self.safeUrl(map.gumroad), sels = map.gumroad_all === '1' ? ['.price .btn', 'header.hero .btn', '#product .btn', '.final .btn', 'nav .btn'] : ['.price .btn'];
+      sels.forEach(function (s) { doc.querySelectorAll(s).forEach(function (a) { a.setAttribute('href', gu); a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }); });
+      cnt++;
+    }
     if (map.title) doc.title = map.title;
     if (map.accent) doc.documentElement.style.setProperty('--green', map.accent);
     var box = doc.querySelector('.soc'), soc = [];
