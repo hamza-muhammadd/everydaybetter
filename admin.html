@@ -6,102 +6,148 @@
 <meta name="robots" content="noindex,nofollow">
 <title>BetterEveryday Admin</title>
 <style>
-:root{--bg:#faf8f3;--ink:#232826;--mute:#5d6560;--green:#1f3d33;--line:#d9dcd3;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root{--bg:#161a18;--ink:#ece9e1;--mute:#a3aca6;--green:#8fb59f;--line:#2e3732;--card:#212825}}
+:root{--bg:#faf8f3;--ink:#232826;--mute:#5d6560;--green:#1f3d33;--on:#fff;--line:#d9dcd3;--card:#fff;--sage:#a9b8a4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root{--bg:#161a18;--ink:#ece9e1;--mute:#a3aca6;--green:#8fb59f;--on:#10201a;--line:#2e3732;--card:#212825}}
 *,*:before,*:after{box-sizing:inherit}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif}
-.w{max-width:720px;margin:0 auto;padding:24px 18px 120px}
-h1{font-size:26px;margin:0 0 4px}
-h2{font-size:15px;color:var(--green);margin:34px 0 10px;letter-spacing:.04em}
-.mute{color:var(--mute);font-size:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
-label{display:block;font-weight:600;font-size:14px;margin:16px 0 6px}
-input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
-textarea{min-height:92px;resize:vertical}
-button{background:var(--green);color:#fff;border:0;border-radius:8px;padding:13px 24px;font:600 16px system-ui;cursor:pointer}
-@media (prefers-color-scheme:dark){button{color:#10201a}}
-button.ghost{background:none;color:var(--mute);border:1px solid var(--line);padding:8px 14px;font-size:14px}
-input:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid #a9b8a4;outline-offset:2px}
-.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px))}
-.bar .in{max-width:720px;margin:0 auto;display:flex;gap:14px;align-items:center}
+.w{max-width:760px;margin:0 auto;padding:20px 16px 130px}
+h1{font-size:24px;margin:0}
+.mute{color:var(--mute);font-size:14px;margin:2px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:14px}
+label,.kind{display:block;font-weight:600;font-size:13px;margin:14px 0 5px;color:var(--mute)}
+input,textarea,select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+textarea{min-height:90px;resize:vertical}
+button{background:var(--green);color:var(--on);border:0;border-radius:8px;padding:12px 22px;font:600 15px system-ui;cursor:pointer}
+button.g{background:none;color:var(--ink);border:1px solid var(--line);padding:9px 14px;font-size:14px}
+:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin:16px 0 4px;padding-bottom:6px}
+.tabs button{background:var(--card);color:var(--ink);border:1px solid var(--line);white-space:nowrap}
+.tabs button.on{background:var(--green);color:var(--on);border-color:var(--green)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--card);margin-top:12px}
+summary{padding:14px 16px;font-weight:700;cursor:pointer}
+details>div{padding:0 16px 16px}
+.row{display:flex;gap:8px;margin-top:10px}
+.row select{max-width:160px}
+.chk{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.chk input{width:20px;height:20px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.bar div{max-width:760px;margin:0 auto;display:flex;gap:14px;align-items:center}
 #msg{font-size:14px}.ok{color:#2e7d4f}.err{color:#c0392b}
-.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.hide{display:none}
+.hide{display:none}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
 </style>
 </head>
 <body>
 <div class="w">
 
-<div id="login" class="card" style="margin-top:40px">
-<h1>Admin login</h1>
-<p class="mute">Sign in with the user you created in Supabase.</p>
+<div id="login" class="card" style="margin-top:50px">
+<h1>Admin login</h1><p class="mute">Use the email and password you created in Supabase.</p>
 <label for="em">Email</label><input id="em" type="email" autocomplete="username">
 <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
-<p id="lmsg" class="err"></p>
-<button id="go" type="button">Log in</button>
+<p id="lmsg" class="err"></p><button id="go" type="button">Log in</button>
 </div>
 
-<div id="editor" class="hide">
-<div class="top"><div><h1>Edit your page</h1><p class="mute">Leave a field as it is to keep the current text.</p></div><button class="ghost" id="out" type="button">Log out</button></div>
-<div id="form"></div>
-<div class="bar"><div class="in"><button id="save" type="button">Save changes</button><span id="msg"></span><a class="mute" href="index.html" target="_blank" style="margin-left:auto">View page</a></div></div>
+<div id="ed" class="hide">
+<div class="top"><div><h1>Edit your page</h1><p class="mute">Change anything, then press Save changes.</p></div><a class="mute" href="index.html" target="_blank">View page</a></div>
+<div class="tabs" id="tabs"></div>
+<div id="p_text"><input id="q" type="search" placeholder="Search any text on your page…" aria-label="Search"><div id="textbox"></div></div>
+<div id="p_links" class="hide"><p class="mute">Every button and menu link. Use a full link like https://… or a page spot like #buy.</p><div class="card" id="linkbox"></div></div>
+<div id="p_secs" class="hide"><p class="mute">Turn parts of the page on or off.</p><div class="card" id="secbox"></div></div>
+<div id="p_soc" class="hide"><p class="mute">Add your channels. They appear as icons in the footer.</p><div class="card"><div id="socbox"></div><div class="row"><button class="g" id="addsoc" type="button">+ Add channel</button></div></div></div>
+<div id="p_subs" class="hide"><div class="card"><div class="row" style="margin:0"><button class="g" id="refsub" type="button">Refresh</button><button class="g" id="csv" type="button">Download CSV</button></div><p class="mute" id="subcount"></p><div id="subbox" style="overflow-x:auto"></div></div></div>
+<div id="p_set" class="hide"><div class="card"><label for="s_title">Browser tab title</label><input id="s_title">
+<label for="s_acc">Accent colour</label><div class="row" style="margin:0"><input id="s_acc" type="color" style="max-width:90px;padding:4px"><button class="g" id="accreset" type="button">Reset colour</button></div>
+<p style="margin-top:24px"><button class="g" id="out" type="button">Log out</button></p></div></div>
+<div class="bar"><div><button id="save" type="button">Save changes</button><span id="msg"></span></div></div>
 </div>
-
 </div>
 <script src="cms.js"></script>
 <script>
 (function(){
-var token=null, defaults={}, saved={};
-var $=function(id){return document.getElementById(id)};
+var $=function(i){return document.getElementById(i)},token=null,C,saved={},def={title:'',accent:'#1f3d33'},subs=[];
+var esc=function(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')};
+try{token=sessionStorage.getItem('be_t')}catch(e){}
+var TABS=[['p_text','Page text'],['p_links','Buttons & links'],['p_secs','Show / hide'],['p_soc','Social channels'],['p_subs','Subscribers'],['p_set','Settings']];
+$('tabs').innerHTML=TABS.map(function(t,i){return '<button type="button" data-p="'+t[0]+'"'+(i?'':' class="on"')+'>'+t[1]+'</button>'}).join('');
+$('tabs').onclick=function(e){var p=e.target.dataset.p;if(!p)return;
+ TABS.forEach(function(t){$(t[0]).classList.toggle('hide',t[0]!==p)});
+ [].forEach.call($('tabs').children,function(b){b.classList.toggle('on',b.dataset.p===p)});
+ $('save').parentNode.parentNode.classList.toggle('hide',p==='p_subs');if(p==='p_subs')loadSubs()};
 
-$('go').onclick=function(){
-  $('lmsg').textContent='';
-  fetch(CMS.url+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:CMS.key,'Content-Type':'application/json'},body:JSON.stringify({email:$('em').value.trim(),password:$('pw').value})})
-  .then(function(r){return r.json().then(function(d){return{ok:r.ok,d:d}})})
-  .then(function(x){
-    if(!x.ok||!x.d.access_token){$('lmsg').textContent='Wrong email or password.';return}
-    token=x.d.access_token;start();
-  }).catch(function(){$('lmsg').textContent='Could not connect. Check your internet.'});
-};
-$('out').onclick=function(){token=null;location.reload()};
+$('go').onclick=function(){$('lmsg').textContent='';
+ fetch(CMS.url+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:CMS.key,'Content-Type':'application/json'},body:JSON.stringify({email:$('em').value.trim(),password:$('pw').value})})
+ .then(function(r){return r.json()}).then(function(d){
+  if(!d.access_token){$('lmsg').textContent='Wrong email or password.';return}
+  token=d.access_token;try{sessionStorage.setItem('be_t',token)}catch(e){}start()})
+ .catch(function(){$('lmsg').textContent='Could not connect.'})};
+$('out').onclick=function(){try{sessionStorage.removeItem('be_t')}catch(e){}location.reload()};
 
 function start(){
-  // read default text from the live page itself
-  fetch('index.html').then(function(r){return r.text()}).then(function(h){
-    var doc=new DOMParser().parseFromString(h,'text/html');
-    CMS.fields.forEach(function(f){
-      var el=doc.querySelector(f[2]);
-      defaults[f[0]]=el?(f[3]==='link'?(el.getAttribute('href')||''):el.textContent.trim().replace(/\s+/g,' ')):'';
-    });
-  }).catch(function(){}).then(function(){return CMS.load()}).then(function(m){
-    saved=m;render();
-    $('login').classList.add('hide');$('editor').classList.remove('hide');
-  });
-}
+ fetch('index.html').then(function(r){return r.text()}).then(function(h){
+  var d=new DOMParser().parseFromString(h,'text/html');C=CMS.collect(d);def.title=d.title;
+ }).then(function(){return CMS.load()}).then(function(m){saved=m;render();$('login').classList.add('hide');$('ed').classList.remove('hide')})
+ .catch(function(){$('lmsg').textContent='Could not load the page. Check that index.html is deployed.'})}
+if(token)start();
+
+function kind(t){if(t.cls==='n')return 'Price';var g=t.tag;
+ if(/^H[1-3]$/.test(g))return 'Heading';if(g==='P')return 'Paragraph';if(g==='LI')return 'List item';
+ if(g==='B')return 'Label';if(g==='BUTTON'||/btn/.test(t.cls)||g==='A')return 'Button / link text';return 'Text'}
+function field(k,label,def_,long,extra){var v=saved[k]||def_;
+ return '<div class="f" data-s="'+esc((label+' '+v).toLowerCase())+'"><span class="kind">'+esc(label)+'</span>'+
+ (long?'<textarea data-k="'+k+'" data-d="'+esc(def_)+'">'+esc(v)+'</textarea>':'<input data-k="'+k+'" data-d="'+esc(def_)+'" value="'+esc(v)+'"'+(extra||'')+'>')+'</div>'}
 
 function render(){
-  var out='',last='';
-  CMS.fields.forEach(function(f){
-    if(f[4]!==last){out+='<h2>'+f[4].toUpperCase()+'</h2>';last=f[4]}
-    var v=(saved[f[0]]!==undefined&&saved[f[0]]!=='')?saved[f[0]]:defaults[f[0]];
-    if(f[3]==='link'&&v==='#')v='';
-    v=String(v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
-    out+='<label for="f_'+f[0]+'">'+f[1]+'</label>'+
-      (f[3]==='long'?'<textarea id="f_'+f[0]+'">'+v+'</textarea>':'<input id="f_'+f[0]+'" type="'+(f[3]==='link'?'url':'text')+'" value="'+v+'"'+(f[3]==='link'?' placeholder="https://yourname.gumroad.com/l/..."':'')+'>');
-  });
-  $('form').innerHTML='<div class="card">'+out+'</div>';
-}
+ var g={};
+ C.texts.forEach(function(t){(g[t.sec]=g[t.sec]||[]).push(field(t.k,kind(t),t.def,t.def.length>70))});
+ C.phs.forEach(function(x){(g[x.sec]=g[x.sec]||[]).push(field(x.k,'Placeholder inside the email box',x.def,false))});
+ var out='',first=true;
+ Object.keys(g).sort(function(a,b){return a-b}).forEach(function(s){
+  out+='<details'+(first?' open':'')+'><summary>'+esc(s>=0?CMS.BLOCKS[s][0]:'Other')+' ('+g[s].length+')</summary><div>'+g[s].join('')+'</div></details>';first=false});
+ $('textbox').innerHTML=out;
+ $('linkbox').innerHTML=C.links.map(function(l){return field(l.k,(CMS.BLOCKS[l.sec]?CMS.BLOCKS[l.sec][0]:'')+' · '+l.label.slice(0,40),l.def,false)}).join('');
+ var hide=[];try{hide=JSON.parse(saved.hide||'[]')}catch(e){}
+ $('secbox').innerHTML=CMS.BLOCKS.map(function(b,i){return '<label class="chk"><input type="checkbox" data-h="'+i+'"'+(hide.indexOf(i)<0?' checked':'')+'>'+b[0]+'</label>'}).join('');
+ var so=[];try{so=JSON.parse(saved.socials||'[]')}catch(e){}
+ $('socbox').innerHTML='';so.forEach(addRow);
+ $('s_title').value=saved.title||def.title;$('s_acc').value=saved.accent||def.accent}
 
-$('save').onclick=function(){
-  var rows=CMS.fields.map(function(f){return{key:f[0],value:$('f_'+f[0]).value.trim()}});
-  var m=$('msg');m.className='';m.textContent='Saving…';
-  fetch(CMS.url+'/rest/v1/site_content?on_conflict=key',{method:'POST',headers:Object.assign(CMS.headers(token),{Prefer:'resolution=merge-duplicates,return=minimal'}),body:JSON.stringify(rows)})
-  .then(function(r){
-    if(r.ok){m.className='ok';m.textContent='Saved. Your page is updated.'}
-    else if(r.status===401){m.className='err';m.textContent='Session expired. Log in again.'}
-    else{m.className='err';m.textContent='Could not save. Check the SQL step.'}
-  }).catch(function(){m.className='err';m.textContent='No connection.'});
-};
+$('q').oninput=function(){var q=this.value.toLowerCase();
+ [].forEach.call(document.querySelectorAll('.f'),function(f){f.style.display=f.dataset.s.indexOf(q)<0?'none':''});
+ if(q)[].forEach.call(document.querySelectorAll('#textbox details'),function(d){d.open=true})};
+
+function addRow(s){var r=document.createElement('div');r.className='row';
+ r.innerHTML='<select>'+CMS.PLATFORMS.map(function(p){return '<option value="'+p[0]+'"'+(s&&s.p===p[0]?' selected':'')+'>'+p[1]+'</option>'}).join('')+'</select><input placeholder="https://…" value="'+esc(s&&s.url)+'"><button class="g" type="button" aria-label="Remove">✕</button>';
+ r.lastChild.onclick=function(){r.remove()};$('socbox').appendChild(r)}
+$('addsoc').onclick=function(){addRow()};
+$('accreset').onclick=function(){$('s_acc').value=def.accent};
+
+function loadSubs(){
+ fetch(CMS.url+'/rest/v1/subscribers?select=id,email,created_at&order=created_at.desc',{headers:CMS.headers(token)})
+ .then(function(r){return r.json()}).then(function(d){
+  if(!Array.isArray(d)){$('subbox').innerHTML='<p class="err">Subscribers table not found. Run the subscribers SQL in Supabase first.</p>';return}
+  subs=d;$('subcount').textContent=d.length+' subscriber'+(d.length===1?'':'s');
+  $('subbox').innerHTML=d.length?'<table><tr><th>Email</th><th>Date</th><th></th></tr>'+d.map(function(x){return '<tr><td>'+esc(x.email)+'</td><td>'+esc(x.created_at.slice(0,10))+'</td><td><button class="g" type="button" data-del="'+x.id+'">Delete</button></td></tr>'}).join('')+'</table>':'<p class="mute">No subscribers yet.</p>'})}
+$('refsub').onclick=loadSubs;
+$('subbox').onclick=function(e){var id=e.target.dataset.del;if(!id||!confirm('Delete this subscriber?'))return;
+ fetch(CMS.url+'/rest/v1/subscribers?id=eq.'+id,{method:'DELETE',headers:CMS.headers(token)}).then(loadSubs)};
+$('csv').onclick=function(){var b=new Blob(['email,date\n'+subs.map(function(x){return x.email+','+x.created_at.slice(0,10)}).join('\n')],{type:'text/csv'});
+ var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='subscribers.csv';a.click()};
+
+$('save').onclick=function(){var rows=[];
+ [].forEach.call(document.querySelectorAll('[data-k]'),function(el){var v=el.value.trim(),k=el.dataset.k;
+  if(v!==el.dataset.d||saved[k])rows.push({key:k,value:v===el.dataset.d?'':v})});
+ var hide=[];[].forEach.call(document.querySelectorAll('[data-h]'),function(c){if(!c.checked)hide.push(+c.dataset.h)});
+ var so=[].map.call($('socbox').children,function(r){return{p:r.firstChild.value,url:r.children[1].value.trim()}}).filter(function(s){return s.url});
+ var t=$('s_title').value.trim(),a=$('s_acc').value;
+ rows.push({key:'hide',value:hide.length?JSON.stringify(hide):''},{key:'socials',value:so.length?JSON.stringify(so):''},
+  {key:'title',value:t===def.title?'':t},{key:'accent',value:a===def.accent?'':a});
+ var m=$('msg');m.className='';m.textContent='Saving…';
+ fetch(CMS.url+'/rest/v1/site_content?on_conflict=key',{method:'POST',headers:Object.assign(CMS.headers(token),{Prefer:'resolution=merge-duplicates,return=minimal'}),body:JSON.stringify(rows)})
+ .then(function(r){if(r.ok){rows.forEach(function(x){saved[x.key]=x.value});m.className='ok';m.textContent='Saved. Refresh your page to see it.'}
+  else if(r.status===401){m.className='err';m.textContent='Session expired. Log out and log in again.'}
+  else{m.className='err';m.textContent='Could not save. Check the SQL step.'}})
+ .catch(function(){m.className='err';m.textContent='No connection.'})};
 })();
 </script>
 </body>
