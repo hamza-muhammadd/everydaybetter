@@ -274,13 +274,32 @@ footer .sub{max-width:420px}footer .sub .sh{font:500 17px 'DM Sans',sans-serif;m
 <div class="base row" style="margin-top:32px"><span>© 2026 BetterEveryday</span>
 <div class="soc"></div></div>
 </div></footer>
-<script src="cms.js"></script>
 <script>
-CMS.load().then(function(m){CMS.apply(m)}).catch(function(){});
-document.getElementById('subf').addEventListener('submit',function(e){e.preventDefault();var f=this;
-fetch(CMS.url+'/rest/v1/subscribers',{method:'POST',headers:Object.assign(CMS.headers(),{Prefer:'return=minimal'}),body:JSON.stringify({email:f.elements[0].value.trim()})})
-.then(function(r){var ok=r.ok||r.status===409;document.querySelector('.subok').hidden=!ok;document.querySelector('.suberr').hidden=ok;if(ok)f.reset()})
-.catch(function(){document.querySelector('.suberr').hidden=false})});
+/* Subscribe box: works on its own, even if cms.js fails to load */
+(function(){
+var URL_='https://ektybjhehbrqpxtdtdup.supabase.co',
+KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrdHliamhlaGJycXB4dGR0ZHVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEzNjE0NzUsImV4cCI6MjEwNjkzNzQ3NX0.mUTPk9nQW3ln2mXIdrLQfHAuf_CrfBL94QItgx-6v4A';
+var f=document.getElementById('subf');if(!f)return;
+var ok=document.querySelector('.subok'),er=document.querySelector('.suberr'),b=f.querySelector('button');
+f.addEventListener('submit',function(e){e.preventDefault();
+ var email=f.elements[0].value.trim(),old=b.textContent;ok.hidden=er.hidden=true;b.disabled=true;b.textContent='Please wait…';
+ fetch(URL_+'/rest/v1/subscribers',{method:'POST',headers:{apikey:KEY,Authorization:'Bearer '+KEY,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({email:email})})
+ .then(function(r){
+  if(r.ok||r.status===409){ok.hidden=false;f.reset();return}
+  return r.text().then(function(t){console.error('Subscribe failed',r.status,t);er.textContent='Something went wrong (error '+r.status+'). Please try again.';er.hidden=false})})
+ .catch(function(x){console.error(x);er.textContent='No connection. Please try again.';er.hidden=false})
+ .then(function(){b.disabled=false;b.textContent=old})});
+})();
+</script>
+<script src="cms.js?v=3"></script>
+<script>
+(function(){
+var dbg=/[?&]debug/.test(location.search);
+function show(t,bad){if(!dbg)return;var b=document.createElement('div');b.style.cssText='position:fixed;left:12px;bottom:12px;z-index:99;padding:10px 14px;border-radius:8px;font:14px system-ui;color:#fff;background:'+(bad?'#b3392b':'#2e7d4f');b.textContent=t;document.body.appendChild(b)}
+if(!window.CMS){console.error('cms.js did not load');show('cms.js did not load. Upload cms.js next to index.html.',1);return}
+CMS.load().then(function(m){var n=CMS.apply(m),k=Object.keys(m).filter(function(x){return m[x]}).length;show('Connected. '+k+' saved values, '+n+' applied to the page.',0)})
+.catch(function(e){console.error(e);show('Could not read the database: '+e.message,1)});
+})();
 </script>
 </body>
 </html>

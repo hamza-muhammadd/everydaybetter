@@ -52,16 +52,16 @@ window.CMS = {
     return /^(https?:|mailto:|tel:|#|\/)/i.test(u) ? u : 'https://' + u;
   },
   apply: function (map, doc) {
-    doc = doc || document; var self = this, c = this.collect(doc);
+    doc = doc || document; var self = this, c = this.collect(doc), cnt = 0;
     c.texts.forEach(function (t) {
-      var v = map[t.k]; if (!v) return;
+      var v = map[t.k]; if (!v) return; cnt++;
       var m = /^(\s*)[\s\S]*?(\s*)$/.exec(t.n.nodeValue); t.n.nodeValue = m[1] + v + m[2];
     });
     c.links.forEach(function (l) {
-      var v = map[l.k]; if (!v) return; v = self.safeUrl(v); l.el.setAttribute('href', v);
+      var v = map[l.k]; if (!v) return; cnt++; v = self.safeUrl(v); l.el.setAttribute('href', v);
       if (/^https?:/i.test(v)) { l.el.setAttribute('target', '_blank'); l.el.setAttribute('rel', 'noopener'); }
     });
-    c.phs.forEach(function (x) { if (map[x.k]) x.el.setAttribute('placeholder', map[x.k]); });
+    c.phs.forEach(function (x) { if (map[x.k]) { cnt++; x.el.setAttribute('placeholder', map[x.k]); } });
     if (map.title) doc.title = map.title;
     if (map.accent) doc.documentElement.style.setProperty('--green', map.accent);
     var box = doc.querySelector('.soc'), soc = [];
@@ -77,13 +77,15 @@ window.CMS = {
     try { JSON.parse(map.hide || '[]').forEach(function (i) {
       if (self.BLOCKS[i]) doc.querySelectorAll(self.BLOCKS[i][1]).forEach(function (e) { e.style.display = 'none'; });
     }); } catch (e) {}
+    return cnt;
   },
   headers: function (token) {
     return { apikey: this.key, Authorization: 'Bearer ' + (token || this.key), 'Content-Type': 'application/json' };
   },
   load: function () {
-    return fetch(this.url + '/rest/v1/site_content?select=key,value', { headers: this.headers() })
+    return fetch(this.url + '/rest/v1/site_content?select=key,value', { headers: this.headers(), cache: 'no-store' })
       .then(function (r) { return r.json(); })
-      .then(function (rows) { var m = {}; (rows || []).forEach(function (x) { m[x.key] = x.value; }); return m; });
+      .then(function (rows) {
+        if (!Array.isArray(rows)) throw new Error((rows && rows.message) || 'Unexpected reply from database'); var m = {}; (rows || []).forEach(function (x) { m[x.key] = x.value; }); return m; });
   }
 };

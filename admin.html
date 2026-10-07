@@ -62,7 +62,7 @@ td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
 <div class="bar"><div><button id="save" type="button">Save changes</button><span id="msg"></span></div></div>
 </div>
 </div>
-<script src="cms.js"></script>
+<script src="cms.js?v=3"></script>
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)},token=null,C,saved={},def={title:'',accent:'#1f3d33'},subs=[];
@@ -88,7 +88,7 @@ function start(){
   var d=new DOMParser().parseFromString(h,'text/html');C=CMS.collect(d);def.title=d.title;
  }).then(function(){return CMS.load()}).then(function(m){saved=m;render();$('login').classList.add('hide');$('ed').classList.remove('hide')})
  .catch(function(){$('lmsg').textContent='Could not load the page. Check that index.html is deployed.'})}
-if(token)start();
+if(token)fetch(CMS.url+'/auth/v1/user',{headers:CMS.headers(token)}).then(function(r){if(r.ok)start();else{token=null;try{sessionStorage.removeItem('be_t')}catch(e){}}}).catch(function(){token=null});
 
 function kind(t){if(t.cls==='n')return 'Price';var g=t.tag;
  if(/^H[1-3]$/.test(g))return 'Heading';if(g==='P')return 'Paragraph';if(g==='LI')return 'List item';
@@ -143,11 +143,17 @@ $('save').onclick=function(){var rows=[];
  rows.push({key:'hide',value:hide.length?JSON.stringify(hide):''},{key:'socials',value:so.length?JSON.stringify(so):''},
   {key:'title',value:t===def.title?'':t},{key:'accent',value:a===def.accent?'':a});
  var m=$('msg');m.className='';m.textContent='Saving…';
- fetch(CMS.url+'/rest/v1/site_content?on_conflict=key',{method:'POST',headers:Object.assign(CMS.headers(token),{Prefer:'resolution=merge-duplicates,return=minimal'}),body:JSON.stringify(rows)})
- .then(function(r){if(r.ok){rows.forEach(function(x){saved[x.key]=x.value});m.className='ok';m.textContent='Saved. Refresh your page to see it.'}
-  else if(r.status===401){m.className='err';m.textContent='Session expired. Log out and log in again.'}
-  else{m.className='err';m.textContent='Could not save. Check the SQL step.'}})
- .catch(function(){m.className='err';m.textContent='No connection.'})};
+ function fail(t){m.className='err';m.textContent=t}
+ fetch(CMS.url+'/rest/v1/site_content?on_conflict=key',{method:'POST',headers:Object.assign(CMS.headers(token),{Prefer:'resolution=merge-duplicates,return=representation'}),body:JSON.stringify(rows)})
+ .then(function(r){return r.json().catch(function(){return null}).then(function(b){
+  if(r.status===401){fail('Session expired. Log out and log in again.');return}
+  if(!r.ok){fail('Database refused: '+((b&&b.message)||r.status));return}
+  if(!Array.isArray(b)||b.length<rows.length){fail('Database accepted only '+(b&&b.length||0)+' of '+rows.length+' items. Re-run the site_content SQL step.');return}
+  return CMS.load().then(function(db){
+   if(rows.some(function(x){return (db[x.key]||'')!==x.value})){fail('Saved, but reading it back failed. Re-run the site_content SQL step.');return}
+   rows.forEach(function(x){saved[x.key]=x.value});m.className='ok';
+   m.innerHTML='✓ Saved and checked. <a href="index.html?t='+Date.now()+'" target="_blank">Open page</a>'})})})
+ .catch(function(e){fail('No connection: '+e.message)})};
 })();
 </script>
 </body>
