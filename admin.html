@@ -14,32 +14,33 @@ body{background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system
 .hide,[hidden]{display:none!important}
 .ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
 :focus-visible{outline:3px solid var(--sage);outline-offset:2px}
-/* login */
 #login{min-height:100vh;display:grid;place-items:center;padding:20px}
 .lg{width:100%;max-width:400px;background:var(--pn);border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:var(--sh)}
 .lg .bd{margin-bottom:18px}
-/* layout */
 .app{display:grid;grid-template-columns:244px minmax(0,1fr);min-height:100vh}
-.side{position:sticky;top:0;height:100vh;background:var(--pn);border-right:1px solid var(--line);padding:22px 14px;display:flex;flex-direction:column;gap:20px}
+.side{position:sticky;top:0;height:100vh;background:var(--pn);border-right:1px solid var(--line);padding:22px 14px;display:flex;flex-direction:column;gap:20px;overflow-y:auto}
 .bd{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
 .bd i{width:36px;height:36px;border-radius:10px;background:var(--g);color:var(--on);display:grid;place-items:center;flex:none}
 #tabs{display:flex;flex-direction:column;gap:2px}
-#tabs button{display:flex;gap:12px;align-items:center;padding:11px 12px;border:0;border-radius:10px;background:none;color:var(--ink);font:500 14.5px system-ui;text-align:left;cursor:pointer}
+#tabs button{display:flex;gap:12px;align-items:center;padding:11px 12px;border:0;border-radius:10px;background:none;color:var(--ink);font:500 14.5px system-ui;text-align:left;cursor:pointer;transition:background .15s}
 #tabs button:hover{background:var(--bg)}
 #tabs button.on{background:var(--g);color:var(--on)}
 .sf{margin-top:auto}
-.main{width:100%;max-width:900px;padding:0 30px 70px}
-.top{position:sticky;top:0;z-index:10;background:var(--bg);display:flex;align-items:center;gap:12px;padding:22px 0 14px;margin-bottom:20px;border-bottom:1px solid var(--line)}
-.top>div:first-child{flex:1}
-.top h1{margin:0;font-size:22px;letter-spacing:-.01em}
-.top p{margin:2px 0 0;color:var(--mute);font-size:13.5px}
+.main{width:100%;max-width:920px;padding:0 30px 70px}
+.top{position:sticky;top:0;z-index:10;background:var(--bg);padding:18px 0 14px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.t1{display:flex;align-items:center;gap:10px}
+#sitesel{flex:1;max-width:340px;font-weight:600}
+.t1 .sp{flex:1}
+.t2{margin-top:14px}
+.t2 h1{margin:0;font-size:22px;letter-spacing:-.01em}
+.t2 p{margin:2px 0 0;color:var(--mute);font-size:13.5px}
 #dirty{font-size:13px;color:var(--bad);font-weight:600;white-space:nowrap}
-/* controls */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--g);color:var(--on);border:1px solid var(--g);border-radius:10px;padding:11px 20px;font:600 14.5px system-ui;cursor:pointer;text-decoration:none;white-space:nowrap}
-.btn:hover{filter:brightness(1.08)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--g);color:var(--on);border:1px solid var(--g);border-radius:10px;padding:11px 20px;font:600 14.5px system-ui;cursor:pointer;text-decoration:none;white-space:nowrap;transition:filter .15s,transform .1s}
+.btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.97)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn.gh{background:none;color:var(--ink);border-color:var(--line)}
 .btn.sm{padding:8px 12px;font-size:13.5px}
+.btn.dg{background:none;color:var(--bad);border-color:var(--bad)}
 input:not([type=checkbox]):not([type=color]):not([type=file]),textarea,select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
 textarea{min-height:92px;resize:vertical}
 input[type=color]{width:56px;height:44px;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer}
@@ -49,8 +50,6 @@ input[type=color]{width:56px;height:44px;padding:3px;border:1px solid var(--line
 .fl{display:block;font-size:12.5px;font-weight:600;color:var(--mute);margin:16px 0 6px}
 .rw{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .hint{font-size:13px;color:var(--mute);margin:8px 0 0}.hint.ok{color:var(--ok)}.hint.err{color:var(--bad)}
-.err{color:var(--bad)}
-/* fields */
 .f{margin-top:14px}
 .f .fl{display:flex;justify-content:space-between;align-items:center;margin:0 0 6px}
 .rs{background:none;border:0;color:var(--mute);font-size:12px;cursor:pointer;text-decoration:underline;padding:0}
@@ -60,15 +59,13 @@ summary::-webkit-details-marker{display:none}
 summary span{color:var(--mute);font-weight:500;font-size:13px}
 details>div{padding:0 18px 20px}
 #q{margin-bottom:16px}
-/* image slots */
 .slot{display:grid;grid-template-columns:170px minmax(0,1fr);gap:18px;align-items:start}
 .pv{height:120px;border:1px dashed var(--sage);border-radius:12px;display:grid;place-items:center;overflow:hidden;color:var(--mute);font-size:13px;background:repeating-conic-gradient(rgba(128,128,128,.12) 0 25%,transparent 0 50%) 0 0/16px 16px}
 .pv img{max-width:100%;max-height:100%;object-fit:contain}
-/* sections */
 .sr{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
 .sr:last-child{border:0}
 .sr .nm{flex:1;font-weight:500}
-.sr .mv{display:flex;gap:6px}
+.sr .mv,.lh .mv{display:flex;gap:6px}
 .sw{position:relative;width:42px;height:24px;flex:none}
 .sw input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer;z-index:1}
 .sw i{position:absolute;inset:0;border-radius:99px;background:var(--line);transition:background .2s}
@@ -76,9 +73,13 @@ details>div{padding:0 18px 20px}
 .sw input:checked+i{background:var(--g)}
 .sw input:checked+i:after{transform:translateX(18px)}
 .sep{margin:18px 0 4px;font-size:12.5px;font-weight:700;color:var(--mute)}
-/* social */
 .sorow{display:grid;grid-template-columns:160px minmax(0,1fr) auto;gap:10px;margin-top:10px}
-/* subscribers */
+.lc{border:1px solid var(--line);border-radius:14px;padding:6px 18px 18px;margin-top:14px;background:var(--bg)}
+.lh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{background:none;border:1px dashed var(--g);color:var(--g);border-radius:99px;padding:7px 14px;font:600 13px system-ui;cursor:pointer}
+.chip:hover{background:var(--g);color:var(--on)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
 .tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
@@ -87,16 +88,16 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
 #toast a{color:inherit;text-decoration:underline;margin-left:8px}
 @media(max-width:859px){
 .app{display:block}
-.side{position:fixed;inset:auto 0 0 0;height:auto;flex-direction:row;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:30;border-right:0;border-top:1px solid var(--line)}
+.side{position:fixed;inset:auto 0 0 0;height:auto;flex-direction:row;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:30;border-right:0;border-top:1px solid var(--line);overflow:visible}
 .side>.bd,.sf{display:none}
 #tabs{flex-direction:row;overflow-x:auto;width:100%;gap:2px}
 #tabs button{flex-direction:column;gap:3px;font-size:11px;padding:7px 11px;white-space:nowrap}
 .main{padding:0 14px 120px}
-.top{padding-top:calc(14px + env(safe-area-inset-top,0px))}
-.top p{display:none}
+.top{padding-top:calc(12px + env(safe-area-inset-top,0px))}
+.t2 p{display:none}.t2{margin-top:10px}
 #toast{bottom:92px}
 }
-@media(max-width:560px){.slot{grid-template-columns:1fr}.sorow{grid-template-columns:minmax(0,1fr) auto}.sorow select{grid-column:1/-1}.btn.vw{display:none}.card{padding:18px}}
+@media(max-width:560px){.slot{grid-template-columns:1fr}.sorow{grid-template-columns:minmax(0,1fr) auto}.sorow select{grid-column:1/-1}.btn.vw{display:none}.card{padding:18px}.g2{grid-template-columns:1fr}.t1{flex-wrap:wrap}#sitesel{max-width:none;flex:1 1 100%}.t1 .sp{display:none}.t1 #save{flex:1}}
 </style>
 </head>
 <body>
@@ -119,31 +120,39 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
 </aside>
 <main class="main">
 <header class="top">
-<div><h1 id="ttl"></h1><p id="sub"></p></div>
-<span id="dirty" hidden>● Unsaved</span>
-<a class="btn gh vw" href="index.html" target="_blank">View page</a>
-<button class="btn" id="save" data-act="save" type="button">Save changes</button>
+<div class="t1"><select id="sitesel" aria-label="Choose the site you are editing"></select><span class="sp"></span><span id="dirty" hidden>● Unsaved</span><a class="btn gh vw" id="view" href="index.html" target="_blank">View page</a><button class="btn" id="save" data-act="save" type="button">Save changes</button></div>
+<div class="t2"><h1 id="ttl"></h1><p id="sub"></p></div>
 </header>
 <div id="panels"></div>
 </main>
 </div>
 <div id="toast" hidden></div>
 
-<script src="cms.js?v=5"></script>
+<script src="cms.js?v=6"></script>
 <script>
 (function(){
-var $=function(i){return document.getElementById(i)},OLD='BetterEveryday',MOV=[2,3,4,5,6,7,8,9,10,11];
-var token=null,C,saved={},def={title:'',accent:'#1f3d33'},subs=[],dirty=false,hid=[],ord=MOV.slice(),shown=OLD,cur='brand',tt;
-var esc=function(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')};
-var IC={brand:'<path d="M5 20c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 20l9-9"/>',buy:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h3l2.5 11H19L21 8H7"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',text:'<path d="M5 6h14M12 6v13M9 19h6"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',secs:'<rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/>',soc:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/>',subs:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'};
-var TABS=[['brand','Brand','Name, logo and look','Change the name, logo and colour. Use this to turn the page into another brand.'],['buy','Gumroad link','Your product link','Where the buy button takes people.'],['img','Pictures','Hero photo and book cover','Replace the main pictures on the page.'],['text','Page text','Every word on the page','Open a part of the page and edit its words.'],['link','Buttons & links','Menu and button links','Where each button or menu item goes.'],['secs','Sections','Show, hide and reorder','Switch parts on or off and move them up or down.'],['soc','Social channels','Footer icons','Add your channels. They show as icons in the footer.'],['subs','Subscribers','People who joined your list','Emails collected from the footer box.']];
+var $=function(i){return document.getElementById(i)},OLD='BetterEveryday',MOV=CMS.MOV;
+var token=null,C=null,site='default',sites=[],saved={},def={title:'',accent:'#1f3d33'},subs=[],dirty=false,hid=[],ord=MOV.slice(),shown=OLD,cur='brand',tt,L={plans:[],pay:[],extra:[]};
+var esc=CMS.esc;
+var IC={brand:'<path d="M5 20c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 20l9-9"/>',price:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h3l2.5 11H19L21 8H7"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',text:'<path d="M5 6h14M12 6v13M9 19h6"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',secs:'<rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/>',extra:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/>',soc:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/>',subs:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',sites:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'};
+var TABS=[['brand','Brand','Name, logo and look','Change the name, logo, colour and contact. Use this to turn the page into another brand.'],['price','Pricing & payments','Plans and ways to pay','Add weekly, monthly or one-time plans, and any payment method you accept.'],['img','Pictures','Hero photo and book cover','Replace the main pictures on the page.'],['text','Page text','Every word on the page','Open a part of the page and edit its words.'],['link','Buttons & links','Menu and button links','Where each button or menu item goes.'],['secs','Sections','Show, hide and reorder','Switch parts on or off and move them up or down.'],['extra','Custom sections','Add your own sections','Add text, cards or questions and answers anywhere on the page.'],['soc','Social channels','Footer icons','Add your channels. They show as icons in the footer.'],['subs','Subscribers','People who joined your list','Emails collected from the footer box of this site.'],['sites','Sites & domains','All your websites','One editor for every website. Each domain shows its own site.']];
 $('tabs').innerHTML=TABS.map(function(t){return '<button type="button" data-act="tab" data-t="'+t[0]+'"><svg class="ic" viewBox="0 0 24 24">'+IC[t[0]]+'</svg>'+t[1]+'</button>'}).join('');
+
+var LS={
+ plans:{n:'Plan',f:[['name','Plan name','t'],['price','Price (e.g. $5 or ৳500)','t'],['period','Billing label (e.g. one-time, / month, / week)','t'],['badge','Badge, optional (e.g. Most popular)','t'],['desc','Short description','l'],['features','Features, one per line','l'],['btn','Button text','t'],['url','Checkout link','u'],['hl','Highlight this plan','c']],blank:{btn:'Get started'}},
+ pay:{n:'Payment method',f:[['name','Name (e.g. bKash)','t'],['details','Details: number or instructions','l'],['url','Online pay link, optional','u']],blank:{}},
+ extra:{n:'Section',f:[['type','Type','s:text=Heading, text and button|cards=Cards|faq=Questions and answers'],['where','Where on the page','s:hero=Right after the top photo|buy=Before pricing|final=Before the final call to action'],['title','Heading','t'],['sub','Intro text','l'],['items','Items, one per line as  Title | text  (for Cards and Questions)','l'],['btn','Button text, optional','t'],['url','Button link','u']],blank:{type:'text',where:'final'}}
+};
+var PRE={'plans:weekly':{name:'Weekly plan',period:'/ week'},'plans:monthly':{name:'Monthly plan',period:'/ month'},'plans:yearly':{name:'Yearly plan',period:'/ year'},'plans:one':{name:'One-time',period:'one-time'},
+'pay:bkash':{name:'bKash',details:'Send Money to 01XXXXXXXXX (Personal). Then send us the transaction ID.'},'pay:nagad':{name:'Nagad',details:'Send Money to 01XXXXXXXXX (Personal). Then send us the transaction ID.'},'pay:rocket':{name:'Rocket',details:'Send Money to 01XXXXXXXXX-X. Then send us the transaction ID.'},'pay:bank':{name:'Bank transfer',details:'Bank: …\nAccount name: …\nAccount number: …'},'pay:paypal':{name:'PayPal',url:'https://paypal.me/yourname'},'pay:card':{name:'Card (Stripe)',url:'https://buy.stripe.com/…'}};
 
 function toast(m,bad,keep){var t=$('toast');t.innerHTML=m;t.className=bad?'bad':'';t.hidden=false;clearTimeout(tt);if(!keep)tt=setTimeout(function(){t.hidden=true},4500)}
 function mark(){dirty=true;$('dirty').hidden=false}
 window.onbeforeunload=function(e){if(dirty){e.preventDefault();return e.returnValue=''}};
+function rest(method,path,body,prefer){return fetch(CMS.url+'/rest/v1/'+path,{method:method,headers:Object.assign(CMS.headers(token),prefer?{Prefer:prefer}:{}),body:body?JSON.stringify(body):undefined})}
+function rj(r){return r.json().catch(function(){return null})}
 
-/* ---------- login ---------- */
+/* ---------- login & start ---------- */
 try{token=sessionStorage.getItem('be_t')}catch(e){}
 function login(){$('lmsg').textContent='';
  fetch(CMS.url+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:CMS.key,'Content-Type':'application/json'},body:JSON.stringify({email:$('em').value.trim(),password:$('pw').value})})
@@ -155,37 +164,54 @@ $('go').onclick=login;$('pw').onkeydown=function(e){if(e.key==='Enter')login()};
 function logout(){try{sessionStorage.removeItem('be_t')}catch(e){}dirty=false;location.reload()}
 if(token)fetch(CMS.url+'/auth/v1/user',{headers:CMS.headers(token)}).then(function(r){if(r.ok)start();else{token=null;try{sessionStorage.removeItem('be_t')}catch(e){}}}).catch(function(){token=null});
 
+function loadSites(){return CMS.get('sites?select=slug,name,domains&order=created_at',token).then(function(l){
+ if(!Array.isArray(l)||!l.length)throw new Error('Sites table not ready. Run setup.sql in Supabase.');sites=l})}
 function start(){
- fetch('index.html',{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){
-  var d=new DOMParser().parseFromString(h,'text/html');C=CMS.collect(d);def.title=d.title})
- .then(function(){return CMS.load()}).then(function(m){
-  saved=m;
-  try{hid=JSON.parse(m.hide||'[]')}catch(e){hid=[]}
-  try{var o=JSON.parse(m.order||'null');if(o&&o.length===MOV.length&&MOV.every(function(i){return o.indexOf(i)>-1}))ord=o}catch(e){}
-  render();$('login').classList.add('hide');$('app').classList.remove('hide');go('brand')})
- .catch(function(e){$('lmsg').textContent='Could not load the page: '+e.message})}
+ loadSites().then(function(){
+  try{var s=sessionStorage.getItem('be_site');site=sites.some(function(x){return x.slug===s})?s:sites[0].slug}catch(e){site=sites[0].slug}
+  return C?0:fetch('index.html',{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){var d=new DOMParser().parseFromString(h,'text/html');C=CMS.collect(d);def.title=d.title})})
+ .then(loadSite).then(function(){$('login').classList.add('hide');$('app').classList.remove('hide');go(cur)})
+ .catch(function(e){$('lmsg').textContent='Could not load: '+e.message})}
+function loadSite(){return CMS.load(site,token).then(function(m){saved=m;
+ hid=CMS.list(m.hide);var o=CMS.list(m.order);ord=(o.length===MOV.length&&MOV.every(function(i){return o.indexOf(i)>-1}))?o:MOV.slice();
+ L.plans=CMS.list(m.plans);L.pay=CMS.list(m.pay);L.extra=CMS.list(m.extra);dirty=false;$('dirty').hidden=true;
+ try{sessionStorage.setItem('be_site',site)}catch(e){}
+ $('view').href='index.html?site='+encodeURIComponent(site);render()})}
+function siteOpts(){$('sitesel').innerHTML=sites.map(function(s){return '<option value="'+esc(s.slug)+'"'+(s.slug===site?' selected':'')+'>'+esc(s.name||s.slug)+' · '+esc(s.slug)+'</option>'}).join('')}
+$('sitesel').onchange=function(){var v=this.value;if(dirty&&!confirm('You have unsaved changes. Switch site and lose them?')){siteOpts();return}site=v;loadSite().then(function(){go(cur)})};
 
-/* ---------- helpers ---------- */
+/* ---------- builders ---------- */
 function card(t,d,h){return '<div class="card"><h2>'+t+'</h2>'+(d?'<p class="d">'+d+'</p>':'')+h+'</div>'}
 function kind(t){if(t.cls==='n')return 'Price';var g=t.tag;if(/^H[1-3]$/.test(g))return 'Heading';if(g==='P')return 'Paragraph';if(g==='LI')return 'List item';if(g==='B')return 'Label';if(g==='BUTTON'||g==='A'||/btn/.test(t.cls))return 'Button text';return 'Text'}
 function field(k,label,d,long){var b=d.split(OLD).join(shown),v=saved[k]||b;
  return '<div class="f" data-s="'+esc((label+' '+v).toLowerCase())+'"><div class="fl"><span>'+esc(label)+'</span><button class="rs" type="button" data-act="reset">Reset</button></div>'+
  (long?'<textarea data-k="'+k+'" data-d="'+esc(d)+'" data-b="'+esc(b)+'">'+esc(v)+'</textarea>':'<input data-k="'+k+'" data-d="'+esc(d)+'" data-b="'+esc(b)+'" value="'+esc(v)+'">')+'</div>'}
-function slot(k,label,hint,w){return '<div class="slot"><div class="pv" id="pv_'+k+'"></div><div><label class="fl" style="margin-top:0" for="im_'+k+'">'+label+' (link)</label><input id="im_'+k+'" data-img="'+k+'" placeholder="https://… or press Upload" value="'+esc(saved[k]||'')+'">'+
- '<div class="rw" style="margin-top:10px"><label class="btn sm" style="cursor:pointer">Upload picture<input type="file" accept="image/*" data-up="'+k+'" hidden></label><button class="btn gh sm" type="button" data-act="rmimg" data-key="'+k+'">Use default</button></div>'+
- '<p class="hint" id="st_'+k+'">'+hint+'</p></div></div>'}
+function plain(id,label,v,ph,long){return '<label class="fl" for="'+id+'">'+label+'</label>'+(long?'<textarea id="'+id+'" placeholder="'+esc(ph||'')+'">'+esc(v)+'</textarea>':'<input id="'+id+'" value="'+esc(v)+'" placeholder="'+esc(ph||'')+'">')}
+function slot(k,label,hint){return '<div class="slot"><div class="pv" id="pv_'+k+'"></div><div><label class="fl" style="margin-top:0" for="im_'+k+'">'+label+' (link)</label><input id="im_'+k+'" data-img="'+k+'" placeholder="https://… or press Upload" value="'+esc(saved[k]||'')+'">'+
+ '<div class="rw" style="margin-top:10px"><label class="btn sm" style="cursor:pointer">Upload picture<input type="file" accept="image/*" data-up="'+k+'" hidden></label><button class="btn gh sm" type="button" data-act="rmimg" data-key="'+k+'">Use default</button></div><p class="hint" id="st_'+k+'">'+hint+'</p></div></div>'}
 function pv(k){var u=$('im_'+k).value.trim();$('pv_'+k).innerHTML=u?'<img src="'+esc(u)+'" alt="">':'<span>Default design</span>'}
 function swRow(i,mv,p){var on=hid.indexOf(i)<0;
  return '<div class="sr"><label class="sw"><input type="checkbox" data-h="'+i+'"'+(on?' checked':'')+' aria-label="Show '+esc(CMS.BLOCKS[i][0])+'"><i></i></label><span class="nm">'+esc(CMS.BLOCKS[i][0])+'</span>'+
  (mv?'<span class="mv"><button class="btn gh sm" type="button" data-act="mv" data-dir="-1" data-p="'+p+'"'+(p===0?' disabled':'')+' aria-label="Move up">↑</button><button class="btn gh sm" type="button" data-act="mv" data-dir="1" data-p="'+p+'"'+(p===ord.length-1?' disabled':'')+' aria-label="Move down">↓</button></span>':'')+'</div>'}
-function secs(){return card('Page sections','Use the switch to show or hide a part. Use the arrows to move it.',
- '<p class="sep">Always at the top</p>'+swRow(0)+swRow(1)+'<p class="sep">Movable sections</p>'+ord.map(function(i,p){return swRow(i,true,p)}).join('')+'<p class="sep">Footer</p>'+swRow(12)+swRow(13)+swRow(14))}
+function secs(){return card('Page sections','Use the switch to show or hide a part. Use the arrows to move it.','<p class="sep">Always at the top</p>'+swRow(0)+swRow(1)+'<p class="sep">Movable sections</p>'+ord.map(function(i,p){return swRow(i,true,p)}).join('')+'<p class="sep">Footer</p>'+swRow(12)+swRow(13)+swRow(14))}
 function socRow(s){var r=document.createElement('div');r.className='sorow';
  r.innerHTML='<select>'+CMS.PLATFORMS.map(function(p){return '<option value="'+p[0]+'"'+(s&&s.p===p[0]?' selected':'')+'>'+p[1]+'</option>'}).join('')+'</select><input placeholder="https://…" value="'+esc(s&&s.url)+'"><button class="btn gh sm" type="button" data-act="rmsoc">Remove</button>';$('socbox').appendChild(r)}
 
+/* list editor (plans, payment methods, custom sections) */
+function lfield(k,i,f,v){var id='x_'+k+i+f[0],t=f[2],lab='<label class="fl" for="'+id+'">'+f[1]+'</label>';v=v||'';
+ if(t==='c')return '<div class="sr" style="border:0;padding:14px 0 0"><label class="sw"><input type="checkbox" id="'+id+'" data-f="'+f[0]+'"'+(v==='1'?' checked':'')+'><i></i></label><span class="nm">'+f[1]+'</span></div>';
+ if(t==='l')return lab+'<textarea id="'+id+'" data-f="'+f[0]+'">'+esc(v)+'</textarea>';
+ if(t.charAt(0)==='s')return lab+'<select id="'+id+'" data-f="'+f[0]+'">'+t.slice(2).split('|').map(function(o){var p=o.split('=');return '<option value="'+p[0]+'"'+(v===p[0]?' selected':'')+'>'+p[1]+'</option>'}).join('')+'</select>';
+ return lab+'<input id="'+id+'" data-f="'+f[0]+'" value="'+esc(v)+'"'+(t==='u'?' placeholder="https://…"':'')+'>'}
+function lcard(k,i){var s=LS[k],o=L[k][i],n=L[k].length;
+ return '<div class="lc" data-l="'+k+'"><div class="lh"><b>'+s.n+' '+(i+1)+(o.name||o.title?' · '+esc(String(o.name||o.title).slice(0,28)):'')+'</b><span class="mv"><button class="btn gh sm" type="button" data-act="lmv" data-dir="-1"'+(i===0?' disabled':'')+' aria-label="Move up">↑</button><button class="btn gh sm" type="button" data-act="lmv" data-dir="1"'+(i===n-1?' disabled':'')+' aria-label="Move down">↓</button><button class="btn dg sm" type="button" data-act="ldel">Remove</button></span></div>'+s.f.map(function(f){return lfield(k,i,f,o[f[0]])}).join('')+'</div>'}
+function lrender(k){var h=L[k].map(function(_,i){return lcard(k,i)}).join('');$('l_'+k).innerHTML=h||'<p class="hint">Nothing added yet.</p>'}
+function lsync(){Object.keys(L).forEach(function(k){if(!$('l_'+k))return;L[k]=[].map.call(document.querySelectorAll('.lc[data-l="'+k+'"]'),function(c){var o={};[].forEach.call(c.querySelectorAll('[data-f]'),function(el){o[el.dataset.f]=el.type==='checkbox'?(el.checked?'1':''):el.value.trim()});return o})})}
+function chips(k,list){return '<div class="chips">'+list.map(function(x){return '<button class="chip" type="button" data-act="ladd" data-l="'+k+'" data-pre="'+x[0]+'">+ '+x[1]+'</button>'}).join('')+'</div>'}
+
 /* ---------- render ---------- */
 function render(){
- shown=saved.brand||OLD;
+ shown=saved.brand||OLD;siteOpts();
  var g={},P={};
  C.texts.forEach(function(t){(g[t.sec]=g[t.sec]||[]).push(field(t.k,kind(t),t.def,t.def.length>70))});
  C.phs.forEach(function(x){(g[x.sec]=g[x.sec]||[]).push(field(x.k,'Placeholder in the email box',x.def,false))});
@@ -193,25 +219,45 @@ function render(){
  Object.keys(g).sort(function(a,b){return a-b}).forEach(function(s){
   tx+='<details'+(first?' open':'')+'><summary>'+esc(s>=0?CMS.BLOCKS[s][0]:'Other')+'<span>'+g[s].length+' items</span></summary><div>'+g[s].join('')+'</div></details>';first=false});
  var lk=C.links.filter(function(l){return !l.el.matches('.price .btn')}).map(function(l){return field(l.k,(CMS.BLOCKS[l.sec]?CMS.BLOCKS[l.sec][0]:'')+' · '+l.label.slice(0,40),l.def,false)}).join('');
- P.brand=card('Brand name','Replaces "'+OLD+'" everywhere: menu, footer, book cover and the browser tab.','<label class="fl" for="b_name">Brand name</label><input id="b_name" value="'+esc(shown)+'">')+
+ P.brand=card('Brand name','Replaces "'+OLD+'" everywhere: menu, footer, book cover and the browser tab.',plain('b_name','Brand name',shown))+
   card('Logo','Shown in the menu and footer, and as the tab icon. A PNG with a transparent background looks best.',slot('logo','Logo','Uses the leaf icon until you add one.'))+
-  card('Look','','<label class="fl" for="s_title">Browser tab title</label><input id="s_title" value="'+esc(saved.title||def.title.split(OLD).join(shown))+'"><label class="fl" for="s_acc">Accent colour</label><div class="rw"><input type="color" id="s_acc" value="'+esc(saved.accent||def.accent)+'"><button class="btn gh sm" type="button" data-act="accreset">Reset colour</button></div>')+
+  card('Look and search','',plain('s_title','Browser tab title',saved.title||def.title.split(OLD).join(shown))+plain('s_desc','Search description (what Google shows)',saved.desc||'','One or two sentences about this site',true)+
+   '<label class="fl" for="s_acc">Accent colour</label><div class="rw"><input type="color" id="s_acc" value="'+esc(saved.accent||def.accent)+'"><button class="btn gh sm" type="button" data-act="accreset">Reset colour</button></div>')+
+  card('WhatsApp chat button','A green button on the page that opens WhatsApp. Leave the number empty to hide it.','<div class="g2"><div>'+plain('w_num','WhatsApp number with country code',saved.wa||'','8801XXXXXXXXX')+'</div><div>'+plain('w_msg','First message',saved.wa_msg||'','Hello! I have a question.')+'</div></div>')+
   card('Account','','<button class="btn gh" type="button" data-act="out">Log out</button>');
- P.buy=card('Your Gumroad product link','Paste your product link. The "Start My 7-Day Reset" button in the pricing section will open it.','<label class="fl" for="g_url">Gumroad link</label><input id="g_url" type="url" placeholder="https://yourname.gumroad.com/l/your-product" value="'+esc(saved.gumroad||'')+'"><p class="hint" id="g_hint"></p>'+
-  '<div class="sr" style="border:0;padding-top:16px"><label class="sw"><input type="checkbox" id="g_all"'+(saved.gumroad_all==='1'?' checked':'')+'><i></i></label><span class="nm">Send every buy button straight to Gumroad</span></div><div class="rw"><button class="btn gh sm" type="button" data-act="gtest">Test this link</button></div>');
+ P.price=card('Main checkout link','Used by the pricing button and, if you switch it on, every buy button. Works with Gumroad, Stripe, Lemon Squeezy, SSLCommerz or any payment link.',
+   '<label class="fl" for="g_url">Checkout link</label><input id="g_url" type="url" placeholder="https://yourname.gumroad.com/l/your-product" value="'+esc(saved.gumroad||'')+'"><p class="hint" id="g_hint"></p>'+
+   '<div class="sr" style="border:0;padding-top:16px"><label class="sw"><input type="checkbox" id="g_all"'+(saved.gumroad_all==='1'?' checked':'')+'><i></i></label><span class="nm">Send every buy button straight to this link</span></div><div class="rw"><button class="btn gh sm" type="button" data-act="gtest">Test this link</button></div>')+
+  card('Plans','Add as many plans as you need. Once you add a plan, plans replace the single price card. Each plan has its own checkout link.','<div id="l_plans"></div>'+chips('plans',[['plans:weekly','Weekly'],['plans:monthly','Monthly'],['plans:yearly','Yearly'],['plans:one','One-time'],['plans:','Blank']]))+
+  card('Other ways to pay','Show payment options like bKash, Nagad, bank transfer or PayPal under the plans. Visitors can copy the number with one tap.','<div id="l_pay"></div>'+chips('pay',[['pay:bkash','bKash'],['pay:nagad','Nagad'],['pay:rocket','Rocket'],['pay:bank','Bank'],['pay:paypal','PayPal'],['pay:card','Card link'],['pay:','Blank']])+
+   '<div class="g2" style="margin-top:8px"><div>'+plain('pay_title','Heading',saved.pay_title||'','Other ways to pay')+'</div><div>'+plain('pay_note','Note under the heading',saved.pay_note||'','After paying, send us your transaction ID.')+'</div><div>'+plain('copy_label','Copy button text',saved.copy_label||'','Copy')+'</div><div>'+plain('pay_btn','Pay link button text',saved.pay_btn||'','Pay now')+'</div></div>');
  P.img=card('Hero photo','The big picture at the top. Wide photos work best.',slot('hero_img','Hero photo','Uses the drawn sunrise until you add one.'))+card('Book cover','Shown beside the preview pages. Tall pictures work best.',slot('cover_img','Book cover','Uses the drawn cover until you add one.'));
- P.text=tx;P.link=card('Menu and button links','Use a full link (https://…) or a spot on the page like #buy. The Gumroad link has its own tab.',lk);
+ P.text=tx;P.link=card('Menu and button links','Use a full link (https://…) or a spot on the page like #buy. The main checkout link has its own tab.',lk);
  P.secs='<div id="secbox">'+secs()+'</div>';
+ P.extra=card('Custom sections','Add a text block, a row of cards or a questions list. They appear on the page in the place you choose.','<div id="l_extra"></div><div class="chips"><button class="chip" type="button" data-act="ladd" data-l="extra" data-pre="">+ Add section</button></div>');
  P.soc=card('Social channels','Add as many as you like. Empty rows are ignored.','<div id="socbox"></div><div class="rw" style="margin-top:14px"><button class="btn gh sm" type="button" data-act="addsoc">+ Add channel</button></div>');
  P.subs=card('Subscribers','','<div class="rw"><button class="btn gh sm" type="button" data-act="refsub">Refresh</button><button class="btn gh sm" type="button" data-act="csv">Download CSV</button></div><p class="hint" id="subcount"></p><div class="tw" id="subbox"></div>');
+ P.sites=sitesPanel();
  $('panels').innerHTML=TABS.map(function(t){return '<section class="panel hide" id="pn_'+t[0]+'">'+P[t[0]]+'</section>'}).join('');
- var so=[];try{so=JSON.parse(saved.socials||'[]')}catch(e){}so.forEach(socRow);
+ var so=CMS.list(saved.socials);so.forEach(socRow);
+ ['plans','pay','extra'].forEach(lrender);
  ['logo','hero_img','cover_img'].forEach(pv);ghint()}
+
+function sitesPanel(){
+ return card('Your sites','Every site has its own content, pictures, plans and subscribers. A visitor sees the site whose domain matches. Unknown domains show the first site.',
+  sites.map(function(s){return '<div class="lc" data-site="'+esc(s.slug)+'"><div class="lh"><b>'+esc(s.slug)+(s.slug===site?' · editing now':'')+'</b><span class="mv"><a class="btn gh sm" target="_blank" href="index.html?site='+encodeURIComponent(s.slug)+'">Open</a></span></div>'+
+   '<label class="fl">Name</label><input data-sf="name" value="'+esc(s.name)+'"><label class="fl">Domains, separated by commas</label><input data-sf="domains" placeholder="inaya.com, www.inaya.com" value="'+esc(s.domains)+'">'+
+   '<div class="rw" style="margin-top:14px"><button class="btn sm" type="button" data-act="ssave">Save details</button><button class="btn dg sm" type="button" data-act="sdel">Delete site</button></div></div>'}).join(''))+
+  card('Add a new site','Start empty, or copy everything from an existing site to save time.',
+   '<div class="g2"><div>'+plain('ns_name','Site name','','Inaya Quran Academy')+'</div><div>'+plain('ns_slug','Short id (letters and numbers, optional)','','inaya')+'</div></div>'+plain('ns_dom','Domains, separated by commas','','inaya.com, www.inaya.com')+
+   '<label class="fl" for="ns_from">Start from</label><select id="ns_from"><option value="">Empty (the default design)</option>'+sites.map(function(s){return '<option value="'+esc(s.slug)+'">Copy of '+esc(s.name||s.slug)+'</option>'}).join('')+'</select>'+
+   '<div class="rw" style="margin-top:16px"><button class="btn" type="button" data-act="screate">Create site</button></div>'+
+   '<p class="hint">After creating: in Vercel add the domain (Settings → Domains), and type the same domain here. Both are needed.</p>')}
 
 function go(id){cur=id;
  TABS.forEach(function(t){$('pn_'+t[0]).classList.toggle('hide',t[0]!==id);if(t[0]===id){$('ttl').textContent=t[2];$('sub').textContent=t[3]}});
  [].forEach.call($('tabs').children,function(b){b.classList.toggle('on',b.dataset.t===id)});
- $('save').hidden=id==='subs';window.scrollTo(0,0);if(id==='subs')loadSubs()}
+ $('save').hidden=(id==='subs'||id==='sites');window.scrollTo(0,0);if(id==='subs')loadSubs()}
 function ghint(){var v=$('g_url').value.trim();$('g_hint').textContent=v?'This link is used after you press Save changes.':'No link yet: the pricing button does nothing until you add one.'}
 
 /* ---------- pictures ---------- */
@@ -221,46 +267,66 @@ function resize(f,max,png){return new Promise(function(res,rej){var im=new Image
   c.toBlob(function(b){b?res(b):rej(new Error('Could not process this picture'))},png?'image/png':'image/jpeg',.85)};
  im.onerror=function(){rej(new Error('This file is not a picture'))};im.src=u})}
 function upload(k,f){var st=$('st_'+k),png=k==='logo';st.className='hint';st.textContent='Uploading…';
- resize(f,png?600:2000,png).then(function(b){var p=k+'-'+Date.now()+(png?'.png':'.jpg');
+ resize(f,png?600:2000,png).then(function(b){var p=site+'/'+k+'-'+Date.now()+(png?'.png':'.jpg');
   return fetch(CMS.url+'/storage/v1/object/site-images/'+p,{method:'POST',headers:{apikey:CMS.key,Authorization:'Bearer '+token,'Content-Type':b.type},body:b})
-  .then(function(r){return r.json().catch(function(){return{}}).then(function(j){
-   if(!r.ok)throw new Error(j.message||j.error||('error '+r.status));
+  .then(function(r){return rj(r).then(function(j){
+   if(!r.ok)throw new Error((j&&(j.message||j.error))||('error '+r.status));
    $('im_'+k).value=CMS.url+'/storage/v1/object/public/site-images/'+p;pv(k);mark();st.className='hint ok';st.textContent='Uploaded. Press Save changes to publish it.'})})})
- .catch(function(e){st.className='hint err';st.textContent='Upload failed: '+e.message+' If this is the first time, run setup.sql in Supabase.'})}
+ .catch(function(e){st.className='hint err';st.textContent='Upload failed: '+e.message+'. If this is the first time, run setup.sql in Supabase.'})}
 
 /* ---------- subscribers ---------- */
-function loadSubs(){fetch(CMS.url+'/rest/v1/subscribers?select=id,email,created_at&order=created_at.desc',{headers:CMS.headers(token),cache:'no-store'})
- .then(function(r){return r.json()}).then(function(d){
-  if(!Array.isArray(d)){$('subbox').innerHTML='<p class="hint err">Subscribers table not found. Run setup.sql in Supabase first.</p>';$('subcount').textContent='';return}
-  subs=d;$('subcount').textContent=d.length+' subscriber'+(d.length===1?'':'s');
+function loadSubs(){CMS.get('subscribers?select=id,email,created_at&site=eq.'+encodeURIComponent(site)+'&order=created_at.desc',token)
+ .then(function(d){
+  if(!Array.isArray(d)){$('subbox').innerHTML='<p class="hint err">Subscribers table not ready. Run setup.sql in Supabase.</p>';$('subcount').textContent='';return}
+  subs=d;$('subcount').textContent=d.length+' subscriber'+(d.length===1?'':'s')+' on this site';
   $('subbox').innerHTML=d.length?'<table><tr><th>Email</th><th>Date</th><th></th></tr>'+d.map(function(x){return '<tr><td>'+esc(x.email)+'</td><td>'+esc(x.created_at.slice(0,10))+'</td><td><button class="btn gh sm" type="button" data-act="del" data-id="'+x.id+'">Delete</button></td></tr>'}).join('')+'</table>':'<p class="hint">No subscribers yet.</p>'})
  .catch(function(){$('subbox').innerHTML='<p class="hint err">Could not load. Check your connection.</p>'})}
 
 /* ---------- save ---------- */
-function collect(){var rows=[],v=function(i){return $(i).value.trim()};
+function collect(){var rows=[],v=function(i){return $(i).value.trim()};lsync();
  [].forEach.call(document.querySelectorAll('[data-k]'),function(el){var x=el.value.trim(),k=el.dataset.k,same=x===el.dataset.d||x===el.dataset.b;
   if(!same||saved[k])rows.push({key:k,value:same?'':x})});
  var b=v('b_name')||OLD,t=v('s_title'),gu=v('g_url');if(gu)gu=CMS.safeUrl(gu);
  var so=[].map.call($('socbox').children,function(r){return{p:r.querySelector('select').value,url:r.querySelector('input').value.trim()}}).filter(function(s){return s.url});
- var h=hid.slice().sort(function(a,b){return a-b});
+ var h=hid.slice().sort(function(a,b){return a-b}),js=function(a){return a.length?JSON.stringify(a):''};
  rows.push({key:'brand',value:b===OLD?'':b},{key:'logo',value:v('im_logo')},{key:'hero_img',value:v('im_hero_img')},{key:'cover_img',value:v('im_cover_img')},
   {key:'gumroad',value:gu},{key:'gumroad_all',value:$('g_all').checked?'1':''},
-  {key:'hide',value:h.length?JSON.stringify(h):''},{key:'order',value:ord.join()===MOV.join()?'':JSON.stringify(ord)},
-  {key:'socials',value:so.length?JSON.stringify(so):''},
-  {key:'title',value:(t===def.title||t===def.title.split(OLD).join(shown))?'':t},{key:'accent',value:$('s_acc').value===def.accent?'':$('s_acc').value});
- return rows}
+  {key:'hide',value:js(h)},{key:'order',value:ord.join()===MOV.join()?'':JSON.stringify(ord)},{key:'socials',value:js(so)},
+  {key:'title',value:(t===def.title||t===def.title.split(OLD).join(shown))?'':t},{key:'accent',value:$('s_acc').value===def.accent?'':$('s_acc').value},
+  {key:'desc',value:v('s_desc')},{key:'wa',value:v('w_num')},{key:'wa_msg',value:v('w_msg')},
+  {key:'pay_title',value:v('pay_title')},{key:'pay_note',value:v('pay_note')},{key:'copy_label',value:v('copy_label')},{key:'pay_btn',value:v('pay_btn')},
+  {key:'plans',value:js(L.plans.filter(function(p){return p.name||p.price}))},{key:'pay',value:js(L.pay.filter(function(p){return p.name}))},{key:'extra',value:js(L.extra.filter(function(p){return p.title||p.items}))});
+ rows.forEach(function(r){r.site=site});return rows}
 function save(){var rows=collect(),b=$('save');b.disabled=true;b.textContent='Saving…';
  var done=function(){b.disabled=false;b.textContent='Save changes'},fail=function(t){toast(t,true,true);done()};
- fetch(CMS.url+'/rest/v1/site_content?on_conflict=key',{method:'POST',headers:Object.assign(CMS.headers(token),{Prefer:'resolution=merge-duplicates,return=representation'}),body:JSON.stringify(rows)})
- .then(function(r){return r.json().catch(function(){return null}).then(function(j){
+ rest('POST','site_content?on_conflict=site,key',rows,'resolution=merge-duplicates,return=representation')
+ .then(function(r){return rj(r).then(function(j){
   if(r.status===401){fail('Session expired. Log out and log in again.');return}
-  if(!r.ok){fail('Database refused: '+((j&&j.message)||r.status));return}
+  if(!r.ok){fail('Database refused: '+((j&&j.message)||r.status)+(/site/.test((j&&j.message)||'')?' (run the new setup.sql)':''));return}
   if(!Array.isArray(j)||j.length<rows.length){fail('Database accepted only '+(j&&j.length||0)+' of '+rows.length+' items. Run setup.sql again.');return}
-  return CMS.load().then(function(db){
+  return CMS.load(site,token).then(function(db){
    if(rows.some(function(x){return (db[x.key]||'')!==x.value})){fail('Saved, but reading it back failed. Run setup.sql again.');return}
    rows.forEach(function(x){saved[x.key]=x.value});dirty=false;$('dirty').hidden=true;
-   toast('✓ Saved and checked.<a href="index.html?t='+Date.now()+'" target="_blank">Open page</a>');done()})})})
+   toast('✓ Saved and checked.<a href="index.html?site='+encodeURIComponent(site)+'&t='+Date.now()+'" target="_blank">Open page</a>');done()})})})
  .catch(function(e){fail('No connection: '+e.message)})}
+
+/* ---------- sites ---------- */
+function afterSites(msg){return loadSites().then(function(){if(!sites.some(function(s){return s.slug===site}))site=sites[0].slug;return loadSite()}).then(function(){go('sites');if(msg)toast(msg)})}
+function screate(){var name=$('ns_name').value.trim(),slug=($('ns_slug').value.trim()||name).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''),dom=$('ns_dom').value.trim(),from=$('ns_from').value;
+ if(!slug){toast('Give the site a name first.',true);return}
+ if(sites.some(function(s){return s.slug===slug})){toast('That id is already used. Choose another.',true);return}
+ if(dirty&&!confirm('You have unsaved changes on the current site. Continue and lose them?'))return;
+ rest('POST','sites',{slug:slug,name:name||slug,domains:dom}).then(function(r){return rj(r).then(function(j){if(!r.ok)throw new Error((j&&j.message)||r.status);
+  if(!from)return;return CMS.get('site_content?select=key,value&site=eq.'+encodeURIComponent(from),token).then(function(rows){
+   if(!Array.isArray(rows)||!rows.length)return;
+   return rest('POST','site_content?on_conflict=site,key',rows.map(function(x){return{site:slug,key:x.key,value:x.value}}),'resolution=merge-duplicates,return=minimal')})})})
+ .then(function(){site=slug;return afterSites('✓ Site created. You are now editing it.')}).catch(function(e){toast('Could not create: '+e.message,true,true)})}
+function ssave(card){var s=card.dataset.site;rest('PATCH','sites?slug=eq.'+encodeURIComponent(s),{name:card.querySelector('[data-sf=name]').value.trim(),domains:card.querySelector('[data-sf=domains]').value.trim()},'return=minimal')
+ .then(function(r){if(!r.ok)throw new Error(r.status);return afterSites('✓ Site details saved.')}).catch(function(e){toast('Could not save: '+e.message,true,true)})}
+function sdel(card){var s=card.dataset.site;if(sites.length<2){toast('You need at least one site.',true);return}
+ if(!confirm('Delete site "'+s+'" with all its content and subscribers? This cannot be undone.'))return;
+ var q=encodeURIComponent(s);rest('DELETE','site_content?site=eq.'+q).then(function(){return rest('DELETE','subscribers?site=eq.'+q)}).then(function(){return rest('DELETE','sites?slug=eq.'+q)})
+ .then(function(){return afterSites('Site deleted.')}).catch(function(e){toast('Could not delete: '+e.message,true,true)})}
 
 /* ---------- events ---------- */
 document.addEventListener('click',function(e){var el=e.target.closest('[data-act]');if(!el)return;var a=el.dataset.act;
@@ -270,20 +336,27 @@ document.addEventListener('click',function(e){var el=e.target.closest('[data-act
  else if(a==='reset'){var i=el.closest('.f').querySelector('[data-k]');i.value=i.dataset.b;mark()}
  else if(a==='rmimg'){$('im_'+el.dataset.key).value='';pv(el.dataset.key);mark()}
  else if(a==='mv'){var p=+el.dataset.p,d=+el.dataset.dir,t=ord[p];if(ord[p+d]===undefined)return;ord[p]=ord[p+d];ord[p+d]=t;$('secbox').innerHTML=secs();mark()}
+ else if(a==='ladd'){var k=el.dataset.l;lsync();L[k].push(Object.assign({},LS[k].blank,PRE[el.dataset.pre]||{}));lrender(k);mark();var cs=document.querySelectorAll('.lc[data-l="'+k+'"]');if(cs.length)cs[cs.length-1].scrollIntoView({behavior:'smooth',block:'center'})}
+ else if(a==='ldel'||a==='lmv'){var c=el.closest('.lc'),k2=c.dataset.l;lsync();var ix=[].indexOf.call(document.querySelectorAll('.lc[data-l="'+k2+'"]'),c);
+  if(a==='ldel')L[k2].splice(ix,1);else{var j=ix+ +el.dataset.dir,tmp=L[k2][ix];if(!L[k2][j])return;L[k2][ix]=L[k2][j];L[k2][j]=tmp}lrender(k2);mark()}
  else if(a==='addsoc'){socRow();mark()}
  else if(a==='rmsoc'){el.parentNode.remove();mark()}
  else if(a==='gtest'){var u=$('g_url').value.trim();if(u)window.open(CMS.safeUrl(u),'_blank');else toast('Add a link first.',true)}
  else if(a==='accreset'){$('s_acc').value=def.accent;mark()}
  else if(a==='refsub')loadSubs();
  else if(a==='csv'){var bl=new Blob(['email,date\n'+subs.map(function(x){return x.email+','+x.created_at.slice(0,10)}).join('\n')],{type:'text/csv'}),l=document.createElement('a');l.href=URL.createObjectURL(bl);l.download='subscribers.csv';l.click()}
- else if(a==='del'){if(confirm('Delete this subscriber?'))fetch(CMS.url+'/rest/v1/subscribers?id=eq.'+el.dataset.id,{method:'DELETE',headers:CMS.headers(token)}).then(loadSubs)}});
+ else if(a==='del'){if(confirm('Delete this subscriber?'))rest('DELETE','subscribers?id=eq.'+el.dataset.id).then(loadSubs)}
+ else if(a==='screate')screate();
+ else if(a==='ssave')ssave(el.closest('.lc'));
+ else if(a==='sdel')sdel(el.closest('.lc'))});
 document.addEventListener('input',function(e){var t=e.target;
  if(t.id==='q'){var q=t.value.toLowerCase();[].forEach.call(document.querySelectorAll('.f'),function(f){f.style.display=f.dataset.s.indexOf(q)<0?'none':''});if(q)[].forEach.call(document.querySelectorAll('#pn_text details'),function(d){d.open=true});return}
- if(t.dataset&&t.dataset.img)pv(t.dataset.img);if(t.id==='g_url')ghint();if(t.closest&&t.closest('#panels'))mark()});
+ if(t.dataset&&t.dataset.img)pv(t.dataset.img);if(t.id==='g_url')ghint();
+ if(t.closest&&t.closest('#panels')&&!t.closest('#pn_sites'))mark()});
 document.addEventListener('change',function(e){var t=e.target;
  if(t.dataset&&t.dataset.h!==undefined){var i=+t.dataset.h,x=hid.indexOf(i);if(t.checked&&x>-1)hid.splice(x,1);if(!t.checked&&x<0)hid.push(i);mark()}
  else if(t.dataset&&t.dataset.up){if(t.files[0])upload(t.dataset.up,t.files[0]);t.value=''}
- else if(t.closest&&t.closest('#panels'))mark()});
+ else if(t.closest&&t.closest('#panels')&&!t.closest('#pn_sites'))mark()});
 })();
 </script>
 </body>
