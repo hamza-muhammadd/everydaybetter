@@ -26,7 +26,7 @@ body{background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system
 #tabs button:hover{background:var(--bg)}
 #tabs button.on{background:var(--g);color:var(--on)}
 .sf{margin-top:auto}
-.main{width:100%;max-width:920px;padding:0 30px 70px}
+.main{width:100%;max-width:940px;padding:0 30px 80px}
 .top{position:sticky;top:0;z-index:10;background:var(--bg);padding:18px 0 14px;margin-bottom:20px;border-bottom:1px solid var(--line)}
 .t1{display:flex;align-items:center;gap:10px}
 #sitesel{flex:1;max-width:340px;font-weight:600}
@@ -37,13 +37,14 @@ body{background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system
 #dirty{font-size:13px;color:var(--bad);font-weight:600;white-space:nowrap}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--g);color:var(--on);border:1px solid var(--g);border-radius:10px;padding:11px 20px;font:600 14.5px system-ui;cursor:pointer;text-decoration:none;white-space:nowrap;transition:filter .15s,transform .1s}
 .btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.97)}
-.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:disabled{opacity:.4;cursor:not-allowed}
 .btn.gh{background:none;color:var(--ink);border-color:var(--line)}
 .btn.sm{padding:8px 12px;font-size:13.5px}
 .btn.dg{background:none;color:var(--bad);border-color:var(--bad)}
-input:not([type=checkbox]):not([type=color]):not([type=file]),textarea,select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+input:not([type=checkbox]):not([type=color]):not([type=file]):not([type=range]),textarea,select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
 textarea{min-height:92px;resize:vertical}
-input[type=color]{width:56px;height:44px;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer}
+input[type=color]{width:56px;height:44px;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer;flex:none}
+input[type=range]{width:100%;accent-color:var(--g)}
 .card{background:var(--pn);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--sh);margin-bottom:16px}
 .card h2{margin:0 0 4px;font-size:16.5px}
 .card .d{margin:0 0 6px;color:var(--mute);font-size:13.5px}
@@ -53,36 +54,54 @@ input[type=color]{width:56px;height:44px;padding:3px;border:1px solid var(--line
 .f{margin-top:14px}
 .f .fl{display:flex;justify-content:space-between;align-items:center;margin:0 0 6px}
 .rs{background:none;border:0;color:var(--mute);font-size:12px;cursor:pointer;text-decoration:underline;padding:0}
-details{border:1px solid var(--line);border-radius:14px;background:var(--pn);margin-bottom:12px;box-shadow:var(--sh)}
-summary{padding:15px 18px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;gap:10px;list-style:none}
-summary::-webkit-details-marker{display:none}
-summary span{color:var(--mute);font-weight:500;font-size:13px}
-details>div{padding:0 18px 20px}
-#q{margin-bottom:16px}
 .slot{display:grid;grid-template-columns:170px minmax(0,1fr);gap:18px;align-items:start}
-.pv{height:120px;border:1px dashed var(--sage);border-radius:12px;display:grid;place-items:center;overflow:hidden;color:var(--mute);font-size:13px;background:repeating-conic-gradient(rgba(128,128,128,.12) 0 25%,transparent 0 50%) 0 0/16px 16px}
-.pv img{max-width:100%;max-height:100%;object-fit:contain}
+.pv,.pvs{height:120px;border:1px dashed var(--sage);border-radius:12px;display:grid;place-items:center;overflow:hidden;color:var(--mute);font-size:13px;background:repeating-conic-gradient(rgba(128,128,128,.12) 0 25%,transparent 0 50%) 0 0/16px 16px}
+.pv img,.pvs img{max-width:100%;max-height:100%;object-fit:contain}
+.imgf{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;align-items:start}.imgf .pvs{height:90px}
 .sr{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
 .sr:last-child{border:0}
 .sr .nm{flex:1;font-weight:500}
-.sr .mv,.lh .mv{display:flex;gap:6px}
 .sw{position:relative;width:42px;height:24px;flex:none}
 .sw input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer;z-index:1}
 .sw i{position:absolute;inset:0;border-radius:99px;background:var(--line);transition:background .2s}
 .sw i:after{content:'';position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}
 .sw input:checked+i{background:var(--g)}
 .sw input:checked+i:after{transform:translateX(18px)}
-.sep{margin:18px 0 4px;font-size:12.5px;font-weight:700;color:var(--mute)}
+.sep{margin:22px 0 8px;font-size:12.5px;font-weight:700;color:var(--mute);letter-spacing:.04em;text-transform:uppercase}
 .sorow{display:grid;grid-template-columns:160px minmax(0,1fr) auto;gap:10px;margin-top:10px}
 .lc{border:1px solid var(--line);border-radius:14px;padding:6px 18px 18px;margin-top:14px;background:var(--bg)}
 .lh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:12px}
+.mv{display:flex;gap:6px;flex-wrap:wrap}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 .chip{background:none;border:1px dashed var(--g);color:var(--g);border-radius:99px;padding:7px 14px;font:600 13px system-ui;cursor:pointer}
 .chip:hover{background:var(--g);color:var(--on)}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
 .tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+/* builder */
+.bkrow{border:1px solid var(--line);border-radius:14px;background:var(--pn);margin-bottom:10px;box-shadow:var(--sh);transition:border-color .2s}
+.bkrow[open]{border-color:var(--sage)}
+.bkrow>summary{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;list-style:none;flex-wrap:wrap}
+.bkrow>summary::-webkit-details-marker{display:none}
+.bi{width:34px;height:34px;border-radius:10px;background:var(--bg);display:grid;place-items:center;flex:none;color:var(--g)}
+.bn{flex:1;font-weight:600;min-width:120px}
+.tg{font-size:12px;color:var(--mute);background:var(--bg);border-radius:99px;padding:3px 10px;white-space:nowrap}
+.bkb{padding:4px 18px 20px;border-top:1px solid var(--line)}
+.sty{margin-top:18px;border:1px dashed var(--sage);border-radius:12px;padding:6px 16px 16px}
+.sty>b{display:block;margin-top:12px;font-size:13px}
+.rng{display:flex;gap:12px;align-items:center}.ro{min-width:44px;text-align:right;font-size:13px}
+.colf{display:flex;gap:10px;align-items:center}
+.adder{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-top:14px}
+.at{display:flex;flex-direction:column;gap:6px;text-align:left;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer;color:var(--ink);font:inherit;transition:border-color .15s,transform .15s}
+.at:hover{border-color:var(--g);transform:translateY(-2px)}
+.at b{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--g)}.at span{font-size:12.5px;color:var(--mute);line-height:1.4}
+.pals{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.pal{display:flex;border:2px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;padding:0;background:none}
+.pal:hover{border-color:var(--g)}.pal i{display:block;width:26px;height:44px}
+.pvwrap{background:repeating-conic-gradient(rgba(128,128,128,.1) 0 25%,transparent 0 50%) 0 0/20px 20px;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;justify-content:center;overflow:auto}
+.pvwrap iframe{height:72vh;border:0;background:#fff;border-radius:10px;box-shadow:var(--sh);transition:width .3s}
+.mg{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px;background:var(--bg)}.mg p{margin:8px 0 0;white-space:pre-wrap}
 #toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:12px;font-weight:600;font-size:14px;box-shadow:var(--sh);z-index:50;max-width:92vw;text-align:center}
 #toast.bad{background:var(--bad);color:#fff}
 #toast a{color:inherit;text-decoration:underline;margin-left:8px}
@@ -97,7 +116,7 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
 .t2 p{display:none}.t2{margin-top:10px}
 #toast{bottom:92px}
 }
-@media(max-width:560px){.slot{grid-template-columns:1fr}.sorow{grid-template-columns:minmax(0,1fr) auto}.sorow select{grid-column:1/-1}.btn.vw{display:none}.card{padding:18px}.g2{grid-template-columns:1fr}.t1{flex-wrap:wrap}#sitesel{max-width:none;flex:1 1 100%}.t1 .sp{display:none}.t1 #save{flex:1}}
+@media(max-width:560px){.slot,.imgf{grid-template-columns:1fr}.sorow{grid-template-columns:minmax(0,1fr) auto}.sorow select{grid-column:1/-1}.btn.vw{display:none}.card{padding:18px}.g2{grid-template-columns:1fr}.t1{flex-wrap:wrap}#sitesel{max-width:none;flex:1 1 100%}.t1 .sp{display:none}.t1 #save{flex:1}.bkb{padding:4px 12px 16px}}
 </style>
 </head>
 <body>
@@ -111,7 +130,6 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
 <button class="btn" id="go" type="button" style="width:100%;margin-top:6px">Log in</button>
 </div>
 </div>
-
 <div class="app hide" id="app">
 <aside class="side">
 <div class="bd"><i><svg class="ic" viewBox="0 0 24 24"><path d="M5 20c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 20l9-9"/></svg></i>Site editor</div>
@@ -127,138 +145,233 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
 </main>
 </div>
 <div id="toast" hidden></div>
-
-<script src="cms.js?v=6"></script>
+<script src="cms.js?v=7"></script>
 <script>
 (function(){
-var $=function(i){return document.getElementById(i)},OLD='BetterEveryday',MOV=CMS.MOV;
-var token=null,C=null,site='default',sites=[],saved={},def={title:'',accent:'#1f3d33'},subs=[],dirty=false,hid=[],ord=MOV.slice(),shown=OLD,cur='brand',tt,L={plans:[],pay:[],extra:[]};
-var esc=CMS.esc;
-var IC={brand:'<path d="M5 20c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 20l9-9"/>',price:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h3l2.5 11H19L21 8H7"/>',img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',text:'<path d="M5 6h14M12 6v13M9 19h6"/>',link:'<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',secs:'<rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/>',extra:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/>',soc:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/>',subs:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',sites:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'};
-var TABS=[['brand','Brand','Name, logo and look','Change the name, logo, colour and contact. Use this to turn the page into another brand.'],['price','Pricing & payments','Plans and ways to pay','Add weekly, monthly or one-time plans, and any payment method you accept.'],['img','Pictures','Hero photo and book cover','Replace the main pictures on the page.'],['text','Page text','Every word on the page','Open a part of the page and edit its words.'],['link','Buttons & links','Menu and button links','Where each button or menu item goes.'],['secs','Sections','Show, hide and reorder','Switch parts on or off and move them up or down.'],['extra','Custom sections','Add your own sections','Add text, cards or questions and answers anywhere on the page.'],['soc','Social channels','Footer icons','Add your channels. They show as icons in the footer.'],['subs','Subscribers','People who joined your list','Emails collected from the footer box of this site.'],['sites','Sites & domains','All your websites','One editor for every website. Each domain shows its own site.']];
-$('tabs').innerHTML=TABS.map(function(t){return '<button type="button" data-act="tab" data-t="'+t[0]+'"><svg class="ic" viewBox="0 0 24 24">'+IC[t[0]]+'</svg>'+t[1]+'</button>'}).join('');
-
-var LS={
- plans:{n:'Plan',f:[['name','Plan name','t'],['price','Price (e.g. $5 or ৳500)','t'],['period','Billing label (e.g. one-time, / month, / week)','t'],['badge','Badge, optional (e.g. Most popular)','t'],['desc','Short description','l'],['features','Features, one per line','l'],['btn','Button text','t'],['url','Checkout link','u'],['hl','Highlight this plan','c']],blank:{btn:'Get started'}},
- pay:{n:'Payment method',f:[['name','Name (e.g. bKash)','t'],['details','Details: number or instructions','l'],['url','Online pay link, optional','u']],blank:{}},
- extra:{n:'Section',f:[['type','Type','s:text=Heading, text and button|cards=Cards|faq=Questions and answers'],['where','Where on the page','s:hero=Right after the top photo|buy=Before pricing|final=Before the final call to action'],['title','Heading','t'],['sub','Intro text','l'],['items','Items, one per line as  Title | text  (for Cards and Questions)','l'],['btn','Button text, optional','t'],['url','Button link','u']],blank:{type:'text',where:'final'}}
+var $=function(i){return document.getElementById(i)},OLD='BetterEveryday',MOV=CMS.MOV,esc=CMS.esc;
+var token=null,C=null,site='default',sites=[],saved={},def={title:'',accent:'#1f3d33'},subs=[],msgs=[],dirty=false,cur='build',tt,FID=0;
+var B=[],layout=[],SS={},hid=[],T={},L={},OPEN={},shown=OLD,K={};
+var IC={build:'<rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/>',brand:'<path d="M5 20c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 20l9-9"/>',theme:'<circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2"/><circle cx="12" cy="7.5" r="1.2"/><circle cx="15.5" cy="10" r="1.2"/><path d="M12 21c-2 0-2-2 0-3s3-2 1-4"/>',menu:'<path d="M4 7h16M4 12h16M4 17h10"/>',price:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h3l2.5 11H19L21 8H7"/>',soc:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/>',msgs:'<path d="M4 5h16v11H9l-5 4z"/>',subs:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',sites:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',prev:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
+ slider:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 12l-2 0M18 12h-2M10 16h4"/>',text:'<path d="M5 6h14M5 11h14M5 16h9"/>',split:'<rect x="3" y="5" width="8" height="14" rx="1.5"/><path d="M14 8h7M14 12h7M14 16h5"/>',image:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',gallery:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>',cards:'<rect x="3" y="4" width="5.5" height="16" rx="1.5"/><rect x="9.2" y="4" width="5.5" height="16" rx="1.5"/><rect x="15.5" y="4" width="5.5" height="16" rx="1.5"/>',steps:'<circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M6 8.5v7M12 6h8M12 18h8"/>',course:'<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M8 7h7"/>',testimonials:'<path d="M4 6h7v6H7l-3 3zM13 6h7v6h-4l-3 3z"/>',pricing:'<path d="M3 12l9-9h8v8l-9 9z"/><circle cx="16" cy="8" r="1.4"/>',faq:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 115 0c0 2-2.500 2-2.500 4M12 17v.01"/>',contact:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/>',subscribe:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',video:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/>',cta:'<path d="M3 11v3l12 5V6zM15 8c3 .5 5 2 5 4s-2 3.500-5 4"/>'};
+var svg=function(k){return '<svg class="ic" viewBox="0 0 24 24">'+(IC[k]||'')+'</svg>'};
+var RAT='s:=Natural shape|1=Square|43=Photo 4:3|169=Wide 16:9|34=Portrait 3:4|32=Photo 3:2|219=Cinema 21:9',FIT='s:cover=Fill and crop|contain=Show the whole picture';
+var HT=['title','Heading','t'],ST=['sub','Text under the heading','l'];
+var PLANF=[['name','Plan name','t'],['price','Price (e.g. $5 or ৳500)','t'],['period','Billing label (e.g. one-time, / month, / week)','t'],['badge','Badge, optional (e.g. Most popular)','t'],['desc','Short description','l'],['features','Features, one per line','l'],['btn','Button text','t'],['url','Checkout link','u'],['hl','Highlight this plan','c']];
+var PAYF=[['name','Name (e.g. bKash)','t'],['details','Details: number or instructions','l'],['url','Online pay link, optional','u']];
+var BT={
+ slider:{n:'Hero slider',d:'Big pictures with text that slide across the top of the page.',f:[['h','Height','s:s=Short|m=Medium|l=Tall|f=Full screen'],['fx','Transition','s:slide=Slide|fade=Fade|zoom=Slow zoom'],['auto','Auto-play seconds (0 = off)','n:0:12:1:5'],['ov','Dark layer on pictures (%)','n:0:90:5:40'],['arrows','Show arrows','c'],['dots','Show dots','c']],it:{n:'Slide',f:[['img','Picture','img'],['kicker','Small line above (e.g. your brand name)','t'],['title','Heading','t'],['text','Text','l'],['btn','Button text','t'],['url','Button link','u'],['btn2','Second button text','t'],['url2','Second button link','u'],['al','Text position','s:left=Left|center=Centre|right=Right']]},dp:{h:'m',fx:'slide',auto:'5',arrows:'1',dots:'1'},di:[{title:'Your main message',text:'One short line that explains what you offer.',btn:'Get started',url:'#',al:'left'}]},
+ text:{n:'Heading and text',d:'A heading, a paragraph and an optional button.',f:[HT,ST,['btn','Button text','t'],['url','Button link','u'],['al','Alignment','s:center=Centre|left=Left']],dp:{al:'center',title:'Your heading',sub:'Write a short paragraph here.'}},
+ split:{n:'Picture and text',d:'A picture beside text. Great for About, instructor or a feature.',f:[['img','Picture','img'],['side','Picture side','s:left=Left|right=Right'],['ratio','Picture shape',RAT],['fit','Picture fit',FIT],['rad','Corner roundness (px)','n:0:60:2:14'],['shadow','Soft shadow','c'],HT,ST,['list','Bullet points, one per line','l'],['btn','Button text','t'],['url','Button link','u']],dp:{side:'left',title:'About us',sub:'Tell your story in a few honest sentences.'}},
+ image:{n:'Single picture',d:'One picture with size, shape and caption controls.',f:[['img','Picture','img'],['title','Heading above, optional','t'],['cap','Caption','t'],['size','Width','s:l=Large|m=Medium|s=Small|f=Full width'],['ratio','Picture shape',RAT],['fit','Picture fit',FIT],['rad','Corner roundness (px)','n:0:60:2:14'],['shadow','Soft shadow','c'],['url','Link when clicked','u']],dp:{size:'l'}},
+ gallery:{n:'Photo gallery',d:'A grid of pictures with captions.',f:[HT,ST,['cols','Columns','s:3|2|4'],['ratio','Picture shape',RAT],['rad','Corner roundness (px)','n:0:60:2:14']],it:{n:'Picture',f:[['img','Picture','img'],['cap','Caption','t']]},dp:{title:'Gallery',cols:'3'},di:[{},{},{}]},
+ cards:{n:'Cards',d:'Features, services or programs in a row of cards, with optional pictures.',f:[HT,ST,['cols','Columns','s:3|2|4'],['ratio','Picture shape',RAT],['fit','Picture fit',FIT]],it:{n:'Card',f:[['img','Picture, optional','img'],['t','Title','t'],['x','Text','l'],['btn','Button text, optional','t'],['url','Button link','u']]},dp:{title:'What we offer',cols:'3'},di:[{t:'First point',x:'A short line about it.'},{t:'Second point',x:'A short line about it.'},{t:'Third point',x:'A short line about it.'}]},
+ steps:{n:'Steps',d:'Numbered steps that show how something works.',f:[HT,ST],it:{n:'Step',f:[['t','Title','t'],['x','Text','l']]},dp:{title:'How it works'},di:[{t:'Step one',x:'What happens first.'},{t:'Step two',x:'What happens next.'},{t:'Step three',x:'How it ends.'}]},
+ course:{n:'Course outline',d:'Modules and lessons that open and close. Build a full course outline.',f:[HT,ST,['meta','Summary line (e.g. 8 modules · 24 lessons)','t']],it:{n:'Module',f:[['t','Module title','t'],['d','Duration or note','t'],['lessons','Lessons, one per line. Add  | free  at the end for a free-preview tag','l']]},dp:{title:'Course outline'},di:[{t:'Module 1: Getting started',d:'Week 1',lessons:'Welcome | free\nLesson two\nLesson three'}]},
+ testimonials:{n:'Testimonials',d:'Words from real students or customers, with photos.',f:[HT,ST,['view','Layout','s:grid=Grid|slider=Slider (swipe)']],it:{n:'Testimonial',f:[['img','Photo','img'],['name','Name','t'],['role','Role or place','t'],['q','What they said','l']]},dp:{title:'What people say',view:'grid'},di:[{name:'Name',role:'Role or place',q:'Write a real comment from a real person here.'}]},
+ pricing:{n:'Pricing and payments',d:'Weekly, monthly or one-time plans plus other ways to pay.',f:[HT,ST,['paytitle','Heading for other payment methods','t'],['paynote','Note under it','t'],['copy','Copy button text','t'],['paybtn','Pay link button text','t']],it:{n:'Plan',f:PLANF},it2:{n:'Payment method',f:PAYF},dp:{title:'Choose your plan'},di:[{name:'Monthly',price:'$20',period:'/ month',features:'Feature one\nFeature two',btn:'Get started',url:'#'}],di2:[]},
+ faq:{n:'Questions and answers',d:'Common questions that open when tapped.',f:[HT,ST],it:{n:'Question',f:[['q','Question','t'],['a','Answer','l']]},dp:{title:'Questions'},di:[{q:'Your first question?',a:'Your clear answer.'}]},
+ contact:{n:'Contact',d:'Phone, email, WhatsApp, address, map and a message form.',f:[HT,ST,['phone','Phone','t'],['email','Email','t'],['wa','WhatsApp number','t'],['addr','Address','l'],['hours','Opening hours','l'],['map','Map link (Google Maps)','u'],['mapbtn','Map button text','t'],['labs','Labels, comma separated (Phone, Email, WhatsApp, Address, Hours)','t'],['form','Show the message form','c'],['pname','Name box text','t'],['pemail','Email box text','t'],['pphone','Phone box text','t'],['pmsg','Message box text','t'],['fbtn','Send button text','t'],['okmsg','Thank-you message','t']],dp:{title:'Contact us',sub:'We would love to hear from you.',form:'1',menu:'1',mlabel:'Contact'}},
+ subscribe:{n:'Email signup',d:'Collect emails from people who want updates.',f:[HT,ST,['ph','Box text','t'],['btn','Button text','t'],['okmsg','Thank-you message','t']],dp:{title:'Stay in the loop',sub:'Get updates straight to your inbox.'}},
+ video:{n:'Video',d:'Show a YouTube or Vimeo video.',f:[HT,ST,['url','YouTube or Vimeo link','u'],['ratio','Video shape',RAT]],dp:{title:'Watch'}},
+ cta:{n:'Call to action',d:'A bold dark band with a big message and buttons.',f:[HT,ST,['btn','Button text','t'],['url','Button link','u'],['btn2','Second button text','t'],['url2','Second button link','u']],dp:{title:'Ready to begin?',sub:'Take the first step today.',btn:'Get started',url:'#'}}
 };
+var STY=[['bg','Background colour','col'],['fg','Text colour','col'],['acc','Button and accent colour','col'],['pad','Spacing above and below','s:m=Normal|s=Compact|l=Roomy|x=Extra roomy'],['anim','Animation when it appears','s:=Use the page default|none=None|up=Fade up|down=Fade down|left=Slide from left|right=Slide from right|zoom=Zoom in|fade=Fade|flip=Flip|blur=Blur in'],['speed','Animation speed (ms)','n:200:2000:50:750'],['delay','Start delay (ms)','n:0:2000:50:0']];
+var PAL={Forest:{accent:'#1f3d33',bg:'#faf8f3',alt:'#eff0ea',ink:'#232826',dark:'#14291f'},Ocean:{accent:'#0b5d8a',bg:'#f6fafc',alt:'#e8f1f6',ink:'#16232b',dark:'#0b2a3c'},Royal:{accent:'#4b3fa8',bg:'#faf9ff',alt:'#efedfb',ink:'#1e1b2e',dark:'#1d1747'},Sunset:{accent:'#c4551d',bg:'#fffaf5',alt:'#fbeee2',ink:'#2b1d14',dark:'#3a1a0b'},Rose:{accent:'#b03060',bg:'#fff8fa',alt:'#fbebf0',ink:'#2a1820',dark:'#3a1226'},Gold:{accent:'#9a7414',bg:'#fdfbf4',alt:'#f4efdc',ink:'#272214',dark:'#241d08'},Emerald:{accent:'#0f7a4f',bg:'#f5fbf8',alt:'#e3f3ec',ink:'#12251d',dark:'#0a2e20'},Midnight:{accent:'#7fd1ae',bg:'#0f1514',alt:'#151d1b',ink:'#ece9e1',dark:'#0a0f0e'}};
 var PRE={'plans:weekly':{name:'Weekly plan',period:'/ week'},'plans:monthly':{name:'Monthly plan',period:'/ month'},'plans:yearly':{name:'Yearly plan',period:'/ year'},'plans:one':{name:'One-time',period:'one-time'},
 'pay:bkash':{name:'bKash',details:'Send Money to 01XXXXXXXXX (Personal). Then send us the transaction ID.'},'pay:nagad':{name:'Nagad',details:'Send Money to 01XXXXXXXXX (Personal). Then send us the transaction ID.'},'pay:rocket':{name:'Rocket',details:'Send Money to 01XXXXXXXXX-X. Then send us the transaction ID.'},'pay:bank':{name:'Bank transfer',details:'Bank: …\nAccount name: …\nAccount number: …'},'pay:paypal':{name:'PayPal',url:'https://paypal.me/yourname'},'pay:card':{name:'Card (Stripe)',url:'https://buy.stripe.com/…'}};
-
+/* ready-made sample pages: [id, type, props, items, items2] */
+var SAMPLES=[
+{id:'course',name:'Online course',d:'Slider, what you learn, full outline, instructor, pricing, FAQ and contact.',pal:'Ocean',cta:['Enroll now','#s-pricing'],blocks:[
+ ['hero','slider',{h:'l',fx:'fade',auto:'6',ov:'45'},[{kicker:'{brand}',title:'Learn [your skill] step by step',text:'A clear, practical course you can finish at your own pace.',btn:'Enroll now',url:'#s-pricing',btn2:'See the lessons',url2:'#s-outline',al:'left'},{kicker:'Practical · Self-paced',title:'Real projects. Real progress.',text:'Short lessons, simple tasks and support when you need it.',btn:'Start today',url:'#s-pricing',al:'center'}]],
+ ['learn','cards',{title:'What you will learn',sub:'Everything you need, in a clear order.',cols:'3',menu:'1',mlabel:'Learn'},[{t:'Strong foundations',x:'Start with the basics so nothing feels confusing.'},{t:'Hands-on practice',x:'Apply every idea straight away with simple tasks.'},{t:'Real results',x:'Finish with something you can use or show.'}]],
+ ['outline','course',{title:'Course outline',sub:'One clear step at a time.',meta:'4 modules · 12 lessons · Lifetime access',menu:'1',mlabel:'Lessons'},[{t:'Module 1: Getting started',d:'Week 1',lessons:'Welcome and how this course works | free\nSetting up\nYour first small win'},{t:'Module 2: The core skills',d:'Week 2',lessons:'Skill one\nSkill two\nPractice task'},{t:'Module 3: Real project',d:'Week 3',lessons:'Plan your project\nBuild it\nImprove it'},{t:'Module 4: Next steps',d:'Week 4',lessons:'Review\nWhat to do next\nCertificate'}]],
+ ['teacher','split',{title:'Meet your instructor',sub:'Write a short, honest story about who you are and why you teach this.',list:'Years of experience\nStudents taught\nYour main result',side:'left',menu:'1',mlabel:'Instructor'}],
+ ['voices','testimonials',{title:'What students say',sub:'Replace these with real words from your students.',view:'grid'},[{name:'Student name',role:'City or role',q:'Write a real student comment here.'},{name:'Student name',role:'City or role',q:'Write a real student comment here.'}]],
+ ['pricing','pricing',{title:'Choose your plan',menu:'1',mlabel:'Pricing',paytitle:'Other ways to pay',paynote:'After paying, send us your transaction ID.'},[{name:'Monthly',price:'$20',period:'/ month',features:'All lessons\nSupport\nCancel anytime',btn:'Start monthly',url:'#'},{name:'Full course',price:'$99',period:'one-time',badge:'Best value',hl:'1',features:'All lessons\nLifetime access\nSupport',btn:'Get the full course',url:'#'}],[{name:'bKash',details:'Send Money to 01XXXXXXXXX (Personal)'}]],
+ ['faq','faq',{title:'Questions',menu:'1',mlabel:'FAQ'},[{q:'Who is this course for?',a:'Say who will benefit most.'},{q:'How long do I have access?',a:'Explain your access period.'},{q:'What if I need help?',a:'Tell students how to reach you.'}]],
+ ['contact','contact',{title:'Talk to us',sub:'Ask anything before you join.',phone:'+880 1XXX-XXXXXX',email:'hello@example.com',form:'1',menu:'1',mlabel:'Contact'}]]},
+{id:'academy',name:'Academy or institute',d:'For a school, madrasa or training centre: programs, how to join, fees, gallery and contact.',pal:'Emerald',cta:['Apply now','#s-contact'],blocks:[
+ ['hero','slider',{h:'l',fx:'slide',auto:'6',ov:'50'},[{kicker:'{brand}',title:'Learning with care and purpose',text:'A warm place to learn, grow and build good habits.',btn:'Apply now',url:'#s-contact',btn2:'Our programs',url2:'#s-programs',al:'left'},{kicker:'Admissions open',title:'Small classes. Caring teachers.',text:'Tell families what makes your academy special.',btn:'See fees',url:'#s-fees',al:'center'}]],
+ ['programs','cards',{title:'Our programs',sub:'Choose the right class for your child or yourself.',cols:'3',menu:'1',mlabel:'Programs'},[{t:'Program one',x:'Age group, schedule and what students learn.'},{t:'Program two',x:'Age group, schedule and what students learn.'},{t:'Program three',x:'Age group, schedule and what students learn.'}]],
+ ['join','steps',{title:'How to join',menu:'1',mlabel:'Admission'},[{t:'Contact us',x:'Send a message or call.'},{t:'Meet and plan',x:'We find the right class together.'},{t:'Start learning',x:'Begin on the next start date.'}]],
+ ['about','split',{title:'About our academy',sub:'Share your mission and your teachers in a few honest sentences.',list:'Qualified teachers\nSmall class sizes\nSupport for every student',side:'right',menu:'1',mlabel:'About'}],
+ ['fees','pricing',{title:'Fees',menu:'1',mlabel:'Fees',paytitle:'How to pay',paynote:'Send the fee, then message us the transaction ID.'},[{name:'Monthly fee',price:'৳1,500',period:'/ month',features:'Weekly classes\nProgress reports\nParent support',btn:'Apply now',url:'#s-contact'}],[{name:'bKash',details:'Send Money to 01XXXXXXXXX (Personal)'},{name:'Bank transfer',details:'Bank: …\nAccount name: …\nAccount number: …'}]],
+ ['life','gallery',{title:'Life at the academy',cols:'3'},[{},{},{}]],
+ ['faq','faq',{title:'Parents ask',menu:'1',mlabel:'FAQ'},[{q:'What ages do you teach?',a:'Write your age groups.'},{q:'Are trial classes available?',a:'Explain your trial policy.'}]],
+ ['contact','contact',{title:'Contact us',sub:'Visit, call or send us a message.',phone:'+880 1XXX-XXXXXX',wa:'8801XXXXXXXXX',addr:'Your full address',hours:'Sat – Thu, 9am – 6pm',form:'1',menu:'1',mlabel:'Contact'}]]},
+{id:'coach',name:'Coach or creator',d:'Personal brand: about you, services, video, real words from clients and a clear call to book.',pal:'Sunset',cta:['Book a call','#s-contact'],blocks:[
+ ['hero','slider',{h:'l',fx:'zoom',auto:'7',ov:'50'},[{kicker:'{brand}',title:'Help people [reach your result]',text:'Practical guidance from someone who has done it.',btn:'Book a call',url:'#s-contact',btn2:'How I help',url2:'#s-services',al:'left'}]],
+ ['about','split',{title:'Hi, I am [your name]',sub:'Tell people who you are, what you have learned and who you love to help.',list:'Your first credential\nYour second credential',side:'left',menu:'1',mlabel:'About'}],
+ ['services','cards',{title:'How I can help',cols:'3',menu:'1',mlabel:'Services'},[{t:'One-to-one coaching',x:'Describe the service and who it is for.'},{t:'Group program',x:'Describe the service and who it is for.'},{t:'Workshops',x:'Describe the service and who it is for.'}]],
+ ['watch','video',{title:'Watch my story',url:''}],
+ ['voices','testimonials',{title:'Kind words',sub:'Replace with real words from your clients.',view:'slider'},[{name:'Client name',role:'Role or place',q:'Write a real comment here.'},{name:'Client name',role:'Role or place',q:'Write a real comment here.'}]],
+ ['cta','cta',{title:'Ready for your next step?',sub:'Let us talk about what you need.',btn:'Book a call',url:'#s-contact'}],
+ ['contact','contact',{title:'Get in touch',email:'hello@example.com',wa:'8801XXXXXXXXX',form:'1',menu:'1',mlabel:'Contact'}]]},
+{id:'business',name:'Local business',d:'Shop, clinic or service: services, gallery, reviews, hours, map and contact.',pal:'Rose',cta:['Call us','#s-contact'],blocks:[
+ ['hero','slider',{h:'m',fx:'slide',auto:'6',ov:'45'},[{kicker:'{brand}',title:'Friendly service you can trust',text:'Say in one line what you do and where.',btn:'Call us',url:'#s-contact',al:'left'}]],
+ ['services','cards',{title:'Our services',cols:'3',menu:'1',mlabel:'Services'},[{t:'Service one',x:'What it is and who it helps.'},{t:'Service two',x:'What it is and who it helps.'},{t:'Service three',x:'What it is and who it helps.'}]],
+ ['photos','gallery',{title:'Our work',cols:'3',menu:'1',mlabel:'Gallery'},[{},{},{}]],
+ ['why','steps',{title:'Why choose us'},[{t:'Honest prices',x:'Explain what this means.'},{t:'Careful work',x:'Explain what this means.'},{t:'Friendly team',x:'Explain what this means.'}]],
+ ['voices','testimonials',{title:'Customer reviews',sub:'Replace with real reviews.',view:'grid'},[{name:'Customer name',role:'',q:'Write a real review here.'}]],
+ ['contact','contact',{title:'Visit or call us',phone:'+880 1XXX-XXXXXX',addr:'Your full address',hours:'Every day, 9am – 8pm',map:'https://maps.google.com',form:'1',menu:'1',mlabel:'Contact'}]]}
+];
+var DBK={};
+var TABS=[['build','Page builder','Build your page','Add, move and style every section. Tap a section to open it.'],['brand','Brand & logo','Name, logo and contact','Change the name, logo and contact button. Turn this page into any brand.'],['theme','Theme & colours','Colours, fonts and style','Pick colours, fonts, button style and the default animation.'],['menu','Menu & header','Top menu and header button','Choose what appears in the top menu.'],['price','Pricing & payments','Classic pricing section','Plans and payment methods for the classic pricing section. New pages can use a Pricing section in the builder.'],['soc','Social channels','Footer icons','Add your channels. They show as icons in the footer.'],['msgs','Messages','Contact form inbox','Messages people sent from your contact form.'],['subs','Subscribers','People who joined your list','Emails collected from signup boxes on this site.'],['sites','Sites & domains','All your websites','One editor for every website. Each domain shows its own site.'],['prev','Live preview','See it before you save','Phone, tablet or desktop view of your unsaved changes.']];
+$('tabs').innerHTML=TABS.map(function(t){return '<button type="button" data-act="tab" data-t="'+t[0]+'">'+svg(t[0])+t[1]+'</button>'}).join('');
 function toast(m,bad,keep){var t=$('toast');t.innerHTML=m;t.className=bad?'bad':'';t.hidden=false;clearTimeout(tt);if(!keep)tt=setTimeout(function(){t.hidden=true},4500)}
 function mark(){dirty=true;$('dirty').hidden=false}
 window.onbeforeunload=function(e){if(dirty){e.preventDefault();return e.returnValue=''}};
 function rest(method,path,body,prefer){return fetch(CMS.url+'/rest/v1/'+path,{method:method,headers:Object.assign(CMS.headers(token),prefer?{Prefer:prefer}:{}),body:body?JSON.stringify(body):undefined})}
 function rj(r){return r.json().catch(function(){return null})}
+function rd(el){if(!el)return '';if(el.type==='checkbox')return el.checked?'1':'';if(el.type==='color')return el.dataset.empty==='1'?'':el.value;if(el.type==='range')return el.value===el.dataset.def?'':el.value;return el.value.trim()}
+function X(n){return rd(document.querySelector('[data-x="'+n+'"]'))}
+function uid(){var s;do{s=Math.random().toString(36).slice(2,7)}while(B.some(function(b){return b.id===s}));return s}
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function nonEmpty(o){return Object.keys(o).some(function(k){return o[k]})}
 
-/* ---------- login & start ---------- */
-try{token=sessionStorage.getItem('be_t')}catch(e){}
-function login(){$('lmsg').textContent='';
- fetch(CMS.url+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:CMS.key,'Content-Type':'application/json'},body:JSON.stringify({email:$('em').value.trim(),password:$('pw').value})})
- .then(function(r){return r.json()}).then(function(d){
-  if(!d.access_token){$('lmsg').textContent='Wrong email or password.';return}
-  token=d.access_token;try{sessionStorage.setItem('be_t',token)}catch(e){}start()})
- .catch(function(){$('lmsg').textContent='Could not connect. Check your internet.'})}
-$('go').onclick=login;$('pw').onkeydown=function(e){if(e.key==='Enter')login()};
-function logout(){try{sessionStorage.removeItem('be_t')}catch(e){}dirty=false;location.reload()}
-if(token)fetch(CMS.url+'/auth/v1/user',{headers:CMS.headers(token)}).then(function(r){if(r.ok)start();else{token=null;try{sessionStorage.removeItem('be_t')}catch(e){}}}).catch(function(){token=null});
-
-function loadSites(){return CMS.get('sites?select=slug,name,domains&order=created_at',token).then(function(l){
- if(!Array.isArray(l)||!l.length)throw new Error('Sites table not ready. Run setup.sql in Supabase.');sites=l})}
-function start(){
- loadSites().then(function(){
-  try{var s=sessionStorage.getItem('be_site');site=sites.some(function(x){return x.slug===s})?s:sites[0].slug}catch(e){site=sites[0].slug}
-  return C?0:fetch('index.html',{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){var d=new DOMParser().parseFromString(h,'text/html');C=CMS.collect(d);def.title=d.title})})
- .then(loadSite).then(function(){$('login').classList.add('hide');$('app').classList.remove('hide');go(cur)})
- .catch(function(e){$('lmsg').textContent='Could not load: '+e.message})}
-function loadSite(){return CMS.load(site,token).then(function(m){saved=m;
- hid=CMS.list(m.hide);var o=CMS.list(m.order);ord=(o.length===MOV.length&&MOV.every(function(i){return o.indexOf(i)>-1}))?o:MOV.slice();
- L.plans=CMS.list(m.plans);L.pay=CMS.list(m.pay);L.extra=CMS.list(m.extra);dirty=false;$('dirty').hidden=true;
- try{sessionStorage.setItem('be_site',site)}catch(e){}
- $('view').href='index.html?site='+encodeURIComponent(site);render()})}
-function siteOpts(){$('sitesel').innerHTML=sites.map(function(s){return '<option value="'+esc(s.slug)+'"'+(s.slug===site?' selected':'')+'>'+esc(s.name||s.slug)+' · '+esc(s.slug)+'</option>'}).join('')}
-$('sitesel').onchange=function(){var v=this.value;if(dirty&&!confirm('You have unsaved changes. Switch site and lose them?')){siteOpts();return}site=v;loadSite().then(function(){go(cur)})};
-
-/* ---------- builders ---------- */
+/* ---------- form fields ---------- */
+function fld(f,v,attr){var id='x'+(++FID),t=f[2],lab=f[1],Lb='<label class="fl" for="'+id+'">'+lab+'</label>';v=v==null?'':String(v);
+ if(t==='c')return '<div class="sr" style="border:0;padding:12px 0 0"><label class="sw"><input type="checkbox" id="'+id+'" '+attr+(v==='1'?' checked':'')+'><i></i></label><span class="nm">'+lab+'</span></div>';
+ if(t==='l')return Lb+'<textarea id="'+id+'" '+attr+'>'+esc(v)+'</textarea>';
+ if(t.slice(0,2)==='s:')return Lb+'<select id="'+id+'" '+attr+'>'+t.slice(2).split('|').map(function(o){var i=o.indexOf('='),val=i<0?o:o.slice(0,i),lb=i<0?o:o.slice(i+1);return '<option value="'+esc(val)+'"'+(v===val?' selected':'')+'>'+esc(lb)+'</option>'}).join('')+'</select>';
+ if(t.slice(0,2)==='n:'){var p=t.split(':'),val=v===''?p[4]:v;return Lb+'<div class="rng"><input type="range" id="'+id+'" min="'+p[1]+'" max="'+p[2]+'" step="'+p[3]+'" data-def="'+p[4]+'" value="'+esc(val)+'" '+attr+'><b class="ro">'+esc(val)+'</b></div>'}
+ if(t==='col'){var cv=CMS.col(v);return Lb+'<div class="colf"><input type="color" id="'+id+'" '+attr+' value="'+(cv||'#ffffff')+'"'+(cv?'':' data-empty="1"')+'><button class="btn gh sm" type="button" data-act="colclr">None</button><span class="hint" style="margin:0">'+(cv||'Not set')+'</span></div>'}
+ if(t==='img')return Lb+'<div class="imgf"><div class="pvs">'+(v?'<img src="'+esc(v)+'" alt="">':'<span>No picture</span>')+'</div><div><input id="'+id+'" '+attr+' placeholder="https://… or press Upload" value="'+esc(v)+'"><div class="rw" style="margin-top:8px"><label class="btn sm" style="cursor:pointer">Upload<input type="file" accept="image/*" data-up2 hidden></label><button class="btn gh sm" type="button" data-act="imgclr">Remove</button></div><p class="hint"></p></div></div>';
+ return Lb+'<input id="'+id+'" '+attr+' value="'+esc(v)+'"'+(t==='u'?' placeholder="https://…"':'')+'>'}
+function plain(id,label,v,ph,long){return '<label class="fl" for="'+id+'">'+label+'</label>'+(long?'<textarea id="'+id+'" placeholder="'+esc(ph||'')+'">'+esc(v)+'</textarea>':'<input id="'+id+'" value="'+esc(v)+'" placeholder="'+esc(ph||'')+'">')}
 function card(t,d,h){return '<div class="card"><h2>'+t+'</h2>'+(d?'<p class="d">'+d+'</p>':'')+h+'</div>'}
 function kind(t){if(t.cls==='n')return 'Price';var g=t.tag;if(/^H[1-3]$/.test(g))return 'Heading';if(g==='P')return 'Paragraph';if(g==='LI')return 'List item';if(g==='B')return 'Label';if(g==='BUTTON'||g==='A'||/btn/.test(t.cls))return 'Button text';return 'Text'}
 function field(k,label,d,long){var b=d.split(OLD).join(shown),v=saved[k]||b;
- return '<div class="f" data-s="'+esc((label+' '+v).toLowerCase())+'"><div class="fl"><span>'+esc(label)+'</span><button class="rs" type="button" data-act="reset">Reset</button></div>'+
+ return '<div class="f"><div class="fl"><span>'+esc(label)+'</span><button class="rs" type="button" data-act="reset">Reset</button></div>'+
  (long?'<textarea data-k="'+k+'" data-d="'+esc(d)+'" data-b="'+esc(b)+'">'+esc(v)+'</textarea>':'<input data-k="'+k+'" data-d="'+esc(d)+'" data-b="'+esc(b)+'" value="'+esc(v)+'">')+'</div>'}
-function plain(id,label,v,ph,long){return '<label class="fl" for="'+id+'">'+label+'</label>'+(long?'<textarea id="'+id+'" placeholder="'+esc(ph||'')+'">'+esc(v)+'</textarea>':'<input id="'+id+'" value="'+esc(v)+'" placeholder="'+esc(ph||'')+'">')}
 function slot(k,label,hint){return '<div class="slot"><div class="pv" id="pv_'+k+'"></div><div><label class="fl" style="margin-top:0" for="im_'+k+'">'+label+' (link)</label><input id="im_'+k+'" data-img="'+k+'" placeholder="https://… or press Upload" value="'+esc(saved[k]||'')+'">'+
  '<div class="rw" style="margin-top:10px"><label class="btn sm" style="cursor:pointer">Upload picture<input type="file" accept="image/*" data-up="'+k+'" hidden></label><button class="btn gh sm" type="button" data-act="rmimg" data-key="'+k+'">Use default</button></div><p class="hint" id="st_'+k+'">'+hint+'</p></div></div>'}
-function pv(k){var u=$('im_'+k).value.trim();$('pv_'+k).innerHTML=u?'<img src="'+esc(u)+'" alt="">':'<span>Default design</span>'}
-function swRow(i,mv,p){var on=hid.indexOf(i)<0;
- return '<div class="sr"><label class="sw"><input type="checkbox" data-h="'+i+'"'+(on?' checked':'')+' aria-label="Show '+esc(CMS.BLOCKS[i][0])+'"><i></i></label><span class="nm">'+esc(CMS.BLOCKS[i][0])+'</span>'+
- (mv?'<span class="mv"><button class="btn gh sm" type="button" data-act="mv" data-dir="-1" data-p="'+p+'"'+(p===0?' disabled':'')+' aria-label="Move up">↑</button><button class="btn gh sm" type="button" data-act="mv" data-dir="1" data-p="'+p+'"'+(p===ord.length-1?' disabled':'')+' aria-label="Move down">↓</button></span>':'')+'</div>'}
-function secs(){return card('Page sections','Use the switch to show or hide a part. Use the arrows to move it.','<p class="sep">Always at the top</p>'+swRow(0)+swRow(1)+'<p class="sep">Movable sections</p>'+ord.map(function(i,p){return swRow(i,true,p)}).join('')+'<p class="sep">Footer</p>'+swRow(12)+swRow(13)+swRow(14))}
+function pv(k){var e=$('im_'+k);if(!e)return;var u=e.value.trim();$('pv_'+k).innerHTML=u?'<img src="'+esc(u)+'" alt="">':'<span>Default design</span>'}
+
+/* ---------- lists (items of sections, plans, payment methods, menu links) ---------- */
+function schemaOf(lk){
+ if(lk==='plans')return {n:'Plan',f:PLANF};if(lk==='pay')return {n:'Payment method',f:PAYF};if(lk==='menux')return {n:'Link',f:[['label','Label','t'],['url','Link','u']]};
+ var m=/^b:(.+):(items2?)$/.exec(lk);if(m){var b=B.filter(function(x){return x.id===m[1]})[0];return b?BT[b.type][m[2]==='items'?'it':'it2']:null}return null}
+function lcard(lk,i){var s=schemaOf(lk),o=L[lk][i],n=L[lk].length,t=o[s.f[0][0]]||o.title||o.t||o.q||o.name||'';
+ return '<div class="lc"><div class="lh"><b>'+s.n+' '+(i+1)+(t?' · '+esc(String(t).slice(0,26)):'')+'</b><span class="mv"><button class="btn gh sm" type="button" data-act="lmv" data-dir="-1"'+(i===0?' disabled':'')+' aria-label="Move up">↑</button><button class="btn gh sm" type="button" data-act="lmv" data-dir="1"'+(i===n-1?' disabled':'')+' aria-label="Move down">↓</button><button class="btn dg sm" type="button" data-act="ldel">Remove</button></span></div>'+
+ s.f.map(function(f){return fld(f,o[f[0]],'data-f="'+f[0]+'"')}).join('')+'</div>'}
+function lrender(lk){var c=document.querySelector('.il[data-lk="'+lk+'"]');if(!c)return;c.innerHTML=(L[lk]||[]).map(function(_,i){return lcard(lk,i)}).join('')||'<p class="hint">Nothing added yet.</p>'}
+function lsync(){[].forEach.call(document.querySelectorAll('.il'),function(c){var lk=c.dataset.lk;L[lk]=[].map.call(c.querySelectorAll('.lc'),function(card){var o={};[].forEach.call(card.querySelectorAll('[data-f]'),function(el){o[el.dataset.f]=rd(el)});return o})})}
+function ilist(lk,add){return '<div class="il" data-lk="'+lk+'"></div><div class="chips"><button class="chip" type="button" data-act="ladd" data-lk="'+lk+'">+ '+add+'</button></div>'}
+function chips(lk,list){return '<div class="chips">'+list.map(function(x){return '<button class="chip" type="button" data-act="ladd" data-lk="'+lk+'" data-pre="'+x[0]+'">+ '+x[1]+'</button>'}).join('')+'</div>'}
+
+/* ---------- page builder ---------- */
+function isHid(t){return t.charAt(0)==='L'?hid.indexOf(+t.slice(1))>-1:(B.filter(function(b){return 'B'+b.id===t})[0]||{}).hide==='1'}
+function swit(tok,on){return '<label class="sw" title="Show or hide this section"><input type="checkbox" data-sw="'+tok+'"'+(on?' checked':'')+' aria-label="Visible"><i></i></label>'}
+function arrows(tok,pos,n){return '<button class="btn gh sm" type="button" data-act="mv" data-tok="'+tok+'" data-dir="-1"'+(pos===0?' disabled':'')+' aria-label="Move up">↑</button><button class="btn gh sm" type="button" data-act="mv" data-tok="'+tok+'" data-dir="1"'+(pos===n-1?' disabled':'')+' aria-label="Move down">↓</button>'}
+function styleBox(tok,st){return '<div class="sty" data-tok="'+tok+'"><b>Colours, spacing and animation</b>'+STY.map(function(f){return fld(f,st[f[0]],'data-sf="'+f[0]+'"')}).join('')+'</div>'}
+function blockRow(b,vis,pos,n){var Tt=BT[b.type],tok='B'+b.id;
+ var h='<details class="bkrow" data-tok="'+tok+'"'+(OPEN[tok]?' open':'')+'><summary>'+swit(tok,vis)+'<span class="bi">'+svg(b.type)+'</span><span class="bn">'+esc(b.name||Tt.n)+'</span><span class="tg">'+Tt.n+'</span><span class="mv">'+(vis?arrows(tok,pos,n):'')+'<button class="btn gh sm" type="button" data-act="dupb" data-id="'+b.id+'" aria-label="Duplicate">Copy</button><button class="btn dg sm" type="button" data-act="delb" data-id="'+b.id+'" aria-label="Delete">Delete</button></span></summary><div class="bkb">';
+ h+=fld(['name','Section name (shown in this list and the menu)','t'],b.name,'data-bf="name"')+fld(['menu','Show this section in the top menu','c'],b.menu,'data-bf="menu"')+fld(['mlabel','Menu label, optional','t'],b.mlabel,'data-bf="mlabel"');
+ Tt.f.forEach(function(f){h+=fld(f,b[f[0]],'data-bf="'+f[0]+'"')});
+ if(Tt.it)h+='<p class="sep">'+Tt.it.n+'s</p>'+ilist('b:'+b.id+':items','Add '+Tt.it.n.toLowerCase());
+ if(Tt.it2)h+='<p class="sep">'+Tt.it2.n+'s</p>'+ilist('b:'+b.id+':items2','Add '+Tt.it2.n.toLowerCase());
+ return h+styleBox(tok,b)+'</div></details>'}
+function words(i){var h='';
+ C.texts.filter(function(t){return t.sec===i}).forEach(function(t){h+=field(t.k,kind(t),t.def,t.def.length>70)});
+ C.links.filter(function(l){return l.sec===i&&!l.el.matches('.price .btn')}).forEach(function(l){h+=field(l.k,'Link · '+l.label.slice(0,36),l.def,false)});
+ C.phs.filter(function(x){return x.sec===i}).forEach(function(x){h+=field(x.k,'Placeholder text',x.def,false)});
+ return h||'<p class="hint">Nothing to edit here.</p>'}
+function legacyRow(i,mov,vis,pos,n){var tok='L'+i,h='<details class="bkrow" data-tok="'+tok+'"'+(OPEN[tok]?' open':'')+'><summary>'+swit(tok,vis)+'<span class="bi">'+svg('build')+'</span><span class="bn">'+esc(CMS.BLOCKS[i][0])+'</span><span class="tg">Classic</span><span class="mv">'+(mov&&vis?arrows(tok,pos,n):'')+'</span></summary><div class="bkb">';
+ h+=i===0?'<p class="hint">Edit the top menu in the "Menu &amp; header" tab. Here you can show or hide it.</p>':words(i);
+ if(i===1)h+='<p class="sep">Hero photo</p>'+slot('hero_img','Hero photo','Uses the drawn sunrise until you add one.');
+ if(i===4)h+='<p class="sep">Book cover</p>'+slot('cover_img','Book cover','Uses the drawn cover until you add one.');
+ if(i===9)h+='<p class="hint">Plans and payment methods for this classic section are in the "Pricing &amp; payments" tab.</p>';
+ if(mov)h+=styleBox(tok,SS[tok]||{});
+ return h+'</div></details>'}
+function rowOf(t,vis,p,n){if(t.charAt(0)==='L')return legacyRow(+t.slice(1),true,vis,p,n);var b=B.filter(function(x){return 'B'+x.id===t})[0];return b?blockRow(b,vis,p,n):''}
+function renderBuilder(){
+ var vis=layout.filter(function(t){return !isHid(t)}),hd=layout.filter(isHid);
+ var h='<p class="sep">Top of the page</p>'+legacyRow(0,false,hid.indexOf(0)<0)+legacyRow(1,false,hid.indexOf(1)<0)+'<p class="sep">Sections, in page order</p>';
+ vis.forEach(function(t,p){h+=rowOf(t,true,p,vis.length)});
+ if(!vis.length)h+='<p class="hint">No sections yet. Add one below or start from a sample page.</p>';
+ if(hd.length){h+='<p class="sep">Hidden sections (switched off)</p>';hd.forEach(function(t){h+=rowOf(t,false,0,0)})}
+ h+='<p class="sep">Footer</p>'+legacyRow(12,false,hid.indexOf(12)<0)+legacyRow(13,false,hid.indexOf(13)<0)+legacyRow(14,false,hid.indexOf(14)<0);
+ $('bkrows').innerHTML=h;
+ [].forEach.call(document.querySelectorAll('#bkrows .il'),function(c){lrender(c.dataset.lk)});
+ ['hero_img','cover_img'].forEach(pv)}
+function sync(){lsync();
+ [].forEach.call(document.querySelectorAll('#bkrows [data-k]'),function(el){var x=el.value.trim();saved[el.dataset.k]=(x===el.dataset.d||x===el.dataset.b)?'':x});
+ ['hero_img','cover_img'].forEach(function(k){var e=$('im_'+k);if(e)saved[k]=e.value.trim()});
+ B.forEach(function(b){var r=document.querySelector('.bkrow[data-tok="B'+b.id+'"]');if(!r)return;
+  [].forEach.call(r.querySelectorAll('[data-bf]'),function(el){b[el.dataset.bf]=rd(el)});
+  [].forEach.call(r.querySelectorAll('.sty [data-sf]'),function(el){b[el.dataset.sf]=rd(el)})});
+ [].forEach.call(document.querySelectorAll('.bkrow[data-tok^="L"] .sty'),function(s){var o={};[].forEach.call(s.querySelectorAll('[data-sf]'),function(el){var v=rd(el);if(v)o[el.dataset.sf]=v});SS[s.dataset.tok]=o});
+ B.forEach(function(b){var Tt=BT[b.type];if(Tt.it)b.items=L['b:'+b.id+':items']||[];if(Tt.it2)b.items2=L['b:'+b.id+':items2']||[]})}
+function addBlock(type){sync();var Tt=BT[type],b=Object.assign({id:uid(),type:type,name:Tt.n},clone(Tt.dp||{}));B.push(b);
+ L['b:'+b.id+':items']=clone(Tt.di||[]);L['b:'+b.id+':items2']=clone(Tt.di2||[]);layout.push('B'+b.id);OPEN['B'+b.id]=true;renderBuilder();mark();
+ var r=document.querySelector('.bkrow[data-tok="B'+b.id+'"]');if(r&&r.scrollIntoView)r.scrollIntoView({behavior:'smooth',block:'start'});toast('Section added at the end of the page. Use the arrows to move it.')}
+function fill(o){return JSON.parse(JSON.stringify(o).split('{brand}').join(JSON.stringify(shown).slice(1,-1)))}
+function setPal(P){Object.keys(P).forEach(function(k){var e=document.querySelector('[data-x="t_'+k+'"]');if(e){e.value=P[k];e.removeAttribute('data-empty');var h=e.parentNode.querySelector('.hint');if(h)h.textContent=P[k]}})}
+function useSample(id){var S=SAMPLES.filter(function(x){return x.id===id})[0];if(!S)return;
+ if(layout.some(function(t){return t.charAt(0)==='B'})&&!confirm('This replaces your current custom sections with the "'+S.name+'" sample. Continue?'))return;
+ sync();B=fill(S.blocks).map(function(a){var b=Object.assign({id:a[0],type:a[1],name:a[2].mlabel||BT[a[1]].n},clone(BT[a[1]].dp||{}),a[2]);L['b:'+b.id+':items']=a[3]||[];L['b:'+b.id+':items2']=a[4]||[];return b});
+ layout=B.map(function(b){return 'B'+b.id}).concat(MOV.map(function(i){return 'L'+i}));hid=[1].concat(MOV);OPEN={};OPEN['B'+B[0].id]=true;
+ setPal(PAL[S.pal]);
+ if(K.ctaT){var e=document.querySelector('[data-k="'+K.ctaT.k+'"]');if(e)e.value=S.cta[0]}
+ if(K.ctaL){var e2=document.querySelector('[data-k="'+K.ctaL.k+'"]');if(e2)e2.value=S.cta[1]}
+ var ch=$('m_cta');if(ch)ch.checked=false;
+ renderBuilder();mark();toast('Sample loaded. Replace the words and pictures with your own, then press Save changes.')}
+
+/* ---------- panels ---------- */
 function socRow(s){var r=document.createElement('div');r.className='sorow';
  r.innerHTML='<select>'+CMS.PLATFORMS.map(function(p){return '<option value="'+p[0]+'"'+(s&&s.p===p[0]?' selected':'')+'>'+p[1]+'</option>'}).join('')+'</select><input placeholder="https://…" value="'+esc(s&&s.url)+'"><button class="btn gh sm" type="button" data-act="rmsoc">Remove</button>';$('socbox').appendChild(r)}
-
-/* list editor (plans, payment methods, custom sections) */
-function lfield(k,i,f,v){var id='x_'+k+i+f[0],t=f[2],lab='<label class="fl" for="'+id+'">'+f[1]+'</label>';v=v||'';
- if(t==='c')return '<div class="sr" style="border:0;padding:14px 0 0"><label class="sw"><input type="checkbox" id="'+id+'" data-f="'+f[0]+'"'+(v==='1'?' checked':'')+'><i></i></label><span class="nm">'+f[1]+'</span></div>';
- if(t==='l')return lab+'<textarea id="'+id+'" data-f="'+f[0]+'">'+esc(v)+'</textarea>';
- if(t.charAt(0)==='s')return lab+'<select id="'+id+'" data-f="'+f[0]+'">'+t.slice(2).split('|').map(function(o){var p=o.split('=');return '<option value="'+p[0]+'"'+(v===p[0]?' selected':'')+'>'+p[1]+'</option>'}).join('')+'</select>';
- return lab+'<input id="'+id+'" data-f="'+f[0]+'" value="'+esc(v)+'"'+(t==='u'?' placeholder="https://…"':'')+'>'}
-function lcard(k,i){var s=LS[k],o=L[k][i],n=L[k].length;
- return '<div class="lc" data-l="'+k+'"><div class="lh"><b>'+s.n+' '+(i+1)+(o.name||o.title?' · '+esc(String(o.name||o.title).slice(0,28)):'')+'</b><span class="mv"><button class="btn gh sm" type="button" data-act="lmv" data-dir="-1"'+(i===0?' disabled':'')+' aria-label="Move up">↑</button><button class="btn gh sm" type="button" data-act="lmv" data-dir="1"'+(i===n-1?' disabled':'')+' aria-label="Move down">↓</button><button class="btn dg sm" type="button" data-act="ldel">Remove</button></span></div>'+s.f.map(function(f){return lfield(k,i,f,o[f[0]])}).join('')+'</div>'}
-function lrender(k){var h=L[k].map(function(_,i){return lcard(k,i)}).join('');$('l_'+k).innerHTML=h||'<p class="hint">Nothing added yet.</p>'}
-function lsync(){Object.keys(L).forEach(function(k){if(!$('l_'+k))return;L[k]=[].map.call(document.querySelectorAll('.lc[data-l="'+k+'"]'),function(c){var o={};[].forEach.call(c.querySelectorAll('[data-f]'),function(el){o[el.dataset.f]=el.type==='checkbox'?(el.checked?'1':''):el.value.trim()});return o})})}
-function chips(k,list){return '<div class="chips">'+list.map(function(x){return '<button class="chip" type="button" data-act="ladd" data-l="'+k+'" data-pre="'+x[0]+'">+ '+x[1]+'</button>'}).join('')+'</div>'}
-
-/* ---------- render ---------- */
 function render(){
- shown=saved.brand||OLD;siteOpts();
- var g={},P={};
- C.texts.forEach(function(t){(g[t.sec]=g[t.sec]||[]).push(field(t.k,kind(t),t.def,t.def.length>70))});
- C.phs.forEach(function(x){(g[x.sec]=g[x.sec]||[]).push(field(x.k,'Placeholder in the email box',x.def,false))});
- var tx='<input id="q" type="search" placeholder="Search any text on the page…" aria-label="Search">',first=true;
- Object.keys(g).sort(function(a,b){return a-b}).forEach(function(s){
-  tx+='<details'+(first?' open':'')+'><summary>'+esc(s>=0?CMS.BLOCKS[s][0]:'Other')+'<span>'+g[s].length+' items</span></summary><div>'+g[s].join('')+'</div></details>';first=false});
- var lk=C.links.filter(function(l){return !l.el.matches('.price .btn')}).map(function(l){return field(l.k,(CMS.BLOCKS[l.sec]?CMS.BLOCKS[l.sec][0]:'')+' · '+l.label.slice(0,40),l.def,false)}).join('');
- P.brand=card('Brand name','Replaces "'+OLD+'" everywhere: menu, footer, book cover and the browser tab.',plain('b_name','Brand name',shown))+
-  card('Logo','Shown in the menu and footer, and as the tab icon. A PNG with a transparent background looks best.',slot('logo','Logo','Uses the leaf icon until you add one.'))+
-  card('Look and search','',plain('s_title','Browser tab title',saved.title||def.title.split(OLD).join(shown))+plain('s_desc','Search description (what Google shows)',saved.desc||'','One or two sentences about this site',true)+
-   '<label class="fl" for="s_acc">Accent colour</label><div class="rw"><input type="color" id="s_acc" value="'+esc(saved.accent||def.accent)+'"><button class="btn gh sm" type="button" data-act="accreset">Reset colour</button></div>')+
-  card('WhatsApp chat button','A green button on the page that opens WhatsApp. Leave the number empty to hide it.','<div class="g2"><div>'+plain('w_num','WhatsApp number with country code',saved.wa||'','8801XXXXXXXXX')+'</div><div>'+plain('w_msg','First message',saved.wa_msg||'','Hello! I have a question.')+'</div></div>')+
+ shown=saved.brand||OLD;siteOpts();var P={};
+ var adder='<details class="bkrow" id="addbox"'+(layout.some(function(t){return t.charAt(0)==='B'})?'':' open')+'><summary><span class="bi">'+svg('text')+'</span><span class="bn">Add a section</span><span class="tg">15 kinds</span></summary><div class="bkb"><div class="adder">'+Object.keys(BT).map(function(k){return '<button class="at" type="button" data-act="addb" data-type="'+k+'"><b>'+svg(k)+BT[k].n+'</b><span>'+BT[k].d+'</span></button>'}).join('')+'</div></div></details>'+
+  '<details class="bkrow"><summary><span class="bi">'+svg('build')+'</span><span class="bn">Start from a sample page</span><span class="tg">'+SAMPLES.length+' samples</span></summary><div class="bkb"><p class="hint">A ready-made page with colours and sections. Load one, then replace the words and pictures.</p><div class="adder">'+SAMPLES.map(function(s){return '<button class="at" type="button" data-act="sample" data-id="'+s.id+'"><b>'+s.name+'</b><span>'+s.d+'</span></button>'}).join('')+'</div></div></details>';
+ P.build=adder+'<div id="bkrows"></div>';
+ P.brand=card('Brand name','Replaces "'+OLD+'" everywhere: menu, footer and the browser tab.',plain('b_name','Brand name',shown))+
+  card('Logo','Shown in the menu and footer, and as the tab icon. A PNG with a clear background looks best.',slot('logo','Logo','Uses the leaf icon until you add one.')+fld(['logoh','Logo height (px)','n:16:160:2:40'],saved.logoh,'data-x="logoh"'))+
+  card('Search and sharing','',plain('s_title','Browser tab title',saved.title||def.title.split(OLD).join(shown))+plain('s_desc','Search description (what Google shows)',saved.desc||'','One or two sentences about this site',true))+
+  card('WhatsApp chat button','A green button that opens WhatsApp. Leave the number empty to hide it.','<div class="g2"><div>'+plain('w_num','WhatsApp number with country code',saved.wa||'','8801XXXXXXXXX')+'</div><div>'+plain('w_msg','First message',saved.wa_msg||'','Hello! I have a question.')+'</div></div>')+
   card('Account','','<button class="btn gh" type="button" data-act="out">Log out</button>');
- P.price=card('Main checkout link','Used by the pricing button and, if you switch it on, every buy button. Works with Gumroad, Stripe, Lemon Squeezy, SSLCommerz or any payment link.',
+ P.theme=card('Colour palette','Tap a palette to start, then fine-tune any colour. "None" keeps the original.','<div class="pals">'+Object.keys(PAL).map(function(k){var p=PAL[k];return '<button class="pal" type="button" data-act="pal" data-n="'+k+'" title="'+k+'">'+['accent','bg','alt','ink','dark'].map(function(c){return '<i style="background:'+p[c]+'"></i>'}).join('')+'</button>'}).join('')+'</div>'+
+   '<div class="g2">'+[['accent','Main accent colour'],['bg','Page background'],['alt','Alternate section background'],['ink','Text colour'],['dark','Dark sections (footer, call to action)']].map(function(c){return '<div>'+fld([c[0],c[1],'col'],T[c[0]],'data-x="t_'+c[0]+'"')+'</div>'}).join('')+'</div>')+
+  card('Fonts','Bangla and Arabic friendly fonts are included.','<div class="g2"><div>'+fld(['hf','Headings','s:=Original|'+CMS.FONTS.join('|')],T.hf,'data-x="t_hf"')+'</div><div>'+fld(['bf','Body text','s:=Original|'+CMS.FONTS.join('|')],T.bf,'data-x="t_bf"')+'</div></div>')+
+  card('Buttons, corners and motion','','<div class="g2"><div>'+fld(['btn','Button style','s:=Solid|outline=Outline|soft=Soft tint'],T.btn,'data-x="t_btn"')+'</div><div>'+fld(['shape','Button shape','s:=Original|sq=Square|rd=Rounded|pill=Pill'],T.shape,'data-x="t_shape"')+'</div><div>'+fld(['rc','Card corner roundness (px)','n:0:40:2:14'],T.rc,'data-x="t_rc"')+'</div><div>'+fld(['anim','Default animation for all sections','s:=Fade up|none=None|down=Fade down|left=Slide from left|right=Slide from right|zoom=Zoom in|fade=Fade|flip=Flip|blur=Blur in'],T.anim,'data-x="t_anim"')+'</div></div>');
+ var cta=function(c){return c?field(c.k,'',c.def,false):''};
+ P.menu=card('Header button','The button on the right of the top menu.',(K.ctaT?field(K.ctaT.k,'Button text',K.ctaT.def,false):'')+(K.ctaL?field(K.ctaL.k,'Button link',K.ctaL.def,false):'')+'<div class="sr" style="border:0;padding-top:16px"><label class="sw"><input type="checkbox" id="m_cta"'+(saved.ctahide==='1'?'':' checked')+'><i></i></label><span class="nm">Show the header button</span></div>')+
+  card('Menu links','Switch on "Show this section in the top menu" inside any section and it appears here automatically.','<p class="sep" style="margin-top:6px">In your menu now</p><div id="autom"></div><p class="sep">Extra links</p>'+ilist('menux','Add a link'))+
+  '<details class="bkrow"><summary><span class="bn">Classic menu words</span><span class="tg">used when no section is in the menu</span></summary><div class="bkb">'+
+  C.texts.filter(function(t){return t.sec===0&&t!==K.ctaT}).map(function(t){return field(t.k,kind(t),t.def,false)}).join('')+C.links.filter(function(l){return l.sec===0&&l!==K.ctaL}).map(function(l){return field(l.k,'Link · '+l.label.slice(0,30),l.def,false)}).join('')+'</div></details>';
+ P.price=card('Main checkout link','Used by the classic pricing button and, if you switch it on, every classic buy button. Works with Gumroad, Stripe, Lemon Squeezy, SSLCommerz or any payment link.',
    '<label class="fl" for="g_url">Checkout link</label><input id="g_url" type="url" placeholder="https://yourname.gumroad.com/l/your-product" value="'+esc(saved.gumroad||'')+'"><p class="hint" id="g_hint"></p>'+
-   '<div class="sr" style="border:0;padding-top:16px"><label class="sw"><input type="checkbox" id="g_all"'+(saved.gumroad_all==='1'?' checked':'')+'><i></i></label><span class="nm">Send every buy button straight to this link</span></div><div class="rw"><button class="btn gh sm" type="button" data-act="gtest">Test this link</button></div>')+
-  card('Plans','Add as many plans as you need. Once you add a plan, plans replace the single price card. Each plan has its own checkout link.','<div id="l_plans"></div>'+chips('plans',[['plans:weekly','Weekly'],['plans:monthly','Monthly'],['plans:yearly','Yearly'],['plans:one','One-time'],['plans:','Blank']]))+
-  card('Other ways to pay','Show payment options like bKash, Nagad, bank transfer or PayPal under the plans. Visitors can copy the number with one tap.','<div id="l_pay"></div>'+chips('pay',[['pay:bkash','bKash'],['pay:nagad','Nagad'],['pay:rocket','Rocket'],['pay:bank','Bank'],['pay:paypal','PayPal'],['pay:card','Card link'],['pay:','Blank']])+
+   '<div class="sr" style="border:0;padding-top:16px"><label class="sw"><input type="checkbox" id="g_all"'+(saved.gumroad_all==='1'?' checked':'')+'><i></i></label><span class="nm">Send every classic buy button straight to this link</span></div><div class="rw"><button class="btn gh sm" type="button" data-act="gtest">Test this link</button></div>')+
+  card('Plans','Add weekly, monthly, yearly or one-time plans. Once you add a plan they replace the single price card. Each plan has its own checkout link.',ilist('plans','Add a plan').replace('<div class="chips">','<div class="chips" hidden>')+chips('plans',[['plans:weekly','Weekly'],['plans:monthly','Monthly'],['plans:yearly','Yearly'],['plans:one','One-time'],['plans:','Blank']]))+
+  card('Other ways to pay','Show options like bKash, Nagad, bank transfer or PayPal under the plans. Visitors can copy the number with one tap.',ilist('pay','Add a method').replace('<div class="chips">','<div class="chips" hidden>')+chips('pay',[['pay:bkash','bKash'],['pay:nagad','Nagad'],['pay:rocket','Rocket'],['pay:bank','Bank'],['pay:paypal','PayPal'],['pay:card','Card link'],['pay:','Blank']])+
    '<div class="g2" style="margin-top:8px"><div>'+plain('pay_title','Heading',saved.pay_title||'','Other ways to pay')+'</div><div>'+plain('pay_note','Note under the heading',saved.pay_note||'','After paying, send us your transaction ID.')+'</div><div>'+plain('copy_label','Copy button text',saved.copy_label||'','Copy')+'</div><div>'+plain('pay_btn','Pay link button text',saved.pay_btn||'','Pay now')+'</div></div>');
- P.img=card('Hero photo','The big picture at the top. Wide photos work best.',slot('hero_img','Hero photo','Uses the drawn sunrise until you add one.'))+card('Book cover','Shown beside the preview pages. Tall pictures work best.',slot('cover_img','Book cover','Uses the drawn cover until you add one.'));
- P.text=tx;P.link=card('Menu and button links','Use a full link (https://…) or a spot on the page like #buy. The main checkout link has its own tab.',lk);
- P.secs='<div id="secbox">'+secs()+'</div>';
- P.extra=card('Custom sections','Add a text block, a row of cards or a questions list. They appear on the page in the place you choose.','<div id="l_extra"></div><div class="chips"><button class="chip" type="button" data-act="ladd" data-l="extra" data-pre="">+ Add section</button></div>');
  P.soc=card('Social channels','Add as many as you like. Empty rows are ignored.','<div id="socbox"></div><div class="rw" style="margin-top:14px"><button class="btn gh sm" type="button" data-act="addsoc">+ Add channel</button></div>');
+ P.msgs=card('Messages','','<div class="rw"><button class="btn gh sm" type="button" data-act="refmsg">Refresh</button><button class="btn gh sm" type="button" data-act="csvm">Download CSV</button></div><p class="hint" id="msgcount"></p><div id="msgbox"></div>');
  P.subs=card('Subscribers','','<div class="rw"><button class="btn gh sm" type="button" data-act="refsub">Refresh</button><button class="btn gh sm" type="button" data-act="csv">Download CSV</button></div><p class="hint" id="subcount"></p><div class="tw" id="subbox"></div>');
  P.sites=sitesPanel();
+ P.prev='<div class="rw" style="margin-bottom:12px"><button class="btn gh sm" type="button" data-act="dev" data-w="390px">Phone</button><button class="btn gh sm" type="button" data-act="dev" data-w="820px">Tablet</button><button class="btn gh sm" type="button" data-act="dev" data-w="100%">Desktop</button><button class="btn sm" type="button" data-act="prefresh">Refresh preview</button></div><div class="pvwrap"><iframe id="pvf" title="Page preview" style="width:390px" src="index.html?site='+encodeURIComponent(site)+'&preview=1"></iframe></div><p class="hint">This shows your unsaved changes. Press Save changes to publish them.</p>';
  $('panels').innerHTML=TABS.map(function(t){return '<section class="panel hide" id="pn_'+t[0]+'">'+P[t[0]]+'</section>'}).join('');
- var so=CMS.list(saved.socials);so.forEach(socRow);
- ['plans','pay','extra'].forEach(lrender);
- ['logo','hero_img','cover_img'].forEach(pv);ghint()}
-
+ renderBuilder();['plans','pay','menux'].forEach(lrender);CMS.list(saved.socials).forEach(socRow);
+ ['logo'].forEach(pv);ghint();$('pvf').addEventListener('load',postPrev)}
 function sitesPanel(){
- return card('Your sites','Every site has its own content, pictures, plans and subscribers. A visitor sees the site whose domain matches. Unknown domains show the first site.',
+ return card('Your sites','Every site has its own content, pictures, sections and subscribers. A visitor sees the site whose domain matches. Unknown domains show the first site.',
   sites.map(function(s){return '<div class="lc" data-site="'+esc(s.slug)+'"><div class="lh"><b>'+esc(s.slug)+(s.slug===site?' · editing now':'')+'</b><span class="mv"><a class="btn gh sm" target="_blank" href="index.html?site='+encodeURIComponent(s.slug)+'">Open</a></span></div>'+
-   '<label class="fl">Name</label><input data-sf="name" value="'+esc(s.name)+'"><label class="fl">Domains, separated by commas</label><input data-sf="domains" placeholder="inaya.com, www.inaya.com" value="'+esc(s.domains)+'">'+
+   '<label class="fl">Name</label><input data-sf2="name" value="'+esc(s.name)+'"><label class="fl">Domains, separated by commas</label><input data-sf2="domains" placeholder="inaya.com, www.inaya.com" value="'+esc(s.domains)+'">'+
    '<div class="rw" style="margin-top:14px"><button class="btn sm" type="button" data-act="ssave">Save details</button><button class="btn dg sm" type="button" data-act="sdel">Delete site</button></div></div>'}).join(''))+
   card('Add a new site','Start empty, or copy everything from an existing site to save time.',
    '<div class="g2"><div>'+plain('ns_name','Site name','','Inaya Quran Academy')+'</div><div>'+plain('ns_slug','Short id (letters and numbers, optional)','','inaya')+'</div></div>'+plain('ns_dom','Domains, separated by commas','','inaya.com, www.inaya.com')+
    '<label class="fl" for="ns_from">Start from</label><select id="ns_from"><option value="">Empty (the default design)</option>'+sites.map(function(s){return '<option value="'+esc(s.slug)+'">Copy of '+esc(s.name||s.slug)+'</option>'}).join('')+'</select>'+
-   '<div class="rw" style="margin-top:16px"><button class="btn" type="button" data-act="screate">Create site</button></div>'+
-   '<p class="hint">After creating: in Vercel add the domain (Settings → Domains), and type the same domain here. Both are needed.</p>')}
-
+   '<div class="rw" style="margin-top:16px"><button class="btn" type="button" data-act="screate">Create site</button></div><p class="hint">After creating: in Vercel add the domain (Settings → Domains), and type the same domain here. Both are needed.</p>')}
+function siteOpts(){$('sitesel').innerHTML=sites.map(function(s){return '<option value="'+esc(s.slug)+'"'+(s.slug===site?' selected':'')+'>'+esc(s.name||s.slug)+' · '+esc(s.slug)+'</option>'}).join('')}
+function ghint(){var e=$('g_url');if(e)$('g_hint').textContent=e.value.trim()?'This link is used after you press Save changes.':'No link yet: the classic pricing button does nothing until you add one.'}
+function autoMenu(){sync();var h=layout.map(function(t){return B.filter(function(b){return 'B'+b.id===t&&b.menu==='1'&&b.hide!=='1'})[0]}).filter(Boolean).map(function(b){return '<span class="tg" style="margin:0 6px 6px 0;display:inline-block">'+esc(b.mlabel||b.name||b.title||'Section')+'</span>'}).join('');
+ $('autom').innerHTML=h||'<p class="hint">No section is in the menu yet, so the classic menu is shown.</p>'}
 function go(id){cur=id;
  TABS.forEach(function(t){$('pn_'+t[0]).classList.toggle('hide',t[0]!==id);if(t[0]===id){$('ttl').textContent=t[2];$('sub').textContent=t[3]}});
  [].forEach.call($('tabs').children,function(b){b.classList.toggle('on',b.dataset.t===id)});
- $('save').hidden=(id==='subs'||id==='sites');window.scrollTo(0,0);if(id==='subs')loadSubs()}
-function ghint(){var v=$('g_url').value.trim();$('g_hint').textContent=v?'This link is used after you press Save changes.':'No link yet: the pricing button does nothing until you add one.'}
+ $('save').hidden=(id==='subs'||id==='sites'||id==='msgs');window.scrollTo(0,0);
+ if(id==='subs')loadSubs();if(id==='msgs')loadMsgs();if(id==='menu')autoMenu();if(id==='prev')postPrev()}
 
 /* ---------- pictures ---------- */
 function resize(f,max,png){return new Promise(function(res,rej){var im=new Image(),u=URL.createObjectURL(f);
@@ -266,47 +379,59 @@ function resize(f,max,png){return new Promise(function(res,rej){var im=new Image
   var x=c.getContext('2d');if(!png){x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height)}x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
   c.toBlob(function(b){b?res(b):rej(new Error('Could not process this picture'))},png?'image/png':'image/jpeg',.85)};
  im.onerror=function(){rej(new Error('This file is not a picture'))};im.src=u})}
-function upload(k,f){var st=$('st_'+k),png=k==='logo';st.className='hint';st.textContent='Uploading…';
- resize(f,png?600:2000,png).then(function(b){var p=site+'/'+k+'-'+Date.now()+(png?'.png':'.jpg');
-  return fetch(CMS.url+'/storage/v1/object/site-images/'+p,{method:'POST',headers:{apikey:CMS.key,Authorization:'Bearer '+token,'Content-Type':b.type},body:b})
-  .then(function(r){return rj(r).then(function(j){
-   if(!r.ok)throw new Error((j&&(j.message||j.error))||('error '+r.status));
-   $('im_'+k).value=CMS.url+'/storage/v1/object/public/site-images/'+p;pv(k);mark();st.className='hint ok';st.textContent='Uploaded. Press Save changes to publish it.'})})})
- .catch(function(e){st.className='hint err';st.textContent='Upload failed: '+e.message+'. If this is the first time, run setup.sql in Supabase.'})}
+function upFile(f,key){
+ return Promise.resolve().then(function(){if(f.type==='image/svg+xml')return {blob:f,ext:'svg'};var png=key==='logo'||(f.type==='image/png'&&f.size<300000);return resize(f,png?1600:2000,png).then(function(b){return {blob:b,ext:png?'png':'jpg'}})})
+ .then(function(r){var p=site+'/'+key+'-'+Date.now()+'.'+r.ext;
+  return fetch(CMS.url+'/storage/v1/object/site-images/'+p,{method:'POST',headers:{apikey:CMS.key,Authorization:'Bearer '+token,'Content-Type':r.blob.type},body:r.blob})
+  .then(function(x){return rj(x).then(function(j){if(!x.ok)throw new Error((j&&(j.message||j.error))||('error '+x.status));return CMS.url+'/storage/v1/object/public/site-images/'+p})})})}
+function upSlot(k,f){var st=$('st_'+k);st.className='hint';st.textContent='Uploading…';
+ upFile(f,k).then(function(u){$('im_'+k).value=u;pv(k);mark();st.className='hint ok';st.textContent='Uploaded. Press Save changes to publish it.'})
+ .catch(function(e){st.className='hint err';st.textContent='Upload failed: '+e.message+'. First time? Run setup.sql in Supabase.'})}
+function upField(box,f){var inp=box.querySelector('input:not([type=file])'),st=box.querySelector('.hint');st.className='hint';st.textContent='Uploading…';
+ upFile(f,'pic').then(function(u){inp.value=u;box.querySelector('.pvs').innerHTML='<img src="'+esc(u)+'" alt="">';mark();st.className='hint ok';st.textContent='Uploaded. Press Save changes to publish it.'})
+ .catch(function(e){st.className='hint err';st.textContent='Upload failed: '+e.message+'. First time? Run setup.sql in Supabase.'})}
 
-/* ---------- subscribers ---------- */
+/* ---------- inbox ---------- */
 function loadSubs(){CMS.get('subscribers?select=id,email,created_at&site=eq.'+encodeURIComponent(site)+'&order=created_at.desc',token)
  .then(function(d){
   if(!Array.isArray(d)){$('subbox').innerHTML='<p class="hint err">Subscribers table not ready. Run setup.sql in Supabase.</p>';$('subcount').textContent='';return}
   subs=d;$('subcount').textContent=d.length+' subscriber'+(d.length===1?'':'s')+' on this site';
   $('subbox').innerHTML=d.length?'<table><tr><th>Email</th><th>Date</th><th></th></tr>'+d.map(function(x){return '<tr><td>'+esc(x.email)+'</td><td>'+esc(x.created_at.slice(0,10))+'</td><td><button class="btn gh sm" type="button" data-act="del" data-id="'+x.id+'">Delete</button></td></tr>'}).join('')+'</table>':'<p class="hint">No subscribers yet.</p>'})
  .catch(function(){$('subbox').innerHTML='<p class="hint err">Could not load. Check your connection.</p>'})}
+function loadMsgs(){CMS.get('messages?select=*&site=eq.'+encodeURIComponent(site)+'&order=created_at.desc',token)
+ .then(function(d){
+  if(!Array.isArray(d)){$('msgbox').innerHTML='<p class="hint err">Messages table not ready. Run setup.sql in Supabase.</p>';$('msgcount').textContent='';return}
+  msgs=d;$('msgcount').textContent=d.length+' message'+(d.length===1?'':'s')+' on this site';
+  $('msgbox').innerHTML=d.length?d.map(function(m){return '<div class="mg"><div class="rw" style="justify-content:space-between"><b>'+esc(m.name||'Someone')+'</b><span class="hint" style="margin:0">'+esc((m.created_at||'').slice(0,16).replace('T',' '))+'</span></div><div class="hint" style="margin:2px 0 0">'+[m.email,m.phone].filter(Boolean).map(esc).join(' · ')+'</div><p>'+esc(m.message)+'</p><div class="rw" style="margin-top:10px">'+(m.email?'<a class="btn gh sm" href="mailto:'+esc(m.email)+'">Reply by email</a>':'')+'<button class="btn dg sm" type="button" data-act="delm" data-id="'+m.id+'">Delete</button></div></div>'}).join(''):'<p class="hint">No messages yet.</p>'})
+ .catch(function(){$('msgbox').innerHTML='<p class="hint err">Could not load. Check your connection.</p>'})}
+function csv(rows,name){var q=function(v){return '"'+String(v==null?'':v).replace(/"/g,'""')+'"'},b=new Blob([rows.map(function(r){return r.map(q).join(',')}).join('\n')],{type:'text/csv'}),l=document.createElement('a');l.href=URL.createObjectURL(b);l.download=name;l.click()}
 
 /* ---------- save ---------- */
-function collect(){var rows=[],v=function(i){return $(i).value.trim()};lsync();
- [].forEach.call(document.querySelectorAll('[data-k]'),function(el){var x=el.value.trim(),k=el.dataset.k,same=x===el.dataset.d||x===el.dataset.b;
-  if(!same||saved[k])rows.push({key:k,value:same?'':x})});
+function readTheme(){var o={};['accent','bg','alt','ink','dark'].forEach(function(k){var v=X('t_'+k);if(v)o[k]=v});['hf','bf','btn','shape','anim'].forEach(function(k){var v=X('t_'+k);if(v)o[k]=v});var rc=X('t_rc');if(rc!=='')o.rc=rc;return o}
+function collect(){sync();var R={},v=function(i){return $(i)?$(i).value.trim():''},js=function(a){return a.length?JSON.stringify(a):''};
+ [].forEach.call(document.querySelectorAll('[data-k]'),function(el){var x=el.value.trim(),k=el.dataset.k,same=x===el.dataset.d||x===el.dataset.b;if(!same||DBK[k])R[k]=same?'':x});
  var b=v('b_name')||OLD,t=v('s_title'),gu=v('g_url');if(gu)gu=CMS.safeUrl(gu);
  var so=[].map.call($('socbox').children,function(r){return{p:r.querySelector('select').value,url:r.querySelector('input').value.trim()}}).filter(function(s){return s.url});
- var h=hid.slice().sort(function(a,b){return a-b}),js=function(a){return a.length?JSON.stringify(a):''};
- rows.push({key:'brand',value:b===OLD?'':b},{key:'logo',value:v('im_logo')},{key:'hero_img',value:v('im_hero_img')},{key:'cover_img',value:v('im_cover_img')},
-  {key:'gumroad',value:gu},{key:'gumroad_all',value:$('g_all').checked?'1':''},
-  {key:'hide',value:js(h)},{key:'order',value:ord.join()===MOV.join()?'':JSON.stringify(ord)},{key:'socials',value:js(so)},
-  {key:'title',value:(t===def.title||t===def.title.split(OLD).join(shown))?'':t},{key:'accent',value:$('s_acc').value===def.accent?'':$('s_acc').value},
-  {key:'desc',value:v('s_desc')},{key:'wa',value:v('w_num')},{key:'wa_msg',value:v('w_msg')},
-  {key:'pay_title',value:v('pay_title')},{key:'pay_note',value:v('pay_note')},{key:'copy_label',value:v('copy_label')},{key:'pay_btn',value:v('pay_btn')},
-  {key:'plans',value:js(L.plans.filter(function(p){return p.name||p.price}))},{key:'pay',value:js(L.pay.filter(function(p){return p.name}))},{key:'extra',value:js(L.extra.filter(function(p){return p.title||p.items}))});
- rows.forEach(function(r){r.site=site});return rows}
+ var blocks=B.map(function(bk){var o={};Object.keys(bk).forEach(function(k){o[k]=(k==='items'||k==='items2')?(bk[k]||[]).filter(nonEmpty):bk[k]});return o});
+ var def_=MOV.map(function(i){return 'L'+i}).join(),ss={};Object.keys(SS).forEach(function(k){if(nonEmpty(SS[k]))ss[k]=SS[k]});
+ var lay=(!B.length&&layout.join()===def_)?'':JSON.stringify(layout);
+ Object.assign(R,{brand:b===OLD?'':b,logo:v('im_logo'),logoh:X('logoh'),hero_img:v('im_hero_img')||'',cover_img:v('im_cover_img')||'',title:(t===def.title||t===def.title.split(OLD).join(shown))?'':t,desc:v('s_desc'),wa:v('w_num'),wa_msg:v('w_msg'),
+  theme:Object.keys(readTheme()).length?JSON.stringify(readTheme()):'',accent:'',blocks:js(blocks),layout:lay,order:'',sstyle:Object.keys(ss).length?JSON.stringify(ss):'',hide:js(hid.slice().sort(function(a,b){return a-b})),
+  menux:js(L.menux.filter(nonEmpty)),ctahide:$('m_cta')&&!$('m_cta').checked?'1':'',gumroad:gu,gumroad_all:$('g_all')&&$('g_all').checked?'1':'',
+  plans:js(L.plans.filter(function(p){return p.name||p.price})),pay:js(L.pay.filter(function(p){return p.name})),pay_title:v('pay_title'),pay_note:v('pay_note'),copy_label:v('copy_label'),pay_btn:v('pay_btn'),socials:js(so)});
+ return Object.keys(R).map(function(k){return {site:site,key:k,value:R[k]}})}
+function mapNow(){var m={};collect().forEach(function(r){m[r.key]=r.value});return m}
+function postPrev(){var f=$('pvf');if(!f||!f.contentWindow)return;try{f.contentWindow.postMessage({be:'preview',map:mapNow()},location.origin)}catch(e){}}
 function save(){var rows=collect(),b=$('save');b.disabled=true;b.textContent='Saving…';
  var done=function(){b.disabled=false;b.textContent='Save changes'},fail=function(t){toast(t,true,true);done()};
  rest('POST','site_content?on_conflict=site,key',rows,'resolution=merge-duplicates,return=representation')
  .then(function(r){return rj(r).then(function(j){
   if(r.status===401){fail('Session expired. Log out and log in again.');return}
-  if(!r.ok){fail('Database refused: '+((j&&j.message)||r.status)+(/site/.test((j&&j.message)||'')?' (run the new setup.sql)':''));return}
+  if(!r.ok){fail('Database refused: '+((j&&j.message)||r.status)+' (run the newest setup.sql)');return}
   if(!Array.isArray(j)||j.length<rows.length){fail('Database accepted only '+(j&&j.length||0)+' of '+rows.length+' items. Run setup.sql again.');return}
   return CMS.load(site,token).then(function(db){
    if(rows.some(function(x){return (db[x.key]||'')!==x.value})){fail('Saved, but reading it back failed. Run setup.sql again.');return}
-   rows.forEach(function(x){saved[x.key]=x.value});dirty=false;$('dirty').hidden=true;
+   rows.forEach(function(x){saved[x.key]=x.value;if(x.value)DBK[x.key]=1});dirty=false;$('dirty').hidden=true;
    toast('✓ Saved and checked.<a href="index.html?site='+encodeURIComponent(site)+'&t='+Date.now()+'" target="_blank">Open page</a>');done()})})})
  .catch(function(e){fail('No connection: '+e.message)})}
 
@@ -321,41 +446,85 @@ function screate(){var name=$('ns_name').value.trim(),slug=($('ns_slug').value.t
    if(!Array.isArray(rows)||!rows.length)return;
    return rest('POST','site_content?on_conflict=site,key',rows.map(function(x){return{site:slug,key:x.key,value:x.value}}),'resolution=merge-duplicates,return=minimal')})})})
  .then(function(){site=slug;return afterSites('✓ Site created. You are now editing it.')}).catch(function(e){toast('Could not create: '+e.message,true,true)})}
-function ssave(card){var s=card.dataset.site;rest('PATCH','sites?slug=eq.'+encodeURIComponent(s),{name:card.querySelector('[data-sf=name]').value.trim(),domains:card.querySelector('[data-sf=domains]').value.trim()},'return=minimal')
+function ssave(c){var s=c.dataset.site;rest('PATCH','sites?slug=eq.'+encodeURIComponent(s),{name:c.querySelector('[data-sf2=name]').value.trim(),domains:c.querySelector('[data-sf2=domains]').value.trim()},'return=minimal')
  .then(function(r){if(!r.ok)throw new Error(r.status);return afterSites('✓ Site details saved.')}).catch(function(e){toast('Could not save: '+e.message,true,true)})}
-function sdel(card){var s=card.dataset.site;if(sites.length<2){toast('You need at least one site.',true);return}
- if(!confirm('Delete site "'+s+'" with all its content and subscribers? This cannot be undone.'))return;
- var q=encodeURIComponent(s);rest('DELETE','site_content?site=eq.'+q).then(function(){return rest('DELETE','subscribers?site=eq.'+q)}).then(function(){return rest('DELETE','sites?slug=eq.'+q)})
+function sdel(c){var s=c.dataset.site;if(sites.length<2){toast('You need at least one site.',true);return}
+ if(!confirm('Delete site "'+s+'" with all its content, messages and subscribers? This cannot be undone.'))return;
+ var q=encodeURIComponent(s);rest('DELETE','site_content?site=eq.'+q).then(function(){return rest('DELETE','subscribers?site=eq.'+q)}).then(function(){return rest('DELETE','messages?site=eq.'+q)}).then(function(){return rest('DELETE','sites?slug=eq.'+q)})
  .then(function(){return afterSites('Site deleted.')}).catch(function(e){toast('Could not delete: '+e.message,true,true)})}
 
+/* ---------- login and start ---------- */
+try{token=sessionStorage.getItem('be_t')}catch(e){}
+function login(){$('lmsg').textContent='';
+ fetch(CMS.url+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:CMS.key,'Content-Type':'application/json'},body:JSON.stringify({email:$('em').value.trim(),password:$('pw').value})})
+ .then(function(r){return r.json()}).then(function(d){
+  if(!d.access_token){$('lmsg').textContent='Wrong email or password.';return}
+  token=d.access_token;try{sessionStorage.setItem('be_t',token)}catch(e){}start()})
+ .catch(function(){$('lmsg').textContent='Could not connect. Check your internet.'})}
+$('go').onclick=login;$('pw').onkeydown=function(e){if(e.key==='Enter')login()};
+function logout(){try{sessionStorage.removeItem('be_t')}catch(e){}dirty=false;location.reload()}
+if(token)fetch(CMS.url+'/auth/v1/user',{headers:CMS.headers(token)}).then(function(r){if(r.ok)start();else{token=null;try{sessionStorage.removeItem('be_t')}catch(e){}}}).catch(function(){token=null});
+function loadSites(){return CMS.get('sites?select=slug,name,domains&order=created_at',token).then(function(l){if(!Array.isArray(l)||!l.length)throw new Error('Sites table not ready. Run setup.sql in Supabase.');sites=l})}
+function start(){
+ loadSites().then(function(){
+  try{var s=sessionStorage.getItem('be_site');site=sites.some(function(x){return x.slug===s})?s:sites[0].slug}catch(e){site=sites[0].slug}
+  return C?0:fetch('index.html',{cache:'no-store'}).then(function(r){return r.text()}).then(function(h){var d=new DOMParser().parseFromString(h,'text/html');C=CMS.collect(d);def.title=d.title;
+   K.ctaT=C.texts.filter(function(t){return t.sec===0&&t.n.parentNode.closest('.btn')})[0];K.ctaL=C.links.filter(function(l){return l.sec===0&&l.el.matches('.btn')})[0]})})
+ .then(loadSite).then(function(){$('login').classList.add('hide');$('app').classList.remove('hide');go(cur)})
+ .catch(function(e){$('lmsg').textContent='Could not load: '+e.message})}
+function loadSite(){return CMS.load(site,token).then(function(m){saved=m;DBK={};Object.keys(m).forEach(function(k){if(m[k])DBK[k]=1});
+ hid=CMS.list(m.hide).map(Number);B=CMS.list(m.blocks).filter(function(b){return b&&b.id&&BT[b.type]});SS=CMS.obj(m.sstyle);T=CMS.obj(m.theme);if(!T.accent&&CMS.col(m.accent))T.accent=m.accent;
+ L={plans:CMS.list(m.plans),pay:CMS.list(m.pay),menux:CMS.list(m.menux)};B.forEach(function(b){L['b:'+b.id+':items']=b.items||[];L['b:'+b.id+':items2']=b.items2||[]});
+ layout=CMS.layoutOf(m,B);OPEN={};dirty=false;$('dirty').hidden=true;try{sessionStorage.setItem('be_site',site)}catch(e){}render()})}
+$('sitesel').onchange=function(){var v=this.value;if(dirty&&!confirm('You have unsaved changes. Switch site and lose them?')){siteOpts();return}site=v;loadSite().then(function(){go(cur)})};
+
 /* ---------- events ---------- */
-document.addEventListener('click',function(e){var el=e.target.closest('[data-act]');if(!el)return;var a=el.dataset.act;
+document.addEventListener('toggle',function(e){var d=e.target;if(d.classList&&d.classList.contains('bkrow')&&d.dataset.tok)OPEN[d.dataset.tok]=d.open},true);
+document.addEventListener('click',function(e){var el=e.target.closest('[data-act]');if(!el)return;if(el.closest('summary'))e.preventDefault();var a=el.dataset.act;
  if(a==='tab')go(el.dataset.t);
  else if(a==='save')save();
  else if(a==='out')logout();
  else if(a==='reset'){var i=el.closest('.f').querySelector('[data-k]');i.value=i.dataset.b;mark()}
  else if(a==='rmimg'){$('im_'+el.dataset.key).value='';pv(el.dataset.key);mark()}
- else if(a==='mv'){var p=+el.dataset.p,d=+el.dataset.dir,t=ord[p];if(ord[p+d]===undefined)return;ord[p]=ord[p+d];ord[p+d]=t;$('secbox').innerHTML=secs();mark()}
- else if(a==='ladd'){var k=el.dataset.l;lsync();L[k].push(Object.assign({},LS[k].blank,PRE[el.dataset.pre]||{}));lrender(k);mark();var cs=document.querySelectorAll('.lc[data-l="'+k+'"]');if(cs.length)cs[cs.length-1].scrollIntoView({behavior:'smooth',block:'center'})}
- else if(a==='ldel'||a==='lmv'){var c=el.closest('.lc'),k2=c.dataset.l;lsync();var ix=[].indexOf.call(document.querySelectorAll('.lc[data-l="'+k2+'"]'),c);
-  if(a==='ldel')L[k2].splice(ix,1);else{var j=ix+ +el.dataset.dir,tmp=L[k2][ix];if(!L[k2][j])return;L[k2][ix]=L[k2][j];L[k2][j]=tmp}lrender(k2);mark()}
+ else if(a==='imgclr'){var bx=el.closest('.imgf');bx.querySelector('input:not([type=file])').value='';bx.querySelector('.pvs').innerHTML='<span>No picture</span>';mark()}
+ else if(a==='colclr'){var ci=el.parentNode.querySelector('input[type=color]');ci.value='#ffffff';ci.setAttribute('data-empty','1');el.parentNode.querySelector('.hint').textContent='Not set';mark()}
+ else if(a==='pal'){setPal(PAL[el.dataset.n]);mark()}
+ else if(a==='mv'){sync();var tok=el.dataset.tok,d=+el.dataset.dir,vis=layout.filter(function(t){return !isHid(t)}),ix=vis.indexOf(tok),nb=vis[ix+d];if(!nb)return;
+  var p1=layout.indexOf(tok),p2=layout.indexOf(nb);layout[p1]=nb;layout[p2]=tok;OPEN[tok]=true;renderBuilder();mark()}
+ else if(a==='addb')addBlock(el.dataset.type);
+ else if(a==='sample')useSample(el.dataset.id);
+ else if(a==='dupb'){sync();var src=B.filter(function(b){return b.id===el.dataset.id})[0],nb2=clone(src);nb2.id=uid();nb2.name=(src.name||'Section')+' copy';B.push(nb2);
+  L['b:'+nb2.id+':items']=clone(L['b:'+src.id+':items']||[]);L['b:'+nb2.id+':items2']=clone(L['b:'+src.id+':items2']||[]);layout.splice(layout.indexOf('B'+src.id)+1,0,'B'+nb2.id);OPEN['B'+nb2.id]=true;renderBuilder();mark()}
+ else if(a==='delb'){if(!confirm('Delete this section for good?'))return;sync();var id=el.dataset.id;B=B.filter(function(b){return b.id!==id});layout=layout.filter(function(t){return t!=='B'+id});delete L['b:'+id+':items'];delete L['b:'+id+':items2'];renderBuilder();mark()}
+ else if(a==='ladd'){var lk=el.dataset.lk;lsync();L[lk]=L[lk]||[];L[lk].push(Object.assign({},lk==='plans'?{btn:'Get started'}:{},PRE[el.dataset.pre]||{}));lrender(lk);mark();var cs=document.querySelectorAll('.il[data-lk="'+lk+'"] .lc');if(cs.length&&cs[cs.length-1].scrollIntoView)cs[cs.length-1].scrollIntoView({behavior:'smooth',block:'center'})}
+ else if(a==='ldel'||a==='lmv'){var c=el.closest('.lc'),host=c.parentNode,lk2=host.dataset.lk;lsync();var ix2=[].indexOf.call(host.children,c);
+  if(a==='ldel')L[lk2].splice(ix2,1);else{var j=ix2+(+el.dataset.dir),tmp=L[lk2][ix2];if(!L[lk2][j])return;L[lk2][ix2]=L[lk2][j];L[lk2][j]=tmp}lrender(lk2);mark()}
  else if(a==='addsoc'){socRow();mark()}
  else if(a==='rmsoc'){el.parentNode.remove();mark()}
  else if(a==='gtest'){var u=$('g_url').value.trim();if(u)window.open(CMS.safeUrl(u),'_blank');else toast('Add a link first.',true)}
- else if(a==='accreset'){$('s_acc').value=def.accent;mark()}
  else if(a==='refsub')loadSubs();
- else if(a==='csv'){var bl=new Blob(['email,date\n'+subs.map(function(x){return x.email+','+x.created_at.slice(0,10)}).join('\n')],{type:'text/csv'}),l=document.createElement('a');l.href=URL.createObjectURL(bl);l.download='subscribers.csv';l.click()}
+ else if(a==='refmsg')loadMsgs();
+ else if(a==='csv')csv([['email','date']].concat(subs.map(function(x){return [x.email,x.created_at.slice(0,10)]})),'subscribers.csv');
+ else if(a==='csvm')csv([['name','email','phone','message','date']].concat(msgs.map(function(m){return [m.name,m.email,m.phone,m.message,(m.created_at||'').slice(0,16)]})),'messages.csv');
  else if(a==='del'){if(confirm('Delete this subscriber?'))rest('DELETE','subscribers?id=eq.'+el.dataset.id).then(loadSubs)}
+ else if(a==='delm'){if(confirm('Delete this message?'))rest('DELETE','messages?id=eq.'+el.dataset.id).then(loadMsgs)}
+ else if(a==='dev'){$('pvf').style.width=el.dataset.w}
+ else if(a==='prefresh')postPrev();
  else if(a==='screate')screate();
  else if(a==='ssave')ssave(el.closest('.lc'));
  else if(a==='sdel')sdel(el.closest('.lc'))});
 document.addEventListener('input',function(e){var t=e.target;
- if(t.id==='q'){var q=t.value.toLowerCase();[].forEach.call(document.querySelectorAll('.f'),function(f){f.style.display=f.dataset.s.indexOf(q)<0?'none':''});if(q)[].forEach.call(document.querySelectorAll('#pn_text details'),function(d){d.open=true});return}
+ if(t.type==='range'&&t.nextElementSibling)t.nextElementSibling.textContent=t.value;
+ if(t.type==='color'){t.removeAttribute('data-empty');var h=t.parentNode.querySelector('.hint');if(h)h.textContent=t.value}
  if(t.dataset&&t.dataset.img)pv(t.dataset.img);if(t.id==='g_url')ghint();
  if(t.closest&&t.closest('#panels')&&!t.closest('#pn_sites'))mark()});
 document.addEventListener('change',function(e){var t=e.target;
- if(t.dataset&&t.dataset.h!==undefined){var i=+t.dataset.h,x=hid.indexOf(i);if(t.checked&&x>-1)hid.splice(x,1);if(!t.checked&&x<0)hid.push(i);mark()}
- else if(t.dataset&&t.dataset.up){if(t.files[0])upload(t.dataset.up,t.files[0]);t.value=''}
+ if(t.dataset&&t.dataset.sw){sync();var tok=t.dataset.sw;
+  if(tok.charAt(0)==='L'){var n=+tok.slice(1),x=hid.indexOf(n);if(t.checked&&x>-1)hid.splice(x,1);if(!t.checked&&x<0)hid.push(n)}
+  else{var b=B.filter(function(k){return 'B'+k.id===tok})[0];if(b)b.hide=t.checked?'':'1'}
+  OPEN[tok]=false;renderBuilder();mark()}
+ else if(t.dataset&&t.dataset.up){if(t.files[0])upSlot(t.dataset.up,t.files[0]);t.value=''}
+ else if(t.dataset&&t.dataset.up2!==undefined){if(t.files[0])upField(t.closest('.imgf'),t.files[0]);t.value=''}
  else if(t.closest&&t.closest('#panels')&&!t.closest('#pn_sites'))mark()});
 })();
 </script>
