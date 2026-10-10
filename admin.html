@@ -151,7 +151,7 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);verti
 var $=function(i){return document.getElementById(i)},OLD='BetterEveryday',MOV=CMS.MOV,esc=CMS.esc;
 var token=null,C=null,site='default',sites=[],saved={},def={title:'',accent:'#1f3d33'},subs=[],msgs=[],dirty=false,cur='build',tt,FID=0;
 var B=[],layout=[],SS={},hid=[],T={},L={},OPEN={},shown=OLD,K={};
-var IC={build:'<rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/>',brand:'<path d="M5 20c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 20l9-9"/>',theme:'<circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2"/><circle cx="12" cy="7.5" r="1.2"/><circle cx="15.5" cy="10" r="1.2"/><path d="M12 21c-2 0-2-2 0-3s3-2 1-4"/>',menu:'<path d="M4 7h16M4 12h16M4 17h10"/>',price:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h3l2.5 11H19L21 8H7"/>',soc:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/>',msgs:'<path d="M4 5h16v11H9l-5 4z"/>',subs:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',sites:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',prev:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
+var IC={build:'<rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/>',brand:'<path d="M5 20c0-9 6-15 15-15 0 9-6 15-15 15z"/><path d="M5 20l9-9"/>',theme:'<circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2"/><circle cx="12" cy="7.5" r="1.2"/><circle cx="15.5" cy="10" r="1.2"/><path d="M12 21c-2 0-2-2 0-3s3-2 1-4"/>',menu:'<path d="M4 7h16M4 12h16M4 17h10"/>',price:'<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M3 4h3l2.5 11H19L21 8H7"/>',soc:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/>',msgs:'<path d="M4 5h16v11H9l-5 4z"/>',subs:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',sites:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',prev:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',hist:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
  slider:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 12l-2 0M18 12h-2M10 16h4"/>',text:'<path d="M5 6h14M5 11h14M5 16h9"/>',split:'<rect x="3" y="5" width="8" height="14" rx="1.5"/><path d="M14 8h7M14 12h7M14 16h5"/>',image:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',gallery:'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>',cards:'<rect x="3" y="4" width="5.5" height="16" rx="1.5"/><rect x="9.2" y="4" width="5.5" height="16" rx="1.5"/><rect x="15.5" y="4" width="5.5" height="16" rx="1.5"/>',steps:'<circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M6 8.5v7M12 6h8M12 18h8"/>',course:'<path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M8 7h7"/>',testimonials:'<path d="M4 6h7v6H7l-3 3zM13 6h7v6h-4l-3 3z"/>',pricing:'<path d="M3 12l9-9h8v8l-9 9z"/><circle cx="16" cy="8" r="1.4"/>',faq:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 115 0c0 2-2.500 2-2.500 4M12 17v.01"/>',contact:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/>',subscribe:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',video:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/>',cta:'<path d="M3 11v3l12 5V6zM15 8c3 .5 5 2 5 4s-2 3.500-5 4"/>'};
 var svg=function(k){return '<svg class="ic" viewBox="0 0 24 24">'+(IC[k]||'')+'</svg>'};
 var RAT='s:=Natural shape|1=Square|43=Photo 4:3|169=Wide 16:9|34=Portrait 3:4|32=Photo 3:2|219=Cinema 21:9',FIT='s:cover=Fill and crop|contain=Show the whole picture';
@@ -215,8 +215,8 @@ var SAMPLES=[
  ['voices','testimonials',{title:'Customer reviews',sub:'Replace with real reviews.',view:'grid'},[{name:'Customer name',role:'',q:'Write a real review here.'}]],
  ['contact','contact',{title:'Visit or call us',phone:'+880 1XXX-XXXXXX',addr:'Your full address',hours:'Every day, 9am – 8pm',map:'https://maps.google.com',form:'1',menu:'1',mlabel:'Contact'}]]}
 ];
-var DBK={};
-var TABS=[['build','Page builder','Build your page','Add, move and style every section. Tap a section to open it.'],['brand','Brand & logo','Name, logo and contact','Change the name, logo and contact button. Turn this page into any brand.'],['theme','Theme & colours','Colours, fonts and style','Pick colours, fonts, button style and the default animation.'],['menu','Menu & header','Top menu and header button','Choose what appears in the top menu.'],['price','Pricing & payments','Classic pricing section','Plans and payment methods for the classic pricing section. New pages can use a Pricing section in the builder.'],['soc','Social channels','Footer icons','Add your channels. They show as icons in the footer.'],['msgs','Messages','Contact form inbox','Messages people sent from your contact form.'],['subs','Subscribers','People who joined your list','Emails collected from signup boxes on this site.'],['sites','Sites & domains','All your websites','One editor for every website. Each domain shows its own site.'],['prev','Live preview','See it before you save','Phone, tablet or desktop view of your unsaved changes.']];
+var DBK={},UNDO=[];
+var TABS=[['build','Page builder','Build your page','Add, move and style every section. Tap a section to open it.'],['brand','Brand & logo','Name, logo and contact','Change the name, logo and contact button. Turn this page into any brand.'],['theme','Theme & colours','Colours, fonts and style','Pick colours, fonts, button style and the default animation.'],['menu','Menu & header','Top menu and header button','Choose what appears in the top menu.'],['price','Pricing & payments','Classic pricing section','Plans and payment methods for the classic pricing section. New pages can use a Pricing section in the builder.'],['soc','Social channels','Footer icons','Add your channels. They show as icons in the footer.'],['msgs','Messages','Contact form inbox','Messages people sent from your contact form.'],['subs','Subscribers','People who joined your list','Emails collected from signup boxes on this site.'],['hist','History & reset','Undo, restore points and reset','Go back to an earlier version of this site, or start over.'],['sites','Sites & domains','All your websites','One editor for every website. Each domain shows its own site.'],['prev','Live preview','See it before you save','Phone, tablet or desktop view of your unsaved changes.']];
 $('tabs').innerHTML=TABS.map(function(t){return '<button type="button" data-act="tab" data-t="'+t[0]+'">'+svg(t[0])+t[1]+'</button>'}).join('');
 function toast(m,bad,keep){var t=$('toast');t.innerHTML=m;t.className=bad?'bad':'';t.hidden=false;clearTimeout(tt);if(!keep)tt=setTimeout(function(){t.hidden=true},4500)}
 function mark(){dirty=true;$('dirty').hidden=false}
@@ -294,7 +294,7 @@ function renderBuilder(){
  h+='<p class="sep">Footer</p>'+legacyRow(12,false,hid.indexOf(12)<0)+legacyRow(13,false,hid.indexOf(13)<0)+legacyRow(14,false,hid.indexOf(14)<0);
  $('bkrows').innerHTML=h;
  [].forEach.call(document.querySelectorAll('#bkrows .il'),function(c){lrender(c.dataset.lk)});
- ['hero_img','cover_img'].forEach(pv)}
+ ['hero_img','cover_img'].forEach(pv);updateUndo()}
 function sync(){lsync();
  [].forEach.call(document.querySelectorAll('#bkrows [data-k]'),function(el){var x=el.value.trim();saved[el.dataset.k]=(x===el.dataset.d||x===el.dataset.b)?'':x});
  ['hero_img','cover_img'].forEach(function(k){var e=$('im_'+k);if(e)saved[k]=e.value.trim()});
@@ -303,20 +303,20 @@ function sync(){lsync();
   [].forEach.call(r.querySelectorAll('.sty [data-sf]'),function(el){b[el.dataset.sf]=rd(el)})});
  [].forEach.call(document.querySelectorAll('.bkrow[data-tok^="L"] .sty'),function(s){var o={};[].forEach.call(s.querySelectorAll('[data-sf]'),function(el){var v=rd(el);if(v)o[el.dataset.sf]=v});SS[s.dataset.tok]=o});
  B.forEach(function(b){var Tt=BT[b.type];if(Tt.it)b.items=L['b:'+b.id+':items']||[];if(Tt.it2)b.items2=L['b:'+b.id+':items2']||[]})}
-function addBlock(type){sync();var Tt=BT[type],b=Object.assign({id:uid(),type:type,name:Tt.n},clone(Tt.dp||{}));B.push(b);
+function addBlock(type){pushUndo();var Tt=BT[type],b=Object.assign({id:uid(),type:type,name:Tt.n},clone(Tt.dp||{}));B.push(b);
  L['b:'+b.id+':items']=clone(Tt.di||[]);L['b:'+b.id+':items2']=clone(Tt.di2||[]);layout.push('B'+b.id);OPEN['B'+b.id]=true;renderBuilder();mark();
  var r=document.querySelector('.bkrow[data-tok="B'+b.id+'"]');if(r&&r.scrollIntoView)r.scrollIntoView({behavior:'smooth',block:'start'});toast('Section added at the end of the page. Use the arrows to move it.')}
 function fill(o){return JSON.parse(JSON.stringify(o).split('{brand}').join(JSON.stringify(shown).slice(1,-1)))}
 function setPal(P){Object.keys(P).forEach(function(k){var e=document.querySelector('[data-x="t_'+k+'"]');if(e){e.value=P[k];e.removeAttribute('data-empty');var h=e.parentNode.querySelector('.hint');if(h)h.textContent=P[k]}})}
 function useSample(id){var S=SAMPLES.filter(function(x){return x.id===id})[0];if(!S)return;
  if(layout.some(function(t){return t.charAt(0)==='B'})&&!confirm('This replaces your current custom sections with the "'+S.name+'" sample. Continue?'))return;
- sync();B=fill(S.blocks).map(function(a){var b=Object.assign({id:a[0],type:a[1],name:a[2].mlabel||BT[a[1]].n},clone(BT[a[1]].dp||{}),a[2]);L['b:'+b.id+':items']=a[3]||[];L['b:'+b.id+':items2']=a[4]||[];return b});
+ pushUndo();B=fill(S.blocks).map(function(a){var b=Object.assign({id:a[0],type:a[1],name:a[2].mlabel||BT[a[1]].n},clone(BT[a[1]].dp||{}),a[2]);L['b:'+b.id+':items']=a[3]||[];L['b:'+b.id+':items2']=a[4]||[];return b});
  layout=B.map(function(b){return 'B'+b.id}).concat(MOV.map(function(i){return 'L'+i}));hid=[1].concat(MOV);OPEN={};OPEN['B'+B[0].id]=true;
  setPal(PAL[S.pal]);
  if(K.ctaT){var e=document.querySelector('[data-k="'+K.ctaT.k+'"]');if(e)e.value=S.cta[0]}
  if(K.ctaL){var e2=document.querySelector('[data-k="'+K.ctaL.k+'"]');if(e2)e2.value=S.cta[1]}
  var ch=$('m_cta');if(ch)ch.checked=false;
- renderBuilder();mark();toast('Sample loaded. Replace the words and pictures with your own, then press Save changes.')}
+ renderBuilder();mark();toast('Sample loaded. Changed your mind? <a href="#" data-act="undo">Undo</a>')}
 
 /* ---------- panels ---------- */
 function socRow(s){var r=document.createElement('div');r.className='sorow';
@@ -325,7 +325,7 @@ function render(){
  shown=saved.brand||OLD;siteOpts();var P={};
  var adder='<details class="bkrow" id="addbox"'+(layout.some(function(t){return t.charAt(0)==='B'})?'':' open')+'><summary><span class="bi">'+svg('text')+'</span><span class="bn">Add a section</span><span class="tg">15 kinds</span></summary><div class="bkb"><div class="adder">'+Object.keys(BT).map(function(k){return '<button class="at" type="button" data-act="addb" data-type="'+k+'"><b>'+svg(k)+BT[k].n+'</b><span>'+BT[k].d+'</span></button>'}).join('')+'</div></div></details>'+
   '<details class="bkrow"><summary><span class="bi">'+svg('build')+'</span><span class="bn">Start from a sample page</span><span class="tg">'+SAMPLES.length+' samples</span></summary><div class="bkb"><p class="hint">A ready-made page with colours and sections. Load one, then replace the words and pictures.</p><div class="adder">'+SAMPLES.map(function(s){return '<button class="at" type="button" data-act="sample" data-id="'+s.id+'"><b>'+s.name+'</b><span>'+s.d+'</span></button>'}).join('')+'</div></div></details>';
- P.build=adder+'<div id="bkrows"></div>';
+ P.build='<div class="rw" style="margin-bottom:14px"><button class="btn gh sm" id="undobtn" type="button" data-act="undo" disabled>↶ Undo</button><button class="btn gh sm" type="button" data-act="discard">Discard unsaved changes</button><button class="btn gh sm" type="button" data-act="classic">Back to the classic page</button></div>'+adder+'<div id="bkrows"></div>';
  P.brand=card('Brand name','Replaces "'+OLD+'" everywhere: menu, footer and the browser tab.',plain('b_name','Brand name',shown))+
   card('Logo','Shown in the menu and footer, and as the tab icon. A PNG with a clear background looks best.',slot('logo','Logo','Uses the leaf icon until you add one.')+fld(['logoh','Logo height (px)','n:16:160:2:40'],saved.logoh,'data-x="logoh"'))+
   card('Search and sharing','',plain('s_title','Browser tab title',saved.title||def.title.split(OLD).join(shown))+plain('s_desc','Search description (what Google shows)',saved.desc||'','One or two sentences about this site',true))+
@@ -349,6 +349,7 @@ function render(){
  P.soc=card('Social channels','Add as many as you like. Empty rows are ignored.','<div id="socbox"></div><div class="rw" style="margin-top:14px"><button class="btn gh sm" type="button" data-act="addsoc">+ Add channel</button></div>');
  P.msgs=card('Messages','','<div class="rw"><button class="btn gh sm" type="button" data-act="refmsg">Refresh</button><button class="btn gh sm" type="button" data-act="csvm">Download CSV</button></div><p class="hint" id="msgcount"></p><div id="msgbox"></div>');
  P.subs=card('Subscribers','','<div class="rw"><button class="btn gh sm" type="button" data-act="refsub">Refresh</button><button class="btn gh sm" type="button" data-act="csv">Download CSV</button></div><p class="hint" id="subcount"></p><div class="tw" id="subbox"></div>');
+ P.hist=card('Undo and discard','Undo steps inside the Page builder, or throw away everything since your last save.','<div class="rw"><button class="btn gh sm" type="button" data-act="undo">↶ Undo last step</button><button class="btn gh sm" type="button" data-act="discard">Discard unsaved changes</button></div>')+card('Restore points','A copy of the site is kept automatically every time you press Save changes (the last 25 are kept). Restore any of them.','<div class="rw"><button class="btn sm" type="button" data-act="bkmake">Save a restore point now</button></div><div id="bkbox"></div>')+card('Start over','','<p class="d">Show the classic page again. Classic sections come back, your custom sections are only hidden (not deleted). Then press Save changes.</p><div class="rw"><button class="btn gh" type="button" data-act="classic">Back to the classic page</button></div><p class="d" style="margin-top:22px">Or clear everything on this site and begin from the original design. A restore point is made first.</p><div class="rw"><button class="btn dg" type="button" data-act="resetsite">Reset this site</button></div>');
  P.sites=sitesPanel();
  P.prev='<div class="rw" style="margin-bottom:12px"><button class="btn gh sm" type="button" data-act="dev" data-w="390px">Phone</button><button class="btn gh sm" type="button" data-act="dev" data-w="820px">Tablet</button><button class="btn gh sm" type="button" data-act="dev" data-w="100%">Desktop</button><button class="btn sm" type="button" data-act="prefresh">Refresh preview</button></div><div class="pvwrap"><iframe id="pvf" title="Page preview" style="width:390px" src="index.html?site='+encodeURIComponent(site)+'&preview=1"></iframe></div><p class="hint">This shows your unsaved changes. Press Save changes to publish them.</p>';
  $('panels').innerHTML=TABS.map(function(t){return '<section class="panel hide" id="pn_'+t[0]+'">'+P[t[0]]+'</section>'}).join('');
@@ -371,7 +372,7 @@ function go(id){cur=id;
  TABS.forEach(function(t){$('pn_'+t[0]).classList.toggle('hide',t[0]!==id);if(t[0]===id){$('ttl').textContent=t[2];$('sub').textContent=t[3]}});
  [].forEach.call($('tabs').children,function(b){b.classList.toggle('on',b.dataset.t===id)});
  $('save').hidden=(id==='subs'||id==='sites'||id==='msgs');window.scrollTo(0,0);
- if(id==='subs')loadSubs();if(id==='msgs')loadMsgs();if(id==='menu')autoMenu();if(id==='prev')postPrev()}
+ if(id==='subs')loadSubs();if(id==='msgs')loadMsgs();if(id==='hist')listBk();if(id==='menu')autoMenu();if(id==='prev')postPrev()}
 
 /* ---------- pictures ---------- */
 function resize(f,max,png){return new Promise(function(res,rej){var im=new Image(),u=URL.createObjectURL(f);
@@ -424,7 +425,7 @@ function mapNow(){var m={};collect().forEach(function(r){m[r.key]=r.value});retu
 function postPrev(){var f=$('pvf');if(!f||!f.contentWindow)return;try{f.contentWindow.postMessage({be:'preview',map:mapNow()},location.origin)}catch(e){}}
 function save(){var rows=collect(),b=$('save');b.disabled=true;b.textContent='Saving…';
  var done=function(){b.disabled=false;b.textContent='Save changes'},fail=function(t){toast(t,true,true);done()};
- rest('POST','site_content?on_conflict=site,key',rows,'resolution=merge-duplicates,return=representation')
+ makeBk().catch(function(){}).then(function(){return rest('POST','site_content?on_conflict=site,key',rows,'resolution=merge-duplicates,return=representation')})
  .then(function(r){return rj(r).then(function(j){
   if(r.status===401){fail('Session expired. Log out and log in again.');return}
   if(!r.ok){fail('Database refused: '+((j&&j.message)||r.status)+' (run the newest setup.sql)');return}
@@ -434,6 +435,43 @@ function save(){var rows=collect(),b=$('save');b.disabled=true;b.textContent='Sa
    rows.forEach(function(x){saved[x.key]=x.value;if(x.value)DBK[x.key]=1});dirty=false;$('dirty').hidden=true;
    toast('✓ Saved and checked.<a href="index.html?site='+encodeURIComponent(site)+'&t='+Date.now()+'" target="_blank">Open page</a>');done()})})})
  .catch(function(e){fail('No connection: '+e.message)})}
+
+/* ---------- undo, restore points, reset ---------- */
+function cval(k){var e=document.querySelector('[data-k="'+k+'"]');return e?e.value:''}
+function snap(){sync();return {B:clone(B),layout:layout.slice(),hid:hid.slice(),SS:clone(SS),L:clone(L),saved:clone(saved),theme:readTheme(),cta:[K.ctaT?cval(K.ctaT.k):'',K.ctaL?cval(K.ctaL.k):'']}}
+function pushUndo(){UNDO.push(snap());if(UNDO.length>30)UNDO.shift();updateUndo()}
+function updateUndo(){var b=$('undobtn');if(b){b.disabled=!UNDO.length;b.textContent='↶ Undo'+(UNDO.length?' ('+UNDO.length+')':'')}}
+function setThemeForm(o){['accent','bg','alt','ink','dark'].forEach(function(k){var e=document.querySelector('[data-x="t_'+k+'"]');if(!e)return;var h=e.parentNode.querySelector('.hint');
+ if(o[k]){e.value=o[k];e.removeAttribute('data-empty');if(h)h.textContent=o[k]}else{e.value='#ffffff';e.setAttribute('data-empty','1');if(h)h.textContent='Not set'}})}
+function undo(){var s=UNDO.pop();if(!s){toast('Nothing to undo.');return}
+ B=s.B;layout=s.layout;hid=s.hid;SS=s.SS;L=s.L;saved=s.saved;setThemeForm(s.theme);
+ if(K.ctaT){var a=document.querySelector('[data-k="'+K.ctaT.k+'"]');if(a)a.value=s.cta[0]}if(K.ctaL){var b=document.querySelector('[data-k="'+K.ctaL.k+'"]');if(b)b.value=s.cta[1]}
+ renderBuilder();['plans','pay','menux'].forEach(lrender);mark();toast('Undone.')}
+function classicPage(){if(!confirm('Show the classic page again? Your custom sections will be hidden (not deleted). You can press Undo right after.'))return;
+ pushUndo();hid=[];B.forEach(function(b){b.hide='1'});layout=MOV.map(function(i){return 'L'+i}).concat(B.map(function(b){return 'B'+b.id}));setThemeForm({});
+ [K.ctaT,K.ctaL].forEach(function(c){if(!c)return;var e=document.querySelector('[data-k="'+c.k+'"]');if(e)e.value=e.dataset.b});var m=$('m_cta');if(m)m.checked=true;
+ renderBuilder();mark();toast('Classic page is back. Press Save changes to keep it.')}
+function makeBk(){var BK=encodeURIComponent(site+'~bk');
+ return CMS.load(site,token).then(function(m){if(!Object.keys(m).some(function(k){return m[k]}))return 0;
+  return rest('POST','site_content?on_conflict=site,key',[{site:site+'~bk',key:'v'+Date.now(),value:JSON.stringify(m)}],'resolution=merge-duplicates,return=minimal')
+  .then(function(){return CMS.get('site_content?select=key&site=eq.'+BK+'&order=key.desc',token)})
+  .then(function(rows){if(!Array.isArray(rows))return;return Promise.all(rows.slice(25).map(function(r){return rest('DELETE','site_content?site=eq.'+BK+'&key=eq.'+r.key)}))})
+  .then(function(){return 1})})}
+function listBk(){var box=$('bkbox');if(!box)return;
+ CMS.get('site_content?select=key,value&site=eq.'+encodeURIComponent(site+'~bk')+'&order=key.desc',token).then(function(rows){
+  if(!Array.isArray(rows)){box.innerHTML='<p class="hint err">Could not load restore points.</p>';return}
+  box.innerHTML=rows.length?rows.map(function(r){var m=CMS.obj(r.value),nb=CMS.list(m.blocks).length,d=new Date(+r.key.slice(1));
+   return '<div class="mg"><div class="rw" style="justify-content:space-between"><b>'+esc(d.toLocaleString())+'</b><span class="hint" style="margin:0">'+nb+' custom section'+(nb===1?'':'s')+(m.brand?' · '+esc(m.brand):'')+'</span></div><div class="rw" style="margin-top:10px"><button class="btn sm" type="button" data-act="bkrestore" data-key="'+esc(r.key)+'">Restore this version</button><button class="btn dg sm" type="button" data-act="bkdel" data-key="'+esc(r.key)+'">Delete</button></div></div>'}).join(''):'<p class="hint">No restore points yet. One is made automatically each time you press Save changes.</p>'})
+ .catch(function(){box.innerHTML='<p class="hint err">Could not load. Check your connection.</p>'})}
+function restoreBk(key){if(!confirm('Go back to this version? Your current saved version is backed up first.'))return;
+ CMS.get('site_content?select=value&site=eq.'+encodeURIComponent(site+'~bk')+'&key=eq.'+encodeURIComponent(key),token).then(function(r){
+  var m=CMS.obj(r&&r[0]&&r[0].value);if(!Object.keys(m).length)throw new Error('version not found');
+  return makeBk().then(function(){return CMS.load(site,token)}).then(function(cur){var rows=Object.keys(m).map(function(k){return {site:site,key:k,value:m[k]}});
+   Object.keys(cur).forEach(function(k){if(cur[k]&&!(k in m))rows.push({site:site,key:k,value:''})});
+   return rest('POST','site_content?on_conflict=site,key',rows,'resolution=merge-duplicates,return=minimal')})})
+ .then(function(r){if(r&&!r.ok)throw new Error(r.status);return loadSite()}).then(function(){go('hist');toast('✓ Version restored.')}).catch(function(e){toast('Could not restore: '+e.message,true,true)})}
+function resetSite(){var w=prompt('This clears everything on "'+site+'" and shows the original design. A restore point is made first. Type RESET to continue.');if(w!=='RESET')return;
+ makeBk().then(function(){return rest('DELETE','site_content?site=eq.'+encodeURIComponent(site))}).then(loadSite).then(function(){go('hist');toast('Site reset. You can bring the old version back from the list below.')}).catch(function(e){toast('Could not reset: '+e.message,true,true)})}
 
 /* ---------- sites ---------- */
 function afterSites(msg){return loadSites().then(function(){if(!sites.some(function(s){return s.slug===site}))site=sites[0].slug;return loadSite()}).then(function(){go('sites');if(msg)toast(msg)})}
@@ -450,7 +488,7 @@ function ssave(c){var s=c.dataset.site;rest('PATCH','sites?slug=eq.'+encodeURICo
  .then(function(r){if(!r.ok)throw new Error(r.status);return afterSites('✓ Site details saved.')}).catch(function(e){toast('Could not save: '+e.message,true,true)})}
 function sdel(c){var s=c.dataset.site;if(sites.length<2){toast('You need at least one site.',true);return}
  if(!confirm('Delete site "'+s+'" with all its content, messages and subscribers? This cannot be undone.'))return;
- var q=encodeURIComponent(s);rest('DELETE','site_content?site=eq.'+q).then(function(){return rest('DELETE','subscribers?site=eq.'+q)}).then(function(){return rest('DELETE','messages?site=eq.'+q)}).then(function(){return rest('DELETE','sites?slug=eq.'+q)})
+ var q=encodeURIComponent(s);rest('DELETE','site_content?site=eq.'+q).then(function(){return rest('DELETE','site_content?site=eq.'+encodeURIComponent(s+'~bk'))}).then(function(){return rest('DELETE','subscribers?site=eq.'+q)}).then(function(){return rest('DELETE','messages?site=eq.'+q)}).then(function(){return rest('DELETE','sites?slug=eq.'+q)})
  .then(function(){return afterSites('Site deleted.')}).catch(function(e){toast('Could not delete: '+e.message,true,true)})}
 
 /* ---------- login and start ---------- */
@@ -475,12 +513,12 @@ function start(){
 function loadSite(){return CMS.load(site,token).then(function(m){saved=m;DBK={};Object.keys(m).forEach(function(k){if(m[k])DBK[k]=1});
  hid=CMS.list(m.hide).map(Number);B=CMS.list(m.blocks).filter(function(b){return b&&b.id&&BT[b.type]});SS=CMS.obj(m.sstyle);T=CMS.obj(m.theme);if(!T.accent&&CMS.col(m.accent))T.accent=m.accent;
  L={plans:CMS.list(m.plans),pay:CMS.list(m.pay),menux:CMS.list(m.menux)};B.forEach(function(b){L['b:'+b.id+':items']=b.items||[];L['b:'+b.id+':items2']=b.items2||[]});
- layout=CMS.layoutOf(m,B);OPEN={};dirty=false;$('dirty').hidden=true;try{sessionStorage.setItem('be_site',site)}catch(e){}render()})}
+ layout=CMS.layoutOf(m,B);OPEN={};UNDO=[];dirty=false;$('dirty').hidden=true;try{sessionStorage.setItem('be_site',site)}catch(e){}render()})}
 $('sitesel').onchange=function(){var v=this.value;if(dirty&&!confirm('You have unsaved changes. Switch site and lose them?')){siteOpts();return}site=v;loadSite().then(function(){go(cur)})};
 
 /* ---------- events ---------- */
 document.addEventListener('toggle',function(e){var d=e.target;if(d.classList&&d.classList.contains('bkrow')&&d.dataset.tok)OPEN[d.dataset.tok]=d.open},true);
-document.addEventListener('click',function(e){var el=e.target.closest('[data-act]');if(!el)return;if(el.closest('summary'))e.preventDefault();var a=el.dataset.act;
+document.addEventListener('click',function(e){var el=e.target.closest('[data-act]');if(!el)return;if(el.closest('summary')||(el.tagName==='A'&&el.getAttribute('href')==='#'))e.preventDefault();var a=el.dataset.act;
  if(a==='tab')go(el.dataset.t);
  else if(a==='save')save();
  else if(a==='out')logout();
@@ -490,12 +528,12 @@ document.addEventListener('click',function(e){var el=e.target.closest('[data-act
  else if(a==='colclr'){var ci=el.parentNode.querySelector('input[type=color]');ci.value='#ffffff';ci.setAttribute('data-empty','1');el.parentNode.querySelector('.hint').textContent='Not set';mark()}
  else if(a==='pal'){setPal(PAL[el.dataset.n]);mark()}
  else if(a==='mv'){sync();var tok=el.dataset.tok,d=+el.dataset.dir,vis=layout.filter(function(t){return !isHid(t)}),ix=vis.indexOf(tok),nb=vis[ix+d];if(!nb)return;
-  var p1=layout.indexOf(tok),p2=layout.indexOf(nb);layout[p1]=nb;layout[p2]=tok;OPEN[tok]=true;renderBuilder();mark()}
+  pushUndo();var p1=layout.indexOf(tok),p2=layout.indexOf(nb);layout[p1]=nb;layout[p2]=tok;OPEN[tok]=true;renderBuilder();mark()}
  else if(a==='addb')addBlock(el.dataset.type);
  else if(a==='sample')useSample(el.dataset.id);
- else if(a==='dupb'){sync();var src=B.filter(function(b){return b.id===el.dataset.id})[0],nb2=clone(src);nb2.id=uid();nb2.name=(src.name||'Section')+' copy';B.push(nb2);
+ else if(a==='dupb'){pushUndo();var src=B.filter(function(b){return b.id===el.dataset.id})[0],nb2=clone(src);nb2.id=uid();nb2.name=(src.name||'Section')+' copy';B.push(nb2);
   L['b:'+nb2.id+':items']=clone(L['b:'+src.id+':items']||[]);L['b:'+nb2.id+':items2']=clone(L['b:'+src.id+':items2']||[]);layout.splice(layout.indexOf('B'+src.id)+1,0,'B'+nb2.id);OPEN['B'+nb2.id]=true;renderBuilder();mark()}
- else if(a==='delb'){if(!confirm('Delete this section for good?'))return;sync();var id=el.dataset.id;B=B.filter(function(b){return b.id!==id});layout=layout.filter(function(t){return t!=='B'+id});delete L['b:'+id+':items'];delete L['b:'+id+':items2'];renderBuilder();mark()}
+ else if(a==='delb'){if(!confirm('Delete this section? You can press Undo right after.'))return;pushUndo();var id=el.dataset.id;B=B.filter(function(b){return b.id!==id});layout=layout.filter(function(t){return t!=='B'+id});delete L['b:'+id+':items'];delete L['b:'+id+':items2'];renderBuilder();mark()}
  else if(a==='ladd'){var lk=el.dataset.lk;lsync();L[lk]=L[lk]||[];L[lk].push(Object.assign({},lk==='plans'?{btn:'Get started'}:{},PRE[el.dataset.pre]||{}));lrender(lk);mark();var cs=document.querySelectorAll('.il[data-lk="'+lk+'"] .lc');if(cs.length&&cs[cs.length-1].scrollIntoView)cs[cs.length-1].scrollIntoView({behavior:'smooth',block:'center'})}
  else if(a==='ldel'||a==='lmv'){var c=el.closest('.lc'),host=c.parentNode,lk2=host.dataset.lk;lsync();var ix2=[].indexOf.call(host.children,c);
   if(a==='ldel')L[lk2].splice(ix2,1);else{var j=ix2+(+el.dataset.dir),tmp=L[lk2][ix2];if(!L[lk2][j])return;L[lk2][ix2]=L[lk2][j];L[lk2][j]=tmp}lrender(lk2);mark()}
@@ -510,6 +548,13 @@ document.addEventListener('click',function(e){var el=e.target.closest('[data-act
  else if(a==='delm'){if(confirm('Delete this message?'))rest('DELETE','messages?id=eq.'+el.dataset.id).then(loadMsgs)}
  else if(a==='dev'){$('pvf').style.width=el.dataset.w}
  else if(a==='prefresh')postPrev();
+ else if(a==='undo')undo();
+ else if(a==='discard'){if(!dirty){toast('Nothing to discard. Everything is saved.');return}if(confirm('Throw away all changes since your last save?'))loadSite().then(function(){go(cur);toast('Back to your last saved version.')})}
+ else if(a==='classic')classicPage();
+ else if(a==='bkmake')makeBk().then(function(ok){toast(ok?'✓ Restore point saved.':'Nothing is saved on this site yet.',!ok);listBk()}).catch(function(e){toast('Could not save: '+e.message,true)});
+ else if(a==='bkrestore')restoreBk(el.dataset.key);
+ else if(a==='bkdel'){if(confirm('Delete this restore point?'))rest('DELETE','site_content?site=eq.'+encodeURIComponent(site+'~bk')+'&key=eq.'+el.dataset.key).then(listBk)}
+ else if(a==='resetsite')resetSite();
  else if(a==='screate')screate();
  else if(a==='ssave')ssave(el.closest('.lc'));
  else if(a==='sdel')sdel(el.closest('.lc'))});
@@ -519,7 +564,7 @@ document.addEventListener('input',function(e){var t=e.target;
  if(t.dataset&&t.dataset.img)pv(t.dataset.img);if(t.id==='g_url')ghint();
  if(t.closest&&t.closest('#panels')&&!t.closest('#pn_sites'))mark()});
 document.addEventListener('change',function(e){var t=e.target;
- if(t.dataset&&t.dataset.sw){sync();var tok=t.dataset.sw;
+ if(t.dataset&&t.dataset.sw){pushUndo();var tok=t.dataset.sw;
   if(tok.charAt(0)==='L'){var n=+tok.slice(1),x=hid.indexOf(n);if(t.checked&&x>-1)hid.splice(x,1);if(!t.checked&&x<0)hid.push(n)}
   else{var b=B.filter(function(k){return 'B'+k.id===tok})[0];if(b)b.hide=t.checked?'':'1'}
   OPEN[tok]=false;renderBuilder();mark()}
